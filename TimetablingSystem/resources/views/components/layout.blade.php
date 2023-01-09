@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Intern To You</title>
+    <title>Timetabling System</title>
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
 </head>
@@ -13,13 +13,15 @@
 <!-- Header -->
 <div class="header">
     <div class="logo">
-        <h1>internToYou</h1>
+        <h1>Timetabling System</h1>
     </div>
 
     <nav>
         <ul>
+            {{--            To be edited--}}
             <li><a href="/">Home</a></li>
             <li><a href="/listings">Listings</a></li>
+{{--            if authenticated successfully, this appears--}}
             @auth()
                 {{--                <strong>Success!</strong> Welcome, {{auth()->user()->name}}--}}
                 <li><a href="/create">Create Listing</a></li>
@@ -42,8 +44,7 @@
 {{$slot}}
 
 {{--footer--}}
-<div class="footer">Created by Sara Tarek. © 2022</div>
-
+<div class="footer">Created by SSZ Solutions. © 2023</div>
 
 
 <script>
