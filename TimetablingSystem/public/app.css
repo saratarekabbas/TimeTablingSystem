@@ -1,0 +1,92 @@
+/*-------------------------------------------*/
+/*                  Default                 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f1f1f1;
+    height: 100vh;
+}
+
+/*-------------------------------------------*/
+/*                  Page Layout              */
+
+/*Header*/
+/* Style the header */
+.header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: right;
+}
+
+/*Side Nav-Bar*/
+
+/*1. The columns*/
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    height: 93vh;
+}
+
+/* Left and right column */
+.column.side {
+    width: 15%;
+    background-color: #840E35;
+}
+
+/* Middle column */
+.column.left {
+    width: 85%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*2. The Nav Content*/
+/* Style the pnav links */
+.column.side a {
+    /*float: left;*/
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.column.side a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+
+/*-------------------------------------------*/
+/*                  Page Content             */
+
+
+/*-------------------------------------------*/
+/*                  Footer                   */
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7vh;
+    background-color: #59011E;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
