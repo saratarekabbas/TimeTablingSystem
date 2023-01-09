@@ -112,14 +112,15 @@ body {
 
 .container {
     padding-top: 20px;
-    padding-bottom: 20px;
-    /*min-height: 30%;*/
-    height: auto;
+    /*height: 60%;*/
     background-color: #FFFFFF;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border: 2px solid #DFE0EB;
     width: 100%;
     position: relative;
+    height: auto;
 }
 
 .container-title {
@@ -154,14 +155,35 @@ body {
 }
 
 .container-table {
+    overflow: scroll;
     padding-right: 25px;
     padding-left: 25px;
+    max-height: 458px;
+}
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .container-table table{
     border-collapse: collapse;
-    width: 100%;
+    width: 99%;
+
 }
 
 .container-table th {
@@ -228,6 +250,8 @@ body {
     height: 7vh;
     background-color: #59011E;
     color: white;
-    text-align: center;
-    padding: 20px;
+    /*text-align: center;*/
+    padding-left: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

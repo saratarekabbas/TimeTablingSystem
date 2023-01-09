@@ -73,8 +73,8 @@
                         <td>01-01-2023</td>
                         <td>05-01-2023</td>
                         <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -82,8 +82,8 @@
                         <td>01-01-2023</td>
                         <td>05-01-2023</td>
                         <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
                         </td>
                     </tr>
                     <tr>
@@ -91,8 +91,35 @@
                         <td>01-01-2023</td>
                         <td>05-01-2023</td>
                         <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
                         </td>
                     </tr>
 
