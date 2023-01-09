@@ -7,13 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
+    <link rel="stylesheet" href="/public/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetabling System</title>
 </head>
 <body>
 
 <div class="row">
     <div class="column side">
-        <a href="#">Overview</a>
+        <img src="TtS-Logo.png" alt="Logo">
+        <p>  Timetabling System</p>
+        <a href="#"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="#">User Applications</a>
         <a href="#">Public Holidays</a>
         <a href="#">Programs</a>
@@ -22,7 +25,7 @@
         <a href="#">Timetable</a>
     </div>
 
-    <div class="column left">
+    <div class="column right">
         <div class="header">
             <p>Office Admin / Logout.</p>
         </div>
