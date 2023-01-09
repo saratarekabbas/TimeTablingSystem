@@ -21,7 +21,7 @@
         <a href="#"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
             User Applications</a>
-        <a href="/office-assistant/public-holiday/publicHoliday"><i class="fa fa-plane" aria-hidden="true"></i>
+        <a href="/publicHoliday"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
         <a href="#"><i class="fa fa-building" aria-hidden="true"></i>
             Programs</a>

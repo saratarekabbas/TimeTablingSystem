@@ -22,6 +22,12 @@ Route::get('/', function () {
     return view('/office-assistant/public-holiday/publicHolidays');
 });
 
-Route::get('post', function () {
-    return view('/office-assistant/public-holiday/publicHoliday');
+//Route::get('publicHoliday', function () {
+//    return view('/office-assistant/public-holiday/publicHoliday');
+//});
+
+Route::get('publicHoliday', function (){
+    return view('/office-assistant/public-holiday/publicHoliday', [
+       'publicHoliday' => '<h1> Hello World</h1>'
+    ]);
 });
