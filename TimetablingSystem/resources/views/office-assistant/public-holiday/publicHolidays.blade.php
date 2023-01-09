@@ -64,8 +64,8 @@
                         <td>01-01-2023</td>
                         <td>05-01-2023</td>
                         <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
                         </td>
                     </tr>
                     <tr>
