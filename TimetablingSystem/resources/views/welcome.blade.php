@@ -1,4 +1,6 @@
-<!doctype html>
+{{--This Page Contains the list of all public holidays--}}
+
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +21,7 @@
         <a href="#"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
             User Applications</a>
-        <a href="#"><i class="fa fa-plane" aria-hidden="true"></i>
+        <a href="/office-assistant/public-holiday/publicHoliday"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
         <a href="#"><i class="fa fa-building" aria-hidden="true"></i>
             Programs</a>
@@ -39,15 +41,93 @@
             </p>
         </div>
 
-        <h2>Main Content</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
-            velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat,
-            purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
-            convallis.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis
-            velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat,
-            purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan
-            convallis.</p>
+        {{--        container for the page content--}}
+        <div class="container">
+            <div class="container-title">
+                <p> List of Public Holidays </p>
+            </div>
+
+            <div class="container-heading">
+                <button class="container-action-btns">Add a New Public Holiday</button>
+            </div>
+
+            <div class="container-table">
+                <table id="table">
+                    <tr>
+                        <th>Public Holiday</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Manage</th>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Semester 1 Break</td>
+                        <td>01-01-2023</td>
+                        <td>05-01-2023</td>
+                        <td>
+                            <button class="edit-btn">Edit</button>
+                            <button class="delete-btn">Delete</button>
+                        </td>
+                    </tr>
+
+
+                </table>
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -59,3 +139,4 @@
 
 </body>
 </html>
+
