@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::get('/', function () {
+//    return view('office-assistant/layout-office-assistant');
+//});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('publicHolidays');
+});
+
+Route::get('post', function () {
+    return view('publicHoliday');
 });
