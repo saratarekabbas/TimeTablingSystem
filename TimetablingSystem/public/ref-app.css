@@ -1,0 +1,890 @@
+/* Style the header */
+/** {*/
+/*    margin: 0;*/
+/*    font-family: Arial, Helvetica, sans-serif;*/
+
+/*}*/
+
+html, body {
+    height: 100%;
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.hero {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    color: #fff;
+}
+
+.hero .alpha-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: .50;
+}
+
+.center {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: table;
+    opacity: 10;
+}
+
+.content-wrap {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.catch-phrase {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: Inter, sans-serif;
+    cursor: context-menu;
+}
+
+.catch-phrase span {
+    color: #ff9800;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, .30);
+    z-index: 999;
+    position: fixed;
+}
+
+header h1 {
+    font-size: 50px;
+    color: #ff9800;
+    font-family: Arial;
+}
+
+article p {
+    font-size: 18px;
+    line-height: 2;
+}
+
+.header .logo {
+    float: left;
+    height: 100%;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 0 0 0 2rem;
+    color: #fff;
+    cursor: context-menu;
+}
+
+.header nav {
+    float: right;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header nav ul {
+    padding: 0 2rem 0 0;
+    margin: -.5rem 0 0 0;
+    position: relative;
+    top: 50%;
+    display: block;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+}
+
+.header nav ul li, .logout-button {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+.header nav ul li a {
+    color: #fff;
+    padding: 0 1em;
+    display: inline-block;
+    line-height: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+}
+
+.logout-button {
+    background: none !important;
+    border: none;
+    padding: 0 !important;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1em;
+    display: inline-block;
+    line-height: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header nav ul li a:hover,
+.header nav ul li a:active,
+.logout-button:hover,
+.logout-button:active {
+    color: #ff9800;
+}
+
+.text-user {
+    color: #ff9800;
+
+    cursor: context-menu;
+    font-size: 1em;
+    display: inline-block;
+    line-height: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* section */
+
+section {
+    text-align: center;
+    padding: 3rem;
+}
+
+section article {
+    line-height: 1.8em;
+    max-width: 80%;
+    margin: auto;
+}
+
+
+.sticky {
+    position: fixed;
+}
+
+.sticky + .content {
+    padding-top: 102px;
+}
+
+.title {
+    padding: 15px;
+    text-align: center;
+    background: black;
+    cursor: context-menu;
+    font-family: Arial;
+}
+
+.title h1 {
+    font-size: 50px;
+    color: #ff9800;
+}
+
+.title p {
+    font-size: 30px;
+    color: white;
+}
+
+/*column cards*/
+
+/* Float three columns side by side */
+.column {
+    float: left;
+    width: 31%;
+    padding: 0 10px;
+    padding-bottom: 30px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+    margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 400px;
+}
+
+.card h2 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.description {
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.view-button {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ff9800;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 20px;;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.view-button .span-button {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.view-button .span-button:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.view-button:hover .span-button {
+    padding-right: 25px;
+}
+
+.view-button:hover .span-button:after {
+    opacity: 1;
+    right: 0;
+}
+
+/*Job Details*/
+.job-details {
+    position: relative;
+}
+
+
+/*footer*/
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 7%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/*----------------------------------*/
+/*Job-record Close Up Page*/
+.jobrow {
+    padding-left: 20%;
+    padding-right: 20%;
+
+}
+
+.jobcolumn {
+    float: left;
+    padding: 20px;
+
+}
+
+/* Left column */
+.jobcolumn.side {
+    width: 60%;
+}
+
+/* right column */
+.jobcolumn.right {
+    width: 30%;
+}
+
+.job-details-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.job-details-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.job-details-container {
+    padding: 2px 16px;
+}
+
+/* Clear floats after the columns */
+.jobrow:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+.job-view-header {
+    position: relative;
+    bottom: 10px;
+}
+
+.job-header-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6477941518404237) 0%, rgba(255, 152, 0, 0.37888658881521353) 100%), url("/job-header-image.jpeg");
+    background-size: cover;
+}
+
+.job-card {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.job-title {
+    position: absolute;
+    bottom: 30px;
+    padding-bottom: 30px;
+    color: white;
+    font-size: 3em;
+    font-family: Inter, sans-serif;
+}
+
+.job-details {
+    position: absolute;
+    bottom: 5px;
+    /*padding-bottom: 7px;*/
+    color: white;
+    font-size: 1em;
+    font-family: Inter, sans-serif;
+}
+
+.job-link-color {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.job-link-color:hover {
+    color: #ff8400;
+}
+
+.col-yellow {
+    color: #ff9800;
+    font-size: 1.1em;
+}
+
+/*BACK BUTTON*/
+.back-button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #ff9800;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.back-button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.back-button span:after {
+    content: '\00AB';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: -20px;
+    transition: 0.5s;
+}
+
+.back-button:hover span {
+    padding-left: 10px;
+}
+
+.back-button:hover span:after {
+    opacity: 1;
+    left: 1;
+}
+
+/*LOGINNNNNNNNNNNNNNNNN*/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;  background-color: #212121;
+}
+
+.login-screen {
+    background: linear-gradient(90deg, #ff9800, #f1a12d);
+    position: relative;
+    height: 600px;
+    width: 360px;
+    box-shadow: 0px 0px 24px white;
+}
+
+.login-screen__content {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+}
+
+.login-screen__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+}
+
+.screen__background__shape {
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.screen__background__shape1 {
+    height: 520px;
+    width: 520px;
+    background: #FFF;
+    top: -50px;
+    right: 120px;
+    border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+    height: 220px;
+    width: 220px;
+    background: #ff7300;
+    top: -172px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.screen__background__shape3 {
+    height: 540px;
+    width: 190px;
+    background: linear-gradient(270deg, #ff6200, #ff9800);
+    top: -24px;
+    right: 0;
+    border-radius: 32px;
+}
+
+.screen__background__shape4 {
+    height: 400px;
+    width: 200px;
+    background: #ff7300;
+    top: 420px;
+    right: 50px;
+    border-radius: 60px;
+}
+
+.login {
+    width: 320px;
+    padding: 30px;
+    padding-top: 156px;
+}
+
+.login__field {
+    padding: 20px 0px;
+    position: relative;
+}
+
+.login__icon {
+    position: absolute;
+    top: 30px;
+    color: #ff7300;
+}
+
+.login__input {
+    border: none;
+    border-bottom: 2px solid #D1D1D4;
+    background: none;
+    padding: 10px;
+    padding-left: 24px;
+    font-weight: 700;
+    width: 75%;
+    transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+    outline: none;
+    border-bottom-color: #6A679E;
+}
+
+.login__submit {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #ff7300;
+    box-shadow: 0px 2px 2px #ff7300;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+    border-color: #ff7300;
+    outline: none;
+}
+
+/*ALERTS*/
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+}
+
+.alert.success {
+    background-color: #04AA6D;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+/*.......................*/
+
+/*Dropdown*/
+.dropbtn {
+    background-color: #ff9800;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.searchbtn {
+    background-color: #ff9800;
+    position: absolute;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus, .searchbtn:hover, .searchbtn:focus {
+    background-color: #ff8800;
+}
+
+#myInput {
+    box-sizing: border-box;
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 18px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {
+    outline: 3px solid #ddd;
+}
+
+.dropdown, .search {
+    padding-top: 10px;
+    padding-left: 15px;
+    position: absolute;
+    display: inline-block;
+    padding-bottom: 20px;
+}
+
+.dropdown {
+    width: 50%;
+    /*left: 0;*/
+    padding-left: 30%;
+}
+
+.search {
+    /*width: 50%;*/
+    padding-right: 30%;
+    right: 0;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+/* Clear floats after the columns */
+.dropdown:after, .search:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.content-lisitng {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 8%;
+    padding-top: 15px;
+}
+/*END OF DROPDOWN*/
+
+
+/*RESPONSIVE FORMS*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+.form-container-input, .form-container-select, .form-container-text {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.form-container-label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    text-align: left;
+}
+
+.form-container-input {
+    color: black;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+
+.form-container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.form-container-col-25 {
+    float: left;
+    text-align: left;
+    width: 25%;
+    padding-left: 20px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.form-container-col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.form-container-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .form-container-col-25, .form-container-col-75, .form-container-input {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+.submit-form-btn{
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ff9800;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 10px 20px;;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    text-decoration: none;
+}
+
+/*TABLE for Manage*/
+
+#listing {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#listing td, #listing th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#listing tr:nth-child(even){background-color: #f2f2f2;}
+
+
+#listing th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #212121;
+    color: white;
+    text-align: center;
+}
+
+.delete-listing{
+    display: inline-block;
+    border-radius: 5px;
+    background-color:red;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 10px 20px;;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.edit-btn{
+    display: inline-block;
+    border-radius: 5px;
+    background-color:#ff9800;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 17px;
+    padding: 10px 20px;;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    text-decoration: none;
+}
+
+.job-listing{
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+
+#job{
+    height: 80vh;
+}

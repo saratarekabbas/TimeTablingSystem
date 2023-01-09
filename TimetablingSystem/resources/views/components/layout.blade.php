@@ -41,6 +41,8 @@
         </ul>
     </nav>
 </div>
+
+{{--all components are added/replaced/shown here--}}
 {{$slot}}
 
 {{--footer--}}
