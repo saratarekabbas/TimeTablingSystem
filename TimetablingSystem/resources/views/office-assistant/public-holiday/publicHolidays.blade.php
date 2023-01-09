@@ -48,7 +48,7 @@
             </div>
 
             <div class="container-heading">
-<button class="container-action-btns">Add a New Public Holiday</button>
+                <button class="container-action-btns">Add a New Public Holiday</button>
             </div>
 
             <div class="container-table">
