@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('/office-assistant/public-holiday/publicHolidays');
+    return view('/office-assistant/user-application/userApplications');
 });
 
 //Route::get('publicHoliday', function () {
