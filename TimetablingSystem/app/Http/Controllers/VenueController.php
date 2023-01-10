@@ -74,7 +74,7 @@ class VenueController extends Controller
             'venue_name' => $venue_name,
             'venue_level' => $venue_level,
             'venue_capacity' => $venue_capacity,
-            '$venue_location' => $venue_location
+            'venue_location' => $venue_location
         ]);
 
         return redirect()->back()->with('success', 'Successful: Venue has been updated successfully');

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('venues', function (Blueprint $table) {
             $table->id();
             $table->string('venue_name');
-            $table->string('venue_level');
-            $table->date('venue_capacity');
-            $table->date('venue_location');
+            $table->integer('venue_level');
+            $table->integer('venue_capacity');
+            $table->string('venue_location');
             $table->timestamps();
         });
     }
