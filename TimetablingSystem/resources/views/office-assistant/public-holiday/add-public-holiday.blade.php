@@ -16,26 +16,28 @@
     {{Session::get('success')}}
 @endif
 
-
 <form method="post" action="{{url('/office-assistant/public-holiday/save-public-holiday')}}">
     {{--    in laravel we want to use crf token, this is why we pass it--}}
     @csrf
     <label>Public Holiday Title: </label>
-    <input type="text" name="public_holiday_title" placeholder="Public Holiday Title..." value="{{old('public_holiday_title')}}">
+    <input type="text" name="public_holiday_title" placeholder="Public Holiday Title..."
+           value="{{old('public_holiday_title')}}">
     @error('public_holiday_title')
     {{$message}}
     @enderror
     <br>
 
     <label>Public Holiday Start Date: </label>
-    <input type="text" name="public_holiday_start_date" placeholder="Public Holiday Start Date (YYYY-MM-DD)..." value="{{old('public_holiday_start_date')}}">
+    <input type="text" name="public_holiday_start_date" placeholder="Public Holiday Start Date (YYYY-MM-DD)..."
+           value="{{old('public_holiday_start_date')}}">
     @error('public_holiday_start_date')
     {{$message}}
     @enderror
     <br>
 
     <label>Public Holiday End Date: </label>
-    <input type="text" name="public_holiday_end_date" placeholder="Public Holiday End Date (YYYY-MM-DD)..." value="{{old('public_holiday_end_date')}}">
+    <input type="text" name="public_holiday_end_date" placeholder="Public Holiday End Date (YYYY-MM-DD)..."
+           value="{{old('public_holiday_end_date')}}">
     @error('public_holiday_end_date')
     {{$message}}
     @enderror

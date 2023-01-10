@@ -73,4 +73,10 @@ class PublicHolidayController extends Controller
         return redirect()->back()->with('success', 'Successful: Public holiday have been updated successfully');
     }
 
+
+    public function deletePublicHoliday($id)
+    {
+        PublicHoliday::where('id', '=', $id)->delete();
+        return redirect()->back()->with('success', 'Successful: Public holiday have been deleted successfully');
+    }
 }

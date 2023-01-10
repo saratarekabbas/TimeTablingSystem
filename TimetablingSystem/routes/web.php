@@ -37,3 +37,6 @@ Route::get('/office-assistant/public-holiday/edit-public-holiday/{id}', [PublicH
 
 //Edit public holiday (Update)
 Route::post('/office-assistant/public-holiday/update-public-holiday', [PublicHolidayController::class, 'updatePublicHoliday']);
+
+//Delete
+Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [PublicHolidayController::class, 'deletePublicHoliday']);

@@ -51,6 +51,11 @@
                 <a href="{{url('/office-assistant/public-holiday/add-public-holiday')}}" class="container-action-btns">Add a New Public Holiday</a>
             </div>
 
+            @if(Session::has('success'))
+                {{--    This should be an alert--}}
+                {{Session::get('success')}}
+            @endif
+
             <div class="container-table">
                 <table id="table">
                     <tr>
@@ -71,7 +76,7 @@
                             <td>{{$publicholidaydata->public_holiday_end_date}}</td>
                             <td>
                                 <a href="{{url('/office-assistant/public-holiday/edit-public-holiday/'.$publicholidaydata->id)}}" class="edit-btn">Edit</a>
-                                <a href="" class="delete-btn">Delete</a>
+                                <a href="{{url('/office-assistant/public-holiday/delete-public-holiday/'.$publicholidaydata->id)}}" class="delete-btn">Delete</a>
                             </td>
                         </tr>
                     @endforeach
