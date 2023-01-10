@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
     <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Public Holiday List</title>
+    <title>Venue List</title>
 </head>
 <body>
 
 <div class="row">
     <div class="column side">
         <img src="/public/TtS-Logo.png" alt="TtS Logo">
-        <p> Timetabling System</p>
+        <p>Timetabling System</p>
         <a href="#"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
             User Applications</a>
-        <a href="/publicHoliday"><i class="fa fa-plane" aria-hidden="true"></i>
+        <a href="/venue"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
         <a href="#"><i class="fa fa-building" aria-hidden="true"></i>
             Programs</a>
@@ -44,11 +44,11 @@
         {{--        container for the page content--}}
         <div class="container">
             <div class="container-title">
-                <p> List of Public Holidays </p>
+                <p> List of Venues</p>
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/public-holiday/add-public-holiday')}}" class="container-action-btns">Add a New Public Holiday</a>
+                <a href="{{url('/office-assistant/venue/add-venue')}}" class="container-action-btns">Add a New Venue</a>
             </div>
 
             @if(Session::has('success'))
@@ -60,23 +60,25 @@
                 <table id="table">
                     <tr>
                         <th>#</th>
-                        <th>Public Holiday</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
+                        <th>Venue Name</th>
+                        <th>Venue Level</th>
+                        <th>Venue Capacity</th>
+                        <th>Venue Location</th>
                         <th>Action</th>
                     </tr>
                     @php
                         $i = 1;
                     @endphp
-                    @foreach( $data as $publicholidaydata)
+                    @foreach( $data as $venuedata)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$publicholidaydata->public_holiday_title}}</td>
-                            <td>{{$publicholidaydata->public_holiday_start_date}}</td>
-                            <td>{{$publicholidaydata->public_holiday_end_date}}</td>
+                            <td>{{$venuedata->venue_name}}</td>
+                            <td>{{$venuedata->venue_level}}</td>
+                            <td>{{$venuedata->venue_capacity}}</td>
+                            <td>{{$venuedata->venue_location}}</td>
                             <td>
-                                <a href="{{url('/office-assistant/public-holiday/edit-public-holiday/'.$publicholidaydata->id)}}" class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/public-holiday/delete-public-holiday/'.$publicholidaydata->id)}}" class="delete-btn">Delete</a>
+                                <a href="{{url('/office-assistant/venue/edit-venue/'.$venuedata->id)}}" class="edit-btn">Edit</a>
+                                <a href="{{url('/office-assistant/venue/delete-venue/'.$venuedata->id)}}" class="delete-btn">Delete</a>
                             </td>
                         </tr>
                     @endforeach
