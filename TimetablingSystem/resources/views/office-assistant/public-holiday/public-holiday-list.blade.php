@@ -54,13 +54,18 @@
             <div class="container-table">
                 <table id="table">
                     <tr>
+                        <th>#</th>
                         <th>Public Holiday</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Manage</th>
+                        <th>Action</th>
                     </tr>
+                    @php
+                        $i - 1;
+                    @endphp
                     @foreach( $data as $publicholidaydata)
                         <tr>
+                            <td>{{$i++}}</td>
                             <td>{{$publicholidaydata->public_holiday_title}}</td>
                             <td>{{$publicholidaydata->public_holiday_start_date}}</td>
                             <td>{{$publicholidaydata->public_holiday_end_date}}</td>
