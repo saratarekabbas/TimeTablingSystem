@@ -44,84 +44,41 @@
         {{--        container for the page content--}}
         <div class="container">
             <div class="container-title">
-                <p> List of Public Holidays </p>
-            </div>
-
-            <div class="container-heading">
-                <button class="container-action-btns">Add a New Public Holiday</button>
+                <p>All Pending Requests</p>
             </div>
 
             <div class="container-table">
                 <table id="table">
                     <tr>
-                        <th>Public Holiday</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Manage</th>
+                        <th>Lecturer Name</th>
+                        <th>Lecturer Email</th>
+                        <th>Respond</th>
                     </tr>
                     <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
+                        <td>Dr Othman</td>
+                        <td>email@gmail.com</td>
                         <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
+                            <button class="edit-btn">Approve</button>
+                            <button class="delete-btn">Disapprove</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
+                        <td>Dr Othman</td>
+                        <td>email@gmail.com</td>
                         <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
+                            <button class="edit-btn">Approve</button>
+                            <button class="delete-btn">Disapprove</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
+                        <td>Dr Othman</td>
+                        <td>email@gmail.com</td>
                         <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
+                            <button class="edit-btn">Approve</button>
+                            <button class="delete-btn">Disapprove</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
-                        <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
-                        <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
-                        <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Semester 1 Break</td>
-                        <td>01-01-2023</td>
-                        <td>05-01-2023</td>
-                        <td>
-                            <button class="edit-btn">Edit</button>
-                            <button class="delete-btn">Delete</button>
-                        </td>
-                    </tr>
+
 
 
                 </table>
