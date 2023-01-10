@@ -70,7 +70,7 @@
                             <td>{{$publicholidaydata->public_holiday_start_date}}</td>
                             <td>{{$publicholidaydata->public_holiday_end_date}}</td>
                             <td>
-                                <a href="" class="edit-btn">Edit</a>
+                                <a href="{{url('/office-assistant/public-holiday/edit-public-holiday/'.$publicholidaydata->id)}}" class="edit-btn">Edit</a>
                                 <a href="" class="delete-btn">Delete</a>
                             </td>
                         </tr>

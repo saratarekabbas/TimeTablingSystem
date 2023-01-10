@@ -29,4 +29,11 @@ Route::get('/office-assistant/public-holiday/public-holiday-list', [PublicHolida
 //Add a public holiday
 Route::get('/office-assistant/public-holiday/add-public-holiday', [PublicHolidayController::class, 'addPublicHoliday']);
 
+//Save public holiday (Add)
 Route::post('/office-assistant/public-holiday/save-public-holiday', [PublicHolidayController::class, 'savePublicHoliday']);
+
+//Edit public holiday
+Route::get('/office-assistant/public-holiday/edit-public-holiday/{id}', [PublicHolidayController::class, 'editPublicHoliday']);
+
+//Edit public holiday (Update)
+Route::post('/office-assistant/public-holiday/update-public-holiday', [PublicHolidayController::class, 'updatePublicHoliday']);
