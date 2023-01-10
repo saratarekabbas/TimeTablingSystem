@@ -23,4 +23,10 @@ Route::get('/', function () {
     return view('/office-assistant/user-application/userApplications');
 });
 
+//displays all list of public holidays
 Route::get('/office-assistant/public-holiday/public-holiday-list', [PublicHolidayController::class, 'index']);
+
+//Add a public holiday
+Route::get('/office-assistant/public-holiday/add-public-holiday', [PublicHolidayController::class, 'addPublicHoliday']);
+
+Route::post('/office-assistant/public-holiday/save-public-holiday', [PublicHolidayController::class, 'savePublicHoliday']);

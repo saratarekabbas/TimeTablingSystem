@@ -48,7 +48,7 @@
             </div>
 
             <div class="container-heading">
-                <button class="container-action-btns">Add a New Public Holiday</button>
+                <a href="{{url('/office-assistant/public-holiday/add-public-holiday')}}" class="container-action-btns">Add a New Public Holiday</a>
             </div>
 
             <div class="container-table">
@@ -61,7 +61,7 @@
                         <th>Action</th>
                     </tr>
                     @php
-                        $i - 1;
+                        $i = 1;
                     @endphp
                     @foreach( $data as $publicholidaydata)
                         <tr>
@@ -70,25 +70,13 @@
                             <td>{{$publicholidaydata->public_holiday_start_date}}</td>
                             <td>{{$publicholidaydata->public_holiday_end_date}}</td>
                             <td>
-                                <button class="edit-btn">Edit</button>
-                                <button class="delete-btn">Delete</button>
+                                <a href="" class="edit-btn">Edit</a>
+                                <a href="" class="delete-btn">Delete</a>
                             </td>
                         </tr>
                     @endforeach
-                    {{--                    <tr>--}}
-                    {{--                        <td>Semester 1 Break</td>--}}
-                    {{--                        <td>01-01-2023</td>--}}
-                    {{--                        <td>05-01-2023</td>--}}
-                    {{--                        <td>--}}
-                    {{--                            <button class="edit-btn">Edit</button>--}}
-                    {{--                            <button class="delete-btn">Delete</button>--}}
-                    {{--                        </td>--}}
-                    {{--                    </tr>--}}
-
-
                 </table>
             </div>
-
         </div>
     </div>
 </div>
