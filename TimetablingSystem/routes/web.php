@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublicHolidayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,4 @@ Route::get('/', function () {
     return view('/office-assistant/user-application/userApplications');
 });
 
-//Route::get('publicHoliday', function () {
-//    return view('/office-assistant/public-holiday/publicHoliday');
-//});
-
-Route::get('publicHoliday', function (){
-    return view('/office-assistant/public-holiday/publicHoliday', [
-       'publicHoliday' => '<h1> Hello World</h1>'
-    ]);
-});
+Route::get('/office-assistant/public-holiday/public-holiday-list', [PublicHolidayController::class, 'index']);
