@@ -1,4 +1,4 @@
-{{--This Page Contains the list of all public holidays--}}
+{{--This Page Contains the list of all Venues--}}
 
     <!doctype html>
 <html lang="en">
@@ -69,7 +69,7 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach( $data as $venuedata)
+                    @foreach($data as $venuedata)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$venuedata->venue_name}}</td>
@@ -77,8 +77,10 @@
                             <td>{{$venuedata->venue_capacity}}</td>
                             <td>{{$venuedata->venue_location}}</td>
                             <td>
-                                <a href="{{url('/office-assistant/venue/edit-venue/'.$venuedata->id)}}" class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/venue/delete-venue/'.$venuedata->id)}}" class="delete-btn">Delete</a>
+                                <a href="{{url('/office-assistant/venue/edit-venue/'.$venuedata->id)}}"
+                                   class="edit-btn">Edit</a>
+                                <a href="{{url('/office-assistant/venue/delete-venue/'.$venuedata->id)}}"
+                                   class="delete-btn">Delete</a>
                             </td>
                         </tr>
                     @endforeach

@@ -48,7 +48,8 @@
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/public-holiday/add-public-holiday')}}" class="container-action-btns">Add a New Public Holiday</a>
+                <a href="{{url('/office-assistant/public-holiday/add-public-holiday')}}" class="container-action-btns">Add
+                    a New Public Holiday</a>
             </div>
 
             @if(Session::has('success'))
@@ -68,15 +69,17 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach( $data as $publicholidaydata)
+                    @foreach($data as $publicholidaydata)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$publicholidaydata->public_holiday_title}}</td>
                             <td>{{$publicholidaydata->public_holiday_start_date}}</td>
                             <td>{{$publicholidaydata->public_holiday_end_date}}</td>
                             <td>
-                                <a href="{{url('/office-assistant/public-holiday/edit-public-holiday/'.$publicholidaydata->id)}}" class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/public-holiday/delete-public-holiday/'.$publicholidaydata->id)}}" class="delete-btn">Delete</a>
+                                <a href="{{url('/office-assistant/public-holiday/edit-public-holiday/'.$publicholidaydata->id)}}"
+                                   class="edit-btn">Edit</a>
+                                <a href="{{url('/office-assistant/public-holiday/delete-public-holiday/'.$publicholidaydata->id)}}"
+                                   class="delete-btn">Delete</a>
                             </td>
                         </tr>
                     @endforeach
