@@ -17,19 +17,19 @@
 <div class="row">
     <div class="column side">
         <img src="/public/TtS-Logo.png" alt="TtS Logo">
-        <p> Timetabling System</p>
-        <a href="#"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <p>Timetabling System</p>
+        <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
             User Applications</a>
-        <a href="/publicHoliday"><i class="fa fa-plane" aria-hidden="true"></i>
+        <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
-        <a href="#"><i class="fa fa-building" aria-hidden="true"></i>
+        <a href="/office-assistant/program/program-list"><i class="fa fa-building" aria-hidden="true"></i>
             Programs</a>
-        <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
+        <a href="/office-assistant/venue/venue-list"><i class="fa fa-map-marker" aria-hidden="true"></i>
             Venues</a>
-        <a href="#"><i class="fa fa-server" aria-hidden="true"></i>
+        <a href="/office-assistant/course/course-list"><i class="fa fa-server" aria-hidden="true"></i>
             Courses</a>
-        <a href="#">
+        <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
     </div>
