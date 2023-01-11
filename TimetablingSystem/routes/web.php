@@ -56,6 +56,19 @@ Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [Publi
 // 3. Programs Routings
 //----------------------------------------------------------------------------//
 
+//displays all list of venues
+Route::get('/office-assistant/program/program-list', [VenueController::class, 'index']);
+//Add a venues
+Route::get('/office-assistant/program/add-program', [VenueController::class, 'addProgram']);
+//Save venues (Add)
+Route::post('/office-assistant/program/save-program', [VenueController::class, 'saveProgram']);
+//Edit venues
+Route::get('/office-assistant/program/edit-program/{id}', [VenueController::class, 'editProgram']);
+//Edit venues (Update)
+Route::post('/office-assistant/program/update-program', [VenueController::class, 'updateProgram']);
+//Delete venue
+Route::get('/office-assistant/program/delete-program/{id}', [VenueController::class, 'deleteProgram']);
+
 
 //----------------------------------------------------------------------------//
 // 4. Venue Routings
