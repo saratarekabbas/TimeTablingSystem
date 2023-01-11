@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->string('program_name');
-            $table->string('program_code');
+            $table->string('program_code')->unique();
 //          $table->json('program_package');
-            $table->string('program_package');
+            $table->string('program_package')->unique();
             $table->timestamps();
         });
     }
