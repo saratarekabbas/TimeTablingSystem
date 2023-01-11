@@ -1,4 +1,4 @@
-{{--This Page Contains the list of all Venues--}}
+{{--This Page Contains the list of all Programs--}}
 
     <!doctype html>
 <html lang="en">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
     <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Venue List</title>
+    <title>Program List</title>
 </head>
 <body>
 
@@ -44,11 +44,11 @@
         {{--        container for the page content--}}
         <div class="container">
             <div class="container-title">
-                <p> List of Venues</p>
+                <p> List of Programs</p>
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/venue/add-venue')}}" class="container-action-btns">Add a New Venue</a>
+                <a href="{{url('/office-assistant/program/add-program')}}" class="container-action-btns">Add a New Program</a>
             </div>
 
             @if(Session::has('success'))
@@ -60,26 +60,24 @@
                 <table id="table">
                     <tr>
                         <th>#</th>
-                        <th>Venue Name</th>
-                        <th>Venue Level</th>
-                        <th>Venue Capacity</th>
-                        <th>Venue Location</th>
+                        <th>Program Name</th>
+                        <th>Program Code</th>
+                        <th>Program Package</th>
                         <th>Action</th>
                     </tr>
                     @php
                         $i = 1;
                     @endphp
-                    @foreach($data as $venuedata)
+                    @foreach($data as $programdata)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$venuedata->venue_name}}</td>
-                            <td>{{$venuedata->venue_level}}</td>
-                            <td>{{$venuedata->venue_capacity}}</td>
-                            <td>{{$venuedata->venue_location}}</td>
+                            <td>{{$programdata->program_name}}</td>
+                            <td>{{$programdata->program_code}}</td>
+                            <td>{{$programdata->program_package}}</td>
                             <td>
-                                <a href="{{url('/office-assistant/venue/edit-venue/'.$venuedata->id)}}"
+                                <a href="{{url('/office-assistant/program/edit-program/'.$programdata->id)}}"
                                    class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/venue/delete-venue/'.$venuedata->id)}}"
+                                <a href="{{url('/office-assistant/program/delete-program/'.$programdata->id)}}"
                                    class="delete-btn">Delete</a>
                             </td>
                         </tr>

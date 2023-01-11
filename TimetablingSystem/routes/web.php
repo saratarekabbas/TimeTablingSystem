@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\UserApplicationController;
 use App\Http\Controllers\PublicHolidayController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\VenueController;
+//use App\Http\Controllers\CourseController;
+//use App\Http\Controllers\TimetableController;
 
 
 /*
@@ -56,18 +60,18 @@ Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [Publi
 // 3. Programs Routings
 //----------------------------------------------------------------------------//
 
-//displays all list of venues
-Route::get('/office-assistant/program/program-list', [VenueController::class, 'index']);
-//Add a venues
-Route::get('/office-assistant/program/add-program', [VenueController::class, 'addProgram']);
-//Save venues (Add)
-Route::post('/office-assistant/program/save-program', [VenueController::class, 'saveProgram']);
-//Edit venues
-Route::get('/office-assistant/program/edit-program/{id}', [VenueController::class, 'editProgram']);
-//Edit venues (Update)
-Route::post('/office-assistant/program/update-program', [VenueController::class, 'updateProgram']);
-//Delete venue
-Route::get('/office-assistant/program/delete-program/{id}', [VenueController::class, 'deleteProgram']);
+//displays all list of programs
+Route::get('/office-assistant/program/program-list', [ProgramController::class, 'index']);
+//Add a program
+Route::get('/office-assistant/program/add-program', [ProgramController::class, 'addProgram']);
+//Save program (Add)
+Route::post('/office-assistant/program/save-program', [ProgramController::class, 'saveProgram']);
+//Edit program
+Route::get('/office-assistant/program/edit-program/{id}', [ProgramController::class, 'editProgram']);
+//Edit program (Update)
+Route::post('/office-assistant/program/update-program', [ProgramController::class, 'updateProgram']);
+//Delete program
+Route::get('/office-assistant/program/delete-program/{id}', [ProgramController::class, 'deleteProgram']);
 
 
 //----------------------------------------------------------------------------//
