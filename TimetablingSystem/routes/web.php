@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\UserApplicationController;
 use App\Http\Controllers\PublicHolidayController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\VenueController;
-//use App\Http\Controllers\CourseController;
-//use App\Http\Controllers\TimetableController;
 
 
 /*
@@ -95,6 +93,19 @@ Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class,
 //----------------------------------------------------------------------------//
 // 5. Course Routings
 //----------------------------------------------------------------------------//
+
+//displays all list of programs
+Route::get('/office-assistant/course/course-list', [CourseController::class, 'index']);
+//Add a program
+Route::get('/office-assistant/course/add-course', [CourseController::class, 'addCourse']);
+//Save program (Add)
+Route::post('/office-assistant/course/save-course', [CourseController::class, 'saveCourse']);
+//Edit program
+Route::get('/office-assistant/course/edit-course/{id}', [CourseController::class, 'editCourse']);
+//Edit program (Update)
+Route::post('/office-assistant/course/update-course', [CourseController::class, 'updateCourse']);
+//Delete program
+Route::get('/office-assistant/course/delete-course/{id}', [CourseController::class, 'deleteCourse']);
 
 
 //----------------------------------------------------------------------------//

@@ -56,7 +56,7 @@ class ProgramController extends Controller
             'program_code' => 'required|string|min:9|max:9|unique:programs,program_code',
             'program_package' => 'required',
         ]);
-        
+
         $id = $request->id;
         $program_name = $request->program_name;
         $program_code = $request->program_code;
