@@ -55,17 +55,14 @@
             $program_package_array = $package->program_package;
       }
     @endphp
-
-    <select name="program_package">
-    @foreach ($program_package_array as $program_package)
-            <option>  {{$program_package}} </option>
-    @endforeach
-    </select>
+<br>
+        @foreach ($program_package_array as $program_package)
+        <input type="checkbox" name="program_package[]" value="{{$program_package}}">{{$program_package}}<br   />
+        @endforeach
     @error('program_package')
     {{$message}}
     @enderror
 
-    <br>
 
     <label>Course Type: </label>
 
@@ -86,7 +83,6 @@
     {{$message}}
     @enderror
     <br>
-
 
     <label>Lecturer Name: </label>
     @php
