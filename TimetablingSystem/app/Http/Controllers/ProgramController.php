@@ -24,9 +24,9 @@ class ProgramController extends Controller
 //        Validation
         $request->validate([
             'program_name' => 'required',
-            'program_code' => 'required|string|min:8|max:8|unique:programs,program_code',
+            'program_code' => 'required|string|min:9|max:9|unique:programs,program_code',
 //          'program_package' => 'required|array|max:9',
-            'program_package' => 'required|string|min:9|max:9|unique:programs,program_package',
+            'program_package' => 'required|string',
         ]);
 
         $program_name = $request->program_name;
@@ -54,9 +54,9 @@ class ProgramController extends Controller
         //        Validation
         $request->validate([
             'program_name' => 'required',
-            'program_code' => 'required|string|min:8|max:8|unique:programs,program_code',
+            'program_code' => 'required|string|min:9|max:9|unique:programs,program_code',
 //          'program_package' => 'required|array|max:9',
-            'program_package' => 'required|string|min:9|max:9|unique:programs,program_package',
+            'program_package' => 'required|string',
         ]);
 
 
