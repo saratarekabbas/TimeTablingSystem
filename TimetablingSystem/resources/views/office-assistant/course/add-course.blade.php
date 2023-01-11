@@ -38,7 +38,7 @@
     @php
         $programs = \App\Models\Program::all();
     @endphp
-    <select name="program">
+    <select name="program" id="selected_program">
         @foreach($programs as $program)
             <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>
         @endforeach
@@ -48,22 +48,19 @@
     @enderror
     <br>
 
-{{--    <label>Program Packages: </label>--}}
-{{--    @php--}}
-{{--        $programs = \App\Models\Program::all();--}}
-{{--    @endphp--}}
-{{--    <select name="program">--}}
-{{--        @foreach($programs as $program)--}}
-{{--            <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>--}}
-{{--        @endforeach--}}
-{{--    </select>--}}
-{{--    @error('program')--}}
-{{--    {{$message}}--}}
-{{--    @enderror--}}
-{{--    <br>--}}
+    <label>Program Packages: </label>
+    @php
+        $packages = \App\Models\Program::where('id', 1)->get();; //el id da 3ayzeeno y-auto update 3ala 7asab ekhteyar el user (dynamic)
+      foreach($packages as $package){
+            $program_package_array = $package->program_package;
+      }
+    @endphp
 
-    {{--    <input type="checkbox" name="program_package[]" value="Package 1">Package 1<br/>--}}
-    {{--    <input type="checkbox" name="program_package[]" value="Package 2">Package 2<br/>--}}
+    <select name="program_package">
+    @foreach ($program_package_array as $program_package)
+            <option>  {{$program_package}} </option>
+    @endforeach
+    </select>
     @error('program_package')
     {{$message}}
     @enderror
@@ -85,10 +82,6 @@
 
     {{--    code the logic later--}}
     <label>Course Section: </label>
-    <select name="course_section">
-        <option value="Package 1">Package 1</option>
-        <option value="Package 2">Package 2</option>
-    </select>
     @error('program_code')
     {{$message}}
     @enderror
