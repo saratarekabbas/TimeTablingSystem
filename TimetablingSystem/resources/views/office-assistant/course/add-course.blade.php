@@ -79,7 +79,9 @@
 
     {{--    code the logic later--}}
     <label>Course Section: </label>
-    @error('program_code')
+    <input type="text" name="course_section" placeholder="Course Section..."
+           value="{{old('course_section')}}">
+    @error('course_section')
     {{$message}}
     @enderror
     <br>
@@ -93,7 +95,7 @@
             <option value="{{$lecturer->id}}">{{$lecturer->lecturer_name}}</option>
         @endforeach
     </select>
-    @error('lecturer_name')
+    @error('course_lecturer')
     {{$message}}
     @enderror
     <br>

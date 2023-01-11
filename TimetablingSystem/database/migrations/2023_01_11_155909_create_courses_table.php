@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('course_title')->unique();
             $table->string('course_code')->unique();
             $table->foreignId('program');
-//            $table->json('program_package');
-            $table->json('course_type');
-            $table->json('course_section');
+            $table->json('program_package');
+            $table->string('course_type');
+            $table->integer('course_section');
             $table->foreignId('lecturer_id');
             $table->timestamps();
         });

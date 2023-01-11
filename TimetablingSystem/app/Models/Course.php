@@ -19,9 +19,19 @@ class Course extends Model
         return $this->belongsTo(Program::class);
     }
 
+    public function programs()
+    {
+        return $this->hasMany(Program::class); //means, one course can have many programs
+    }
+
+//    public function lecturers()
+//    {
+//        return $this->hasMany(Lecturer::class); //means, one course can have many programs
+//    }
+
+
     protected $casts = [
-        'course_type' => 'array',
-        'course_section' => 'array'
+        'program_package' => 'array'
     ];
 
 }
