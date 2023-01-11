@@ -1,4 +1,4 @@
-{{--This Page Contains the list of all Programs--}}
+{{--This Page Contains the list of all Courses--}}
 
     <!doctype html>
 <html lang="en">
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
     <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
-    <title>Program List</title>
+    <title>Course List</title>
 </head>
 <body>
 
@@ -19,7 +19,8 @@
         <img src="/public/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -44,11 +45,12 @@
         {{--        container for the page content--}}
         <div class="container">
             <div class="container-title">
-                <p> List of Programs</p>
+                <p> List of Courses</p>
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/program/add-program')}}" class="container-action-btns">Add a New Program</a>
+                <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New
+                    Course</a>
             </div>
 
             @if(Session::has('success'))
@@ -56,42 +58,46 @@
                 {{Session::get('success')}}
             @endif
 
-            <div class="container-table">
-                <table id="table">
-                    <tr>
-                        <th>#</th>
-                        <th>Program Name</th>
-                        <th>Program Code</th>
-                        <th>Program Package(s)</th>
-                        <th>Action</th>
-                    </tr>
-                    @php
-                        $i = 1;
-                    @endphp
-                    @foreach($data as $programdata)
-                        <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$programdata->program_name}}</td>
-                            <td>{{$programdata->program_code}}</td>
-                            <td>
-                                <ul>
-                                    @foreach($programdata->program_package as $package)
-                                    <li>{{$package}}</li>
-                                    @endforeach
-                                </ul>
-                            </td>
-                            <td>
-                                <a href="{{url('/office-assistant/program/edit-program/'.$programdata->id)}}"
-                                   class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/program/delete-program/'.$programdata->id)}}"
-                                   class="delete-btn">Delete</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </table>
-            </div>
+            {{--Display as CARDS--}}
+            @foreach($data as $coursedata)
+                <fieldset>
+                    <h2>{{$coursedata->course_code}} - {{$coursedata->course_title}}</h2>
+
+                    <label>Course Code: </label>
+                    {{$coursedata->course_code}}
+
+                    <label>Course Title: </label>
+                    {{$coursedata->course_title}}
+
+                    <label>Course Type: </label>
+                    {{$coursedata->course_type}}
+
+                    <label>Program(s): </label>
+                    <ul>
+                        @foreach($coursedata->course_program as $program)
+                            <li>{{$program}} Package XX<br></li>
+                        @endforeach
+                    </ul>
+
+                    <label>Section(s): </label>
+                    <ul>
+                        @foreach($coursedata->course_section as $section)
+                            <li>{{$section}} Dr XXX<br></li>
+                        @endforeach
+                    </ul>
+
+                    <a href="{{url('/office-assistant/course/edit-course/'.$programdata->id)}}"
+                       class="edit-btn">Edit</a>
+                    <a href="{{url('/office-assistant/course/delete-course/'.$programdata->id)}}"
+                       class="delete-btn">Delete</a>
+
+                </fieldset>
+            @endforeach
+
+
         </div>
     </div>
+</div>
 </div>
 
 {{--all components are added/replaced/shown here--}}

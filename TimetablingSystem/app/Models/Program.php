@@ -15,4 +15,9 @@ class Program extends Model
     protected $casts = [
         'program_package' => 'array'
     ];
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class); //means, one program can have many courses
+    }
 }
