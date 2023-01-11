@@ -62,7 +62,7 @@
                         <th>#</th>
                         <th>Program Name</th>
                         <th>Program Code</th>
-                        <th>Program Package</th>
+                        <th>Program Package(s)</th>
                         <th>Action</th>
                     </tr>
                     @php
@@ -73,7 +73,13 @@
                             <td>{{$i++}}</td>
                             <td>{{$programdata->program_name}}</td>
                             <td>{{$programdata->program_code}}</td>
-                            <td>{{$programdata->program_package}}</td>
+                            <td>
+                                <ul>
+                                    @foreach($programdata->program_package as $package)
+                                    <li>{{$package}}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
                             <td>
                                 <a href="{{url('/office-assistant/program/edit-program/'.$programdata->id)}}"
                                    class="edit-btn">Edit</a>

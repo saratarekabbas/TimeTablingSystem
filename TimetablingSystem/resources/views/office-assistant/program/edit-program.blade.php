@@ -37,10 +37,12 @@
     <br>
 
     <label>Program Package: </label>
-    <input type="text" name="program_package" placeholder="Program Package..." value="{{$data->program_package}}">
+    <input type="checkbox" name="program_package[]" value="package1">Package 1<br   />
+    <input type="checkbox" name="program_package[]" value="package2">Package 2<br   />
     @error('program_package')
     {{$message}}
     @enderror
+
     <br>
 
     <button type="submit">UPDATE</button>

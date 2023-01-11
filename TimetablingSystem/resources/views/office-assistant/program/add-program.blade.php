@@ -35,9 +35,9 @@
     @enderror
     <br>
 
-    <label>Program Package: </label>
-    <input type="text" name="program_package" placeholder="Program Package..."
-           value="{{old('program_package')}}">
+        <label>Program Package: </label>
+        <input type="checkbox" name="program_package[]" value="Package 1">Package 1<br   />
+        <input type="checkbox" name="program_package[]" value="Package 2">Package 2<br   />
     @error('program_package')
     {{$message}}
     @enderror
