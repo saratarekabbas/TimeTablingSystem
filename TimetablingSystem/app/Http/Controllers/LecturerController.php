@@ -9,7 +9,9 @@ class LecturerController extends Controller
 {
     public function index()
     { //fetch all records and display lists
-        $data = Lecturer::get();
+//        $data = Lecturer::get();
+
+        $data = Lecturer::where('lecturer_registration_status', '=', 'pending' )->get();
         //compact is to pass $data basically
         return view('/office-assistant/user-application/user-application-list', compact('data'));
     }
