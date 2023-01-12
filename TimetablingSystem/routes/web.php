@@ -44,7 +44,7 @@ use App\Http\Controllers\VenueController;
 Route::get('/registration-approved/{id}' , [LecturerController::class, 'approveRegistrationRequest']);
 
 //Route for mailing: Registration Disapproved Email
-Route::get('/registration-approved/{id}' , [LecturerController::class, 'disapproveRegistrationRequest']);
+Route::get('/registration-disapproved/{id}' , [LecturerController::class, 'disapproveRegistrationRequest']);
 
 
 //----------------------------------------------------------------------------//
