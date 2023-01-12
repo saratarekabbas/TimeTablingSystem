@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
+use App\Mail\RegistrationResponseMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
 use App\Http\Controllers\ProgramController;
@@ -19,14 +21,39 @@ use App\Http\Controllers\VenueController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+//|--------------------------------------------------------------------------
+//|                                  GENERAL
+//|--------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------//
+// 1. Registration
+//----------------------------------------------------------------------------//
 
 
-Route::get('/', function () {
-    return view('/office-assistant/user-application/user-application-list');
+//----------------------------------------------------------------------------//
+// 2. Login
+//----------------------------------------------------------------------------//
+
+
+//----------------------------------------------------------------------------//
+// 3. Email
+//----------------------------------------------------------------------------//
+//Route for mailing
+Route::get('/email', function(){
+    Mail::to('abbassaratarek@gmail.com')->send(new RegistrationResponseMail()) ;
+    return new RegistrationResponseMail();
 });
+
+
+//----------------------------------------------------------------------------//
+// 4. Other
+//----------------------------------------------------------------------------//
+
+Route::get('/', function () { //you need to change this later to make it go directly to the login page
+//    return view('/office-assistant/user-application/user-application-list');
+    return view('welcome');
+});
+
 
 //|--------------------------------------------------------------------------
 //|                               OFFICE ASSISTANT
