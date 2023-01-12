@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
-use App\Mail\RegistrationResponseMail;
+use App\Mail\RegistrationApprovedMail;
+use App\Mail\RegistrationDisapprovedMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
@@ -38,10 +39,19 @@ use App\Http\Controllers\VenueController;
 //----------------------------------------------------------------------------//
 // 3. Email
 //----------------------------------------------------------------------------//
-//Route for mailing
-Route::get('/email', function(){
-    Mail::to('abbassaratarek@gmail.com')->send(new RegistrationResponseMail()) ;
-    return new RegistrationResponseMail();
+
+//Route for mailing: Registration Approved Email
+Route::get('/registration-approved', function () {
+//    make it dynamic
+    Mail::to('abbassaratarek@gmail.com')->send(new RegistrationApprovedMail());
+    return new RegistrationApprovedMail();
+});
+
+//Route for mailing: Registration Disapproved Email
+Route::get('/registration-disapproved', function () {
+//    make it dynamic
+    Mail::to('abbassaratarek@gmail.com')->send(new RegistrationDisapprovedMail());
+    return new RegistrationDisapprovedMail();
 });
 
 
