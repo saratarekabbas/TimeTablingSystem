@@ -41,18 +41,10 @@ use App\Http\Controllers\VenueController;
 //----------------------------------------------------------------------------//
 
 //Route for mailing: Registration Approved Email
-Route::get('/registration-approved', function () {
-//    make it dynamic
-    Mail::to('abbassaratarek@gmail.com')->send(new RegistrationApprovedMail());
-    return new RegistrationApprovedMail();
-});
+Route::get('/registration-approved/{id}' , [LecturerController::class, 'approveRegistrationRequest']);
 
 //Route for mailing: Registration Disapproved Email
-Route::get('/registration-disapproved', function () {
-//    make it dynamic
-    Mail::to('abbassaratarek@gmail.com')->send(new RegistrationDisapprovedMail());
-    return new RegistrationDisapprovedMail();
-});
+Route::get('/registration-approved/{id}' , [LecturerController::class, 'disapproveRegistrationRequest']);
 
 
 //----------------------------------------------------------------------------//
