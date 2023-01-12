@@ -39,9 +39,9 @@ Route::get('/', function () {
 //displays all list of public holidays
 Route::get('/office-assistant/user-application/user-application-list', [LecturerController::class, 'index']);
 //Approve User Registration Request
-Route::post('/office-assistant/user-application/approve-user-application/{id}', [LecturerController::class, 'approveRegistrationRequest']);
+Route::get('/office-assistant/user-application/approve-user-application/{id}', [LecturerController::class, 'approveRegistrationRequest']);
 //disapprove User Registration Request
-Route::post('/office-assistant/user-application/disapprove-user-application/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
+Route::get('/office-assistant/user-application/disapprove-user-application/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
 
 
 //----------------------------------------------------------------------------//
