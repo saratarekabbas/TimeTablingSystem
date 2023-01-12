@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LecturerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
 use App\Http\Controllers\ProgramController;
@@ -24,7 +25,7 @@ use App\Http\Controllers\VenueController;
 
 
 Route::get('/', function () {
-    return view('/office-assistant/user-application/userApplications');
+    return view('/office-assistant/user-application/user-application-list');
 });
 
 //|--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::get('/', function () {
 //----------------------------------------------------------------------------//
 // 1. User Application Routings
 //----------------------------------------------------------------------------//
+
+//displays all list of public holidays
+Route::get('/office-assistant/user-application/user-application-list', [LecturerController::class, 'index']);
+//Approve User Registration Request
+Route::post('/office-assistant/user-application/approve-user-application/{id}', [LecturerController::class, 'approveRegistrationRequest']);
+//disapprove User Registration Request
+Route::post('/office-assistant/user-application/disapprove-user-application/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
 
 
 //----------------------------------------------------------------------------//

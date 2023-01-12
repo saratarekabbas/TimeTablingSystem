@@ -62,7 +62,6 @@ class VenueController extends Controller
             'venue_location' => 'required'
         ]);
 
-
         $id = $request->id;
         $venue_name = $request->venue_name;
         $venue_level = $request->venue_level;
