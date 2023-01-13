@@ -72,7 +72,6 @@
 
     <label>Lecturer: </label>
     @php
-        //$lecturers = \App\Models\Lecturer::where('lecturer_registration_status', '=', 'approved');
    $lecturers = \App\Models\Lecturer::all();
     @endphp
     <select name="lecturer_id">
