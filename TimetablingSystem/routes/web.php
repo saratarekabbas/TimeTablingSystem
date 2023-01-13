@@ -148,3 +148,26 @@ Route::get('/office-assistant/course/delete-course/{id}', [CourseController::cla
 //----------------------------------------------------------------------------//
 // 6. Timetable Routings
 //----------------------------------------------------------------------------//
+
+//displays all list of timetable entities
+
+Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
+//Add a timetable entity
+Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
+//Save timetable entity(Add)
+Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
+//Edit timetable entity
+Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
+//Edit timetable entity (Update)
+Route::post('/office-assistant/timetable/update-timetable', [TimetableController::class, 'updateTimetable']);
+//Delete timetable entity
+Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableController::class, 'deleteTimetable']);
+
+
+//----------------------------------------------------------------------------//
+// 7. Other
+//----------------------------------------------------------------------------//
+
+// Office Admin's Dashboard
+
+Route::get('/office-assistant/overview', [LecturerController::class, 'index']);

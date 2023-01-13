@@ -10,5 +10,9 @@ class PublicHoliday extends Model
 {
     use HasFactory;
 
+    public function timetable()
+    {
+        return $this->belongsTo(Timetable::class);
+    }
 
 }

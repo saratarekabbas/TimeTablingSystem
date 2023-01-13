@@ -19,4 +19,9 @@ class Course extends Model
         return $this->belongsTo(Lecturer::class);
     }
 
+    public function timetable()
+    {
+        return $this->belongsTo(Timetable::class);
+    }
+
 }

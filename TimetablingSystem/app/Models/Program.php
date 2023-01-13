@@ -20,4 +20,9 @@ class Program extends Model
     {
         return $this->hasMany(Course::class); //means, one program can have many courses
     }
+
+    public function timetable()
+    {
+        return $this->belongsTo(Timetable::class);
+    }
 }
