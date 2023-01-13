@@ -36,14 +36,13 @@
     @enderror
     <br>
 
-    <label>Program Package: </label>
-    <input type="checkbox" name="program_package[]" value="package1">Package 1<br   />
-    <input type="checkbox" name="program_package[]" value="package2">Package 2<br   />
-    @error('program_package')
-    {{$message}}
-    @enderror
-
-    <br>
+{{--    <label>Program Package: </label>--}}
+{{--    <input type="checkbox" name="program_package[]" value="package1">Package 1<br   />--}}
+{{--    <input type="checkbox" name="program_package[]" value="package2">Package 2<br   />--}}
+{{--    @error('program_package')--}}
+{{--    {{$message}}--}}
+{{--    @enderror--}}
+{{--    <br>--}}
 
     <button type="submit">UPDATE</button>
 
