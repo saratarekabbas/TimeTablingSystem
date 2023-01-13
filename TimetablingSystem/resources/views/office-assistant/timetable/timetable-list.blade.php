@@ -48,51 +48,45 @@
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New Entity</a>
+                <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New Timetable Entity</a>
             </div>
 
-{{--            @if(Session::has('success'))--}}
-{{--                --}}{{--    This should be an alert--}}
-{{--                {{Session::get('success')}}--}}
-{{--            @endif--}}
+            @if(Session::has('success'))
+                    This should be an alert
+                {{Session::get('success')}}
+            @endif
 
-{{--            <div class="container-table">--}}
-{{--                <table id="table">--}}
-{{--                    <tr>--}}
-{{--                        <th>#</th>--}}
-{{--                        <th>Course Name</th>--}}
-{{--                        <th>Course Code</th>--}}
-{{--                        <th>Course Type</th>--}}
-{{--                        <th>Program</th>--}}
-{{--                        <th>Section Number</th>--}}
-{{--                        <th>Lecturer</th>--}}
-{{--                        <th>Number of Meetings</th>--}}
-{{--                        <th>Action</th>--}}
-{{--                    </tr>--}}
-{{--                    @php--}}
-{{--                        $i = 1;--}}
-{{--                    @endphp--}}
-{{--                    @foreach($data as $coursedata)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{$i++}}</td>--}}
-{{--                            <td>{{$coursedata->course_name}}</td>--}}
-{{--                            <td>{{$coursedata->course_code}}</td>--}}
-{{--                            <td>{{$coursedata->course_type}}</td>--}}
-{{--                            <td>{{$coursedata->program_id}}</td>--}}
-{{--                            <td>{{$coursedata->section_number}}</td>--}}
-{{--                            <td>{{$coursedata->lecturer_id}}</td>--}}
-{{--                            <td>{{$coursedata->number_of_meetings}}</td>--}}
+            <div class="container-table">
+                <table id="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Program Name</th>
+                        <th>Course</th>
+                        <th>Venue</th>
+                        <th>Meetings</th>
+                        <th>Action</th>
+                    </tr>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach($data as $timetabledata)
+                        <tr>
+                            <td>{{$i++}}</td>
+                            <td>{{$timetabledata->program_id}}</td>
+                            <td>{{$timetabledata->course_id}}</td>
+                            <td>{{$timetabledata->venue_id}}</td>
+                            <td>{{$timetabledata->slots}}</td>
 
-{{--                            <td>--}}
-{{--                                <a href="{{url('/office-assistant/timetable/edit-timetable/'.$timetabledata->id)}}"--}}
-{{--                                   class="edit-btn">Edit</a>--}}
-{{--                                <a href="{{url('/office-assistant/timetable/delete-timetable/'.$timetabledata->id)}}"--}}
-{{--                                   class="delete-btn">Delete</a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
-{{--                </table>--}}
-{{--            </div>--}}
+                            <td>
+                                <a href="{{url('/office-assistant/timetable/edit-timetable/'.$timetabledata->id)}}"
+                                   class="edit-btn">Edit</a>
+                                <a href="{{url('/office-assistant/timetable/delete-timetable/'.$timetabledata->id)}}"
+                                   class="delete-btn">Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
         </div>
     </div>
 </div>

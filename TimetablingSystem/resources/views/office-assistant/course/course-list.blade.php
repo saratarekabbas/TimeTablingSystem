@@ -19,7 +19,8 @@
         <img src="/public/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -48,7 +49,8 @@
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New Course</a>
+                <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New
+                    Course</a>
             </div>
 
             @if(Session::has('success'))
@@ -78,9 +80,31 @@
                             <td>{{$coursedata->course_name}}</td>
                             <td>{{$coursedata->course_code}}</td>
                             <td>{{$coursedata->course_type}}</td>
-                            <td>{{$coursedata->program_id}}</td>
+
+
+                            @php
+                                $programs = \App\Models\Program::all();
+                            @endphp
+                            @foreach($programs as $program)
+                                @if($program->id == $coursedata->program_id)
+                                    <td>{{$program->program_name}}</td>
+                                @endif
+                            @endforeach
+
+
                             <td>{{$coursedata->section_number}}</td>
-                            <td>{{$coursedata->lecturer_id}}</td>
+
+
+                            @php
+                                $lecturers = \App\Models\Lecturer::all();
+                            @endphp
+                            @foreach($lecturers as $lecturer)
+                                @if($lecturer->id == $coursedata->lecturer_id)
+                                    <td>{{$lecturer->lecturer_name}}</td>
+                                @endif
+                            @endforeach
+
+
                             <td>{{$coursedata->number_of_meetings}}</td>
 
                             <td>
