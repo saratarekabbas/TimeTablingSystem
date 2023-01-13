@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
-use App\Mail\RegistrationApprovedMail;
-use App\Mail\RegistrationDisapprovedMail;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
 use App\Http\Controllers\ProgramController;
@@ -149,8 +147,12 @@ Route::get('/office-assistant/course/delete-course/{id}', [CourseController::cla
 // 6. Timetable Routings
 //----------------------------------------------------------------------------//
 
-//displays all list of timetable entities
+////displays all list of timetable entities
+//Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
 
+
+
+//displays all list of programs
 Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
 //Add a timetable entity
 Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
@@ -169,5 +171,4 @@ Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableContro
 //----------------------------------------------------------------------------//
 
 // Office Admin's Dashboard
-
 Route::get('/office-assistant/overview', [LecturerController::class, 'index']);

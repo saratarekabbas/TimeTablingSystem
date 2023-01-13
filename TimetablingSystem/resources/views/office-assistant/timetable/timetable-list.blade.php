@@ -19,7 +19,8 @@
         <img src="/public/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -48,11 +49,12 @@
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New Timetable Entity</a>
+                <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New
+                    Timetable Entity</a>
             </div>
 
             @if(Session::has('success'))
-                    This should be an alert
+                This should be an alert
                 {{Session::get('success')}}
             @endif
 
@@ -60,7 +62,7 @@
                 <table id="table">
                     <tr>
                         <th>#</th>
-                        <th>Program Name</th>
+                        <th>Program</th>
                         <th>Course</th>
                         <th>Venue</th>
                         <th>Meetings</th>
@@ -72,11 +74,42 @@
                     @foreach($data as $timetabledata)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$timetabledata->program_id}}</td>
-                            <td>{{$timetabledata->course_id}}</td>
-                            <td>{{$timetabledata->venue_id}}</td>
-                            <td>{{$timetabledata->slots}}</td>
+                            @php
+                                $programs = \App\Models\Program::all();
+                            @endphp
+                            @foreach($programs as $program)
+                                @if($program->id == $timetabledata->program_id)
+                                    <td>{{$program->program_code}} - {{$program->program_name}}</td>
+                                @endif
+                            @endforeach
 
+                            @php
+                                $courses = \App\Models\Course::all();
+                            @endphp
+                            @foreach($courses as $course)
+                                @if($course->id == $timetabledata->course_id)
+                                    <td>{{$course->course_code}} - {{$course->course_name}}</td>
+                                @endif
+                            @endforeach
+
+                            @php
+                                $venues = \App\Models\Venue::all();
+                            @endphp
+                            @foreach($venues as $venue)
+                                @if($venue->id == $timetabledata->venue_id)
+                                    <td>{{$venue->venue_name}}, {{$venue->venue_level}}, {{$venue->venue_location}}</td>
+                                @endif
+                            @endforeach
+                            <td>
+                                <ol>
+                                    @php
+                                        $meeting_number = 1;
+                                    @endphp
+                                    @foreach($timetabledata->slots as $slot)
+                                        <li>Meeting {{$meeting_number++}}: {{$slot}}</li>
+                                    @endforeach
+                                </ol>
+                            </td>
                             <td>
                                 <a href="{{url('/office-assistant/timetable/edit-timetable/'.$timetabledata->id)}}"
                                    class="edit-btn">Edit</a>
