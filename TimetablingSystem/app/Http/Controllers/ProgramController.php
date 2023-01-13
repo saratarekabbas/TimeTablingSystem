@@ -25,18 +25,18 @@ class ProgramController extends Controller
         $request->validate([
             'program_name' => 'required|unique:programs,program_name',
             'program_code' => 'required|string|min:9|max:9|unique:programs,program_code',
-            'program_package' => 'required',
+//            'program_package' => 'required',
         ]);
 
         $program_name = $request->program_name;
         $program_code = $request->program_code;
-        $program_package = $request->program_package;
+//        $program_package = $request->program_package;
 
 //        Create a model in our Eloquent Model Program
         $programdata = new Program();
         $programdata->program_name = $program_name;
         $programdata->program_code = $program_code;
-        $programdata->program_package = $program_package;
+//        $programdata->program_package = $program_package;
         $programdata->save();
 
         return redirect()->back()->with('success', 'Successful: Program has been created successfully');
@@ -54,19 +54,19 @@ class ProgramController extends Controller
         $request->validate([
             'program_name' => 'required|unique:programs,program_name',
             'program_code' => 'required|string|min:9|max:9|unique:programs,program_code',
-            'program_package' => 'required',
+//            'program_package' => 'required',
         ]);
 
         $id = $request->id;
         $program_name = $request->program_name;
         $program_code = $request->program_code;
-        $program_package = $request->program_package;
+//        $program_package = $request->program_package;
 
 //        Create the update query by calling our Program Eloquent Model
         Program::where('id', '=', $id)->update([
             'program_name' => $program_name,
             'program_code' => $program_code,
-            'program_package' => $program_package,
+//            'program_package' => $program_package,
         ]);
 
         return redirect()->back()->with('success', 'Successful: Program has been updated successfully');

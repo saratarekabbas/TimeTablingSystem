@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('program_name')->unique();
             $table->string('program_code')->unique();
-            $table->json('program_package');
+//            $table->json('program_package');
             $table->timestamps();
         });
     }

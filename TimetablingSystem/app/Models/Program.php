@@ -12,9 +12,9 @@ class Program extends Model
       AKA: it will let Eloquent know that when it fetches data from the database,
       it will have to convert the 'program_package' column value to an array.
 */
-    protected $casts = [
-        'program_package' => 'array'
-    ];
+//    protected $casts = [
+//        'program_package' => 'array'
+//    ];
 
     public function courses()
     {
