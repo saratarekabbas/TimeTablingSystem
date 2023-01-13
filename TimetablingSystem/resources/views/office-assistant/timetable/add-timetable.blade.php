@@ -8,7 +8,7 @@
     <title>Add Program</title>
 </head>
 <body>
-<h1>Add a New Course</h1>
+<h1>Add a New Timetable Entity</h1>
 
 {{--This means, display success messge if an item is added successfullyS--}}
 @if(Session::has('success'))
@@ -16,36 +16,8 @@
     {{Session::get('success')}}
 @endif
 
-<form method="post" action="{{url('/office-assistant/course/save-course')}}">
-    {{--    in laravel we want to use crf token, this is why we pass it--}}
+<form method="post" action="{{url('/office-assistant/timetable/save-timetable')}}">
     @csrf
-    <label>Course Name: </label>
-    <input type="text" name="course_name" placeholder="Course Name..."
-           value="{{old('course_name')}}">
-    @error('course_name')
-    {{$message}}
-    @enderror
-    <br>
-
-    <label>Course Code: </label>
-    <input type="text" name="course_code" placeholder="Course Code..."
-           value="{{old('course_code')}}">
-    @error('course_code')
-    {{$message}}
-    @enderror
-    <br>
-
-    <label>Course Type: </label>
-    <select name="course_type">
-        <option value="Core Course">Core Course</option>
-        <option value="Elective Coursee">Elective Course</option>
-        <option value="Master's Project">Master's Project</option>
-        <option value="General University Course">General University Course</option>
-    </select>
-    @error('course_type')
-    {{$message}}
-    @enderror
-    <br>
 
     <label>Program: </label>
     @php
@@ -59,44 +31,61 @@
     @error('program_id')
     {{$message}}
     @enderror
-
     <br>
 
-    <label>Section Number: </label>
-    <input type="text" name="section_number" placeholder="Section Number..."
-           value="{{old('section_number')}}">
-    @error('section_number')
-    {{$message}}
-    @enderror
-    <br>
-
-    <label>Lecturer: </label>
+    <label>Course Name: </label>
     @php
-   $lecturers = \App\Models\Lecturer::all();
+        $courses = \App\Models\Course::all();
     @endphp
-    <select name="lecturer_id">
-        @foreach($lecturers as $lecturer)
-            @if($lecturer->lecturer_registration_status == 'approved')
-            <option value="{{$lecturer->id}}">{{$lecturer->lecturer_name}}</option>
-            @endif
+    <select name="course_id">
+        @foreach($courses as $course)
+            <option value="{{$course->id}}">{{$course->course_code}} - {{$course->course_name}}</option>
         @endforeach
     </select>
-    @error('lecturer_id')
+    @error('course_id')
     {{$message}}
     @enderror
+    <br>
 
-    <br>
-    <label>Number of Meetings: </label>
-    <input type="text" name="number_of_meetings" placeholder="Number of Meetings..."
-           value="{{old('number_of_meetings')}}">
-    @error('number_of_meetings')
+
+    <label>Venue: </label>
+    @php
+        $venues = \App\Models\Venue::all();
+    @endphp
+    <select name="venue_id">
+        @foreach($venues as $venue)
+            <option value="{{$venue->id}}">{{$venue->venue_name}}, {{$venue->venue_level}}, {{$venue->venue_location}}
+                ({{$venue->venue_capacity}} pax)
+            </option>
+        @endforeach
+    </select>
+    @error('venue_id')
     {{$message}}
     @enderror
     <br>
+
+    <label>Meetings: </label>
+    @php
+        $meeting_number = 6;
+    @endphp
+
+    <ul>
+        @for($count=1; $count <=$meeting_number; $count++)
+
+            <li>Meeting {{$count}}:
+            <input type="text" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">
+            </li>
+        @endfor
+    </ul>
+    @error('slot')
+    {{$message}}
+    @enderror
+    <br>
+
 
     <button type="submit">CREATE</button>
 
-    <a href="{{url('/office-assistant/course/course-list')}}">Back</a>
+    <a href="{{url('/office-assistant/timetable/timetable-list')}}">Back</a>
 </form>
 </body>
 </html>
