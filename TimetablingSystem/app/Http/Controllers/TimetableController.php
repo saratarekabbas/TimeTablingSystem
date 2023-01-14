@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Program;
 use App\Models\Timetable;
 use Illuminate\Http\Request;
 
@@ -16,8 +18,37 @@ class TimetableController extends Controller
 
     public function addTimetable()
     {
-        return view('/office-assistant/timetable/add-timetable');
+        $data = Course::get();
+        $programs = Program::all();
+        //compact is to pass $data basically
+        return view('/office-assistant/timetable/add-timetable', compact('data', 'programs'));
     }
+
+
+    public function filterProgram($program)
+    {
+        $findProgram = Program::where('id', $program)->first();
+        $data = Course::where('program_id', $findProgram->id)->get();
+        $programs = Program::all();
+        //compact is to pass $data basically
+        return view('/office-assistant/timetable/add-timetable', compact('data', 'programs'));
+    }
+
+
+//    ZABATEEHA BOKRA.
+//    public function filterCourse($program, $course) //shoufi el video bta3 nokia 3ashan nested filter
+//    {
+//        $program = Course::where('','')->first();
+//        $number_of_meetings = Course::where('id', $course)->first();
+////        dd($number_of_meetings);
+//        return view('/office-assistant/timetable/add-timetable/', compact('number_of_meetings'));
+//    }
+
+
+//    public function addTimetable()
+//    {
+//        return view('/office-assistant/timetable/add-timetable');
+//    }
 
     public function saveTimetable(Request $request)
     {

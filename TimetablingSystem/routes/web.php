@@ -133,8 +133,6 @@ Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class,
 Route::get('/office-assistant/course/course-list', [CourseController::class, 'index']);
 //Filter course by program
 Route::get('/office-assistant/course/course-list/{id}', [CourseController::class, 'filterProgram']);
-
-
 //Add a program
 Route::get('/office-assistant/course/add-course', [CourseController::class, 'addCourse']);
 //Save program (Add)
@@ -156,8 +154,12 @@ Route::get('/office-assistant/course/delete-course/{id}', [CourseController::cla
 
 
 
-//displays all list of programs
+//displays all list of all timetable entities
 Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
+//Filter course by program
+Route::get('/office-assistant/timetable/add-timetable/{program}', [TimetableController::class, 'filterProgram']);
+//Filter course by program
+//Route::get('/office-assistant/timetable/add-timetable/{program}/{course}', [TimetableController::class, 'filterCourse']);
 //Add a timetable entity
 Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
 //Save timetable entity(Add)

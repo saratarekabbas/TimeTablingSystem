@@ -27,15 +27,10 @@ class CourseController extends Controller
     public function filterProgram($id)
     {
         $findProgram = Program::where('id', $id)->first();
-
-
-//        if ($findProgram) {
         $data = Course::where('program_id', $findProgram->id)->get();
-
         $programs = Program::all();
         //compact is to pass $data basically
         return view('/office-assistant/course/course-list', compact('data', 'programs'));
-
     }
 
 

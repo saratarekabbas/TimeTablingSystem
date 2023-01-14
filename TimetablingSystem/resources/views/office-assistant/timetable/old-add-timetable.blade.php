@@ -20,29 +20,33 @@
     @csrf
 
     <label>Program: </label>
-    @foreach($programs as $program)
-        <a href="{{url('/office-assistant/timetable/add-timetable/'.$program->id)}}">{{$program->program_code}}
-            - {{$program->program_name}}</a>
-    @endforeach
-
-    {{--            <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>--}}
-    {{--        @endforeach--}}
-    {{--    </select>--}}
-    {{--    @error('program_id')--}}
-    {{--    {{$message}}--}}
-    {{--    @enderror--}}
+    @php
+        $programs = \App\Models\Program::all();
+    @endphp
+    <select name="program_id">
+        @foreach($programs as $program)
+            <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>
+        @endforeach
+    </select>
+    @error('program_id')
+    {{$message}}
+    @enderror
     <br>
 
     <label>Course Name: </label>
-
-    @foreach($data as $course)
-        <a href="{{url('/office-assistant/timetable/add-timetable/'.$course->program_id.'/'.$course->id)}}">{{$course->course_code}}
-            - {{$course->course_name}}</a>>
-    @endforeach
+    @php
+        $courses = \App\Models\Course::all();
+    @endphp
+    <select name="course_id">
+        @foreach($courses as $course)
+            <option value="{{$course->id}}">{{$course->course_code}} - {{$course->course_name}}</option>
+        @endforeach
+    </select>
     @error('course_id')
     {{$message}}
     @enderror
     <br>
+
 
     <label>Venue: </label>
     @php
@@ -61,21 +65,26 @@
     <br>
 
     <label>Meetings: </label>
-    {{--    @foreach($number_of_meetings as $meeting)--}}
+    @php
+        $meeting_number = 6;
+    @endphp
+
     <ul>
-        @for($count=1; $count <=6; $count++)
+        @for($count=1; $count <=$meeting_number; $count++)
 
             <li>Meeting {{$count}}:
                 <input type="text" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">
             </li>
         @endfor
     </ul>
-    {{--    @endforeach--}}
     @error('slot')
     {{$message}}
     @enderror
     <br>
+
+
     <button type="submit">CREATE</button>
+
     <a href="{{url('/office-assistant/timetable/timetable-list')}}">Back</a>
 </form>
 </body>
