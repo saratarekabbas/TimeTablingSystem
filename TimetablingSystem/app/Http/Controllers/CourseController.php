@@ -3,16 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Program;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+//    public function index()
+//    { //fetch all records and display lists
+//        $data = Course::get();
+//        //compact is to pass $data basically
+//        return view('/office-assistant/course/course-list', compact('data'));
+//    }
+
+
     public function index()
-    { //fetch all records and display lists
+    {
         $data = Course::get();
+        $programs = Program::all();
         //compact is to pass $data basically
-        return view('/office-assistant/course/course-list', compact('data'));
+        return view('/office-assistant/course/course-list', compact('data', 'programs'));
     }
+
+    public function filterProgram($id)
+    {
+        $findProgram = Program::where('id', $id)->first();
+
+
+//        if ($findProgram) {
+        $data = Course::where('program_id', $findProgram->id)->get();
+
+        $programs = Program::all();
+        //compact is to pass $data basically
+        return view('/office-assistant/course/course-list', compact('data', 'programs'));
+
+    }
+
 
     public function addCourse()
     {

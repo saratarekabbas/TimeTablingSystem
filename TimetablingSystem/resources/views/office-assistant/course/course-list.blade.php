@@ -49,6 +49,15 @@
             </div>
 
             <div class="container-heading">
+
+
+                <h5>FILTER BY PROGRAM</h5>
+                @foreach($programs as $program)
+                    <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}
+                        - {{$program->program_name}}</a>
+                @endforeach
+
+
                 <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New
                     Course</a>
             </div>
@@ -65,7 +74,7 @@
                         <th>Course Name</th>
                         <th>Course Code</th>
                         <th>Course Type</th>
-                        <th>Program</th>
+                        {{--                        <th>Program</th>--}}
                         <th>Section Number</th>
                         <th>Lecturer</th>
                         <th>Number of Meetings</th>
@@ -82,14 +91,14 @@
                             <td>{{$coursedata->course_type}}</td>
 
 
-                            @php
-                                $programs = \App\Models\Program::all();
-                            @endphp
-                            @foreach($programs as $program)
-                                @if($program->id == $coursedata->program_id)
-                                    <td>{{$program->program_name}}</td>
-                                @endif
-                            @endforeach
+                            {{--                            @php--}}
+                            {{--                                $programs = \App\Models\Program::all();--}}
+                            {{--                            @endphp--}}
+                            {{--                            @foreach($programs as $program)--}}
+                            {{--                                @if($program->id == $coursedata->program_id)--}}
+                            {{--                                    <td>{{$program->program_name}}</td>--}}
+                            {{--                                @endif--}}
+                            {{--                            @endforeach--}}
 
 
                             <td>{{$coursedata->section_number}}</td>

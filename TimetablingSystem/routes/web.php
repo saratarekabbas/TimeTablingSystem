@@ -131,6 +131,10 @@ Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class,
 
 //displays all list of programs
 Route::get('/office-assistant/course/course-list', [CourseController::class, 'index']);
+//Filter course by program
+Route::get('/office-assistant/course/course-list/{id}', [CourseController::class, 'filterProgram']);
+
+
 //Add a program
 Route::get('/office-assistant/course/add-course', [CourseController::class, 'addCourse']);
 //Save program (Add)
