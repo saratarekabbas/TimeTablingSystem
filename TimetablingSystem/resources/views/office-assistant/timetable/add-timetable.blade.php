@@ -37,7 +37,7 @@
 
     @foreach($data as $course)
         <a href="{{url('/office-assistant/timetable/add-timetable/'.$course->program_id.'/'.$course->id)}}">{{$course->course_code}}
-            - {{$course->course_name}}</a>>
+            - {{$course->course_name}}</a>
     @endforeach
     @error('course_id')
     {{$message}}
@@ -66,7 +66,7 @@
         @for($count=1; $count <=6; $count++)
 
             <li>Meeting {{$count}}:
-                <input type="text" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">
+                <input type="date" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">
             </li>
         @endfor
     </ul>
