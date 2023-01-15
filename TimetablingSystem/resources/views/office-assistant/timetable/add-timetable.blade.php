@@ -24,16 +24,12 @@
         <a href="{{url('/office-assistant/timetable/add-timetable/'.$program->id)}}">{{$program->program_code}}
             - {{$program->program_name}}</a>
     @endforeach
-
-    {{--            <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>--}}
-    {{--        @endforeach--}}
-    {{--    </select>--}}
-    {{--    @error('program_id')--}}
-    {{--    {{$message}}--}}
-    {{--    @enderror--}}
+    @error('program_id')
+    {{$message}}
+    @enderror
     <br>
 
-    <label>Course Name: </label>
+    <label>Course: </label>
 
     @foreach($courses as $course)
         <a href="{{url('/office-assistant/timetable/add-timetable/'.$course->program_id.'/'.$course->id)}}">{{$course->course_code}}
@@ -59,27 +55,7 @@
     {{$message}}
     @enderror
     <br>
-
-{{--    @if($meetings = true)--}}
-{{--    <label>Meetings: </label>--}}
-{{--        @foreach($number_of_meetings as $meeting)--}}
-{{--    <ul>--}}
-{{--        @foreach($findCourse as $meeting_number)--}}
-
-{{--        @for($count=1; $count <=$meeting_number->number_of_meetings; $count++)--}}
-{{--            <li>Meeting {{$count}}:--}}
-{{--                <input type="date" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">--}}
-{{--            </li>--}}
-{{--        @endfor--}}
-{{--            @endforeach--}}
-{{--    </ul>--}}
-{{--        @endforeach--}}
-{{--    @error('slot')--}}
-{{--    {{$message}}--}}
-{{--    @enderror--}}
-{{--    @endif--}}
-{{--    <br>--}}
-    <button type="submit">PROCEED</button>
+    <button type="submit">PROCEED TO ADD TIMETABLE SLOTS</button>
     <a href="{{url('/office-assistant/timetable/timetable-list')}}">Back</a>
 </form>
 </body>

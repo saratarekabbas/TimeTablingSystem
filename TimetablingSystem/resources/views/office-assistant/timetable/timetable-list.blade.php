@@ -71,7 +71,7 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach($data as $timetabledata)
+                    @foreach($timetable as $timetabledata)
                         <tr>
                             <td>{{$i++}}</td>
                             @php

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('program_id');
             $table->foreignId('course_id');
             $table->foreignId('venue_id');
-            $table->foreignId('holiday_id');
+//            $table->foreignId('holiday_id')->nullable(); //ta2reeban mesh elmafroud n7ot de hena
             $table->json('slots')->nullable();
             $table->timestamps();
         });

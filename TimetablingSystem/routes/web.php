@@ -156,16 +156,19 @@ Route::get('/office-assistant/course/delete-course/{id}', [CourseController::cla
 
 //displays all list of all timetable entities
 Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
-//Filter course by program
-Route::get('/office-assistant/timetable/add-timetable/{program}', [TimetableController::class, 'filterProgram']);
-//Filter meetings by course
-Route::get('/office-assistant/timetable/add-timetable/{program}/{course}', [TimetableController::class, 'filterCourse']);
-
-
 //Add a timetable entity
 Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
-//Save timetable entity(Add)
+//Filter course by program
+Route::get('/office-assistant/timetable/add-timetable/{program}', [TimetableController::class, 'filterProgram']);
+//Save timetable entity (Add)
 Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
+// Add timetable slots
+Route::get('/office-assistant/timetable/add-timetable-slots/{id}', [TimetableController::class, 'addTimetableSlots']);
+//Save timetable slots (Add)
+Route::post('/office-assistant/timetable/save-timetable-slots', [TimetableController::class, 'saveTimetableSlots']);
+
+
+
 //Edit timetable entity
 Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
 //Edit timetable entity (Update)

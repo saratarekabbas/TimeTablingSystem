@@ -11,9 +11,9 @@ class TimetableController extends Controller
 {
     public function index()
     { //fetch all records and display lists
-        $data = Timetable::get();
+        $timetable = Timetable::get();
         //compact is to pass $data basically
-        return view('/office-assistant/timetable/timetable-list', compact('data'));
+        return view('/office-assistant/timetable/timetable-list', compact('timetable'));
     }
 
     public function addTimetable()
@@ -34,21 +34,6 @@ class TimetableController extends Controller
         return view('/office-assistant/timetable/add-timetable', compact('courses', 'programs'));
     }
 
-
-//    ZABATEEHA BOKRA.
-    public function filterCourse($program, $course) //shoufi el video bta3 nokia 3ashan nested filter
-    {
-        $findProgram = Program::where('id', $program)->first();
-        $findCourse = Course::where('id', $course)->first();
-        return view('/office-assistant/timetable/add-timetable/', compact('findProgram','findCourse'));
-    }
-
-
-//    public function addTimetable()
-//    {
-//        return view('/office-assistant/timetable/add-timetable');
-//    }
-
     public function saveTimetable(Request $request)
     {
 //        Validation
@@ -56,27 +41,53 @@ class TimetableController extends Controller
             'program_id' => 'required',
             'course_id' => 'required',
             'venue_id' => 'required',
-            'holiday_id' => 'required',
-            'slots' => 'required|date|date_format:Y-m-d',
+//            'holiday_id' => 'required',
+//            'slots' => 'required|date|date_format:Y-m-d',
         ]);
 
         $program_id = $request->program_id;
         $course_id = $request->course_id;
         $venue_id = $request->venue_id;
-        $holiday_id = $request->holiday_id;
-        $slots = $request->slots;
+//        $holiday_id = $request->holiday_id;
+//        $slots = $request->slots;
 
 //        Create a model in our Eloquent Model Program
         $timetabledata = new Timetable();
         $timetabledata->program_id = $program_id;
         $timetabledata->course_id = $course_id;
         $timetabledata->venue_id = $venue_id;
-        $timetabledata->holiday_id = $holiday_id;
-        $timetabledata->slots = $slots;
+//        $timetabledata->holiday_id = $holiday_id;
+//        $timetabledata->slots = $slots;
         $timetabledata->save();
 
-        return redirect()->back()->with('success', 'Successful: Timetable entity has been created successfully');
+        $timetable = $timetabledata->id;
+        return view('/office-assistant/timetable/add-timetable-slots/', compact('timetable'))->with('success', 'Successful: Timetable entity has been added successfully');
     }
+
+    public function addTimetableSlots($id)
+    {
+        $timetable = Timetable::where('id', '=', $id)->first();
+
+        return view('/office-assistant/timetable/add-timetable-slots/', compact('timetable'));
+    }
+
+    public function saveTimetableSlots(Request $request)
+    {
+        //        Validation
+        $request->validate([
+            'slots' => 'required|date|date_format:Y-m-d',
+        ]);
+
+        $id = $request->id;
+        $slots = $request->slots;
+
+//        Create the update query by calling our Course Eloquent Model
+        Timetable::where('id', '=', $id)->update([
+            'slots' => $slots
+        ]);
+        return view('/office-assistant/timetable/timetable-list')->with('success', 'Successful: Timetable slots has been added successfully for this entity');
+    }
+
 
     public function editTimetable($id)
     {
@@ -91,7 +102,7 @@ class TimetableController extends Controller
             'program_id' => 'required',
             'course_id' => 'required',
             'venue_id' => 'required',
-            'holiday_id' => 'required',
+//            'holiday_id' => 'required',
             'slots' => 'required|date|date_format:Y-m-d',
         ]);
 
@@ -99,7 +110,7 @@ class TimetableController extends Controller
         $program_id = $request->program_id;
         $course_id = $request->course_id;
         $venue_id = $request->venue_id;
-        $holiday_id = $request->holiday_id;
+//        $holiday_id = $request->holiday_id;
         $slots = $request->slots;
 
 //        Create the update query by calling our Course Eloquent Model
@@ -107,7 +118,7 @@ class TimetableController extends Controller
             'program_id' => $program_id,
             'course_id' => $course_id,
             'venue_id' => $venue_id,
-            'holiday_id' => $holiday_id,
+//            'holiday_id' => $holiday_id,
             'slots' => $slots
         ]);
 
