@@ -19,33 +19,34 @@ class TimetableController extends Controller
     public function addTimetable()
     {
         $courses = Course::get();
-        $programs = Program::all();
+//        $programs = Program::all();
         //compact is to pass $data basically
-        return view('/office-assistant/timetable/add-timetable', compact('courses', 'programs'));
+//        return view('/office-assistant/timetable/add-timetable', compact('courses', 'programs'));
+        return view('/office-assistant/timetable/add-timetable', compact('courses'));
     }
 
 
-    public function filterProgram($program)
-    {
-        $findProgram = Program::where('id', $program)->first();
-        $courses = Course::where('program_id', $findProgram->id)->get();
-        $programs = Program::all();
-        //compact is to pass $data basically
-        return view('/office-assistant/timetable/add-timetable', compact('courses', 'programs'));
-    }
+//    public function filterProgram($program)
+//    {
+//        $findProgram = Program::where('id', $program)->first();
+//        $courses = Course::where('program_id', $findProgram->id)->get();
+//        $programs = Program::all();
+//        //compact is to pass $data basically
+//        return view('/office-assistant/timetable/add-timetable', compact('courses', 'programs'));
+//    }
 
     public function saveTimetable(Request $request)
     {
-//        Validation
+       //        Validation
         $request->validate([
-            'program_id' => 'required',
+//            'program_id' => 'required',
             'course_id' => 'required',
             'venue_id' => 'required',
         ]);
 
-        $program_id = $request->program_id;
         $course_id = $request->course_id;
         $venue_id = $request->venue_id;
+        $program_id = Course::where('id', '=', $course_id)->first()->program_id;
 
 //        Create a model in our Eloquent Model Program
         $timetabledata = new Timetable();
@@ -54,8 +55,7 @@ class TimetableController extends Controller
         $timetabledata->venue_id = $venue_id;
         $timetabledata->save();
 
-        return view('/office-assistant/timetable/timetable-list')->with('success', 'Successful: Timetable slots has been added successfully for this entity');
-
+        return redirect()->back()->with('success', 'Successful: Timetable has been created successfully');
     }
 
     public function addTimetableSlot($id)
@@ -65,7 +65,7 @@ class TimetableController extends Controller
         return view('/office-assistant/timetable/add-timetable-slot/', compact('timetable'));
 
     }
-    
+
     public function saveTimetableSlot(Request $request)
     {
         //        Validation
