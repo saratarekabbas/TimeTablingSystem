@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="column side">
-        <img src="/public/TtS-Logo.png" alt="TtS Logo">
+        <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
@@ -71,6 +71,7 @@
                     @php
                         $i = 1;
                     @endphp
+
                     @foreach($timetable as $timetabledata)
                         <tr>
                             <td>{{$i++}}</td>
@@ -101,20 +102,36 @@
                                 @endif
                             @endforeach
                             <td>
-                                <ol>
-                                    @php
-                                        $meeting_number = 1;
-                                    @endphp
-                                    @foreach($timetabledata->slots as $slot)
-                                        <li>Meeting {{$meeting_number++}}: {{$slot}}</li>
-                                    @endforeach
-                                </ol>
+
+                                @if($timetabledata->slots == NULL)
+                                    No Assigned Slots.
+                                @else
+                                    <ol>
+                                        @php
+                                            $meeting_number = 1;
+                                        @endphp
+                                        @foreach($timetabledata->slots as $slot)
+                                            <li>Meeting {{$meeting_number++}}: {{$slot}}</li>
+                                        @endforeach
+                                    </ol>
+                                @endif
                             </td>
                             <td>
                                 <a href="{{url('/office-assistant/timetable/edit-timetable/'.$timetabledata->id)}}"
                                    class="edit-btn">Edit</a>
                                 <a href="{{url('/office-assistant/timetable/delete-timetable/'.$timetabledata->id)}}"
                                    class="delete-btn">Delete</a>
+                                <a href="{{url('/office-assistant/timetable/add-zeft/'.$timetabledata->id)}}"
+                                   class="delete-btn">Add zeft</a>
+
+
+                                @if($timetabledata->slots == NULL)
+                                    <a href="{{url('/office-assistant/timetable/add-timetable-slot/'.$timetabledata->id)}}"
+                                       class="delete-btn">Add Slots</a>
+                                @else
+                                    <a href="{{url('/office-assistant/timetable/edit-timetable-slots/'.$timetabledata->id)}}"
+                                       class="delete-btn">Edit Slots</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

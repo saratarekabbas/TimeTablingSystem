@@ -41,37 +41,32 @@ class TimetableController extends Controller
             'program_id' => 'required',
             'course_id' => 'required',
             'venue_id' => 'required',
-//            'holiday_id' => 'required',
-//            'slots' => 'required|date|date_format:Y-m-d',
         ]);
 
         $program_id = $request->program_id;
         $course_id = $request->course_id;
         $venue_id = $request->venue_id;
-//        $holiday_id = $request->holiday_id;
-//        $slots = $request->slots;
 
 //        Create a model in our Eloquent Model Program
         $timetabledata = new Timetable();
         $timetabledata->program_id = $program_id;
         $timetabledata->course_id = $course_id;
         $timetabledata->venue_id = $venue_id;
-//        $timetabledata->holiday_id = $holiday_id;
-//        $timetabledata->slots = $slots;
         $timetabledata->save();
 
-        $timetable = $timetabledata->id;
-        return view('/office-assistant/timetable/add-timetable-slots/', compact('timetable'))->with('success', 'Successful: Timetable entity has been added successfully');
+        return view('/office-assistant/timetable/timetable-list')->with('success', 'Successful: Timetable slots has been added successfully for this entity');
+
     }
 
-    public function addTimetableSlots($id)
+    public function addTimetableSlot($id)
     {
         $timetable = Timetable::where('id', '=', $id)->first();
 
-        return view('/office-assistant/timetable/add-timetable-slots/', compact('timetable'));
-    }
+        return view('/office-assistant/timetable/add-timetable-slot/', compact('timetable'));
 
-    public function saveTimetableSlots(Request $request)
+    }
+    
+    public function saveTimetableSlot(Request $request)
     {
         //        Validation
         $request->validate([

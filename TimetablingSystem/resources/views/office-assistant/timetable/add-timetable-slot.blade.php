@@ -16,20 +16,24 @@
     {{Session::get('success')}}
 @endif
 
-<form method="post" action="{{url('/office-assistant/timetable/save-timetable-slots')}}">
+<form method="post" action="{{url('/office-assistant/timetable/save-timetable-slot')}}">
     @csrf
     <label>Meetings: </label>
-
     <ul>
-        @foreach($findCourse as $meeting_number)
+        @php
 
-            @for($count=1; $count <=$meeting_number->number_of_meetings; $count++)
-                <li>Meeting {{$count}}:
-                    <input type="date" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">
-                </li>
-            @endfor
+            // $course = Course::where('id', '=' , $timetable->course_id);
+             // $meeting_number
+        @endphp
+        {{--        @foreach($findCourse as $meeting_number)--}}
+
+        {{--            @for($count=1; $count <=$meeting_number->number_of_meetings; $count++)--}}
+        <li>Meeting {{$count}}:
+            <input type="date" name="slot[]" placeholder="Meeting Date (YYYY-MM-DD)">
+        </li>
+        {{--            @endfor--}}
+        {{--        @endforeach--}}
     </ul>
-    @endforeach
     @error('slot')
     {{$message}}
     @enderror

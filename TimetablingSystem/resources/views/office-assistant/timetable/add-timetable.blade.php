@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Program</title>
+    <script src="/app.js"></script>
+    <title>Add Timetable</title>
 </head>
 <body>
 <h1>Add a New Timetable Entity</h1>
@@ -18,26 +19,29 @@
 
 <form method="post" action="{{url('/office-assistant/timetable/save-timetable')}}">
     @csrf
-
     <label>Program: </label>
-    @foreach($programs as $program)
-        <a href="{{url('/office-assistant/timetable/add-timetable/'.$program->id)}}">{{$program->program_code}}
-            - {{$program->program_name}}</a>
-    @endforeach
-    @error('program_id')
-    {{$message}}
-    @enderror
+
+        <select name="program_id"
+                onchange="location.assign('/office-assistant/timetable/add-timetable/' + this.options[this.selectedIndex].value)">
+            @foreach($programs as $program)
+                <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>
+            @endforeach
+        </select>
+        @error('program_id')
+        {{$message}}
+        @enderror
+
     <br>
-
     <label>Course: </label>
-
-    @foreach($courses as $course)
-        <a href="{{url('/office-assistant/timetable/add-timetable/'.$course->program_id.'/'.$course->id)}}">{{$course->course_code}}
-            - {{$course->course_name}}</a>
-    @endforeach
+    <select name="course_id">
+        @foreach($courses as $course)
+            <option value="{{$course->id}}"> {{$course->course_code}} - {{$course->course_name}}</option>
+        @endforeach
+    </select>
     @error('course_id')
     {{$message}}
     @enderror
+
     <br>
 
     <label>Venue: </label>
@@ -55,6 +59,7 @@
     {{$message}}
     @enderror
     <br>
+
     <button type="submit">PROCEED TO ADD TIMETABLE SLOTS</button>
     <a href="{{url('/office-assistant/timetable/timetable-list')}}">Back</a>
 </form>

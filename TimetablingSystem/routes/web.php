@@ -163,9 +163,11 @@ Route::get('/office-assistant/timetable/add-timetable/{program}', [TimetableCont
 //Save timetable entity (Add)
 Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
 // Add timetable slots
-Route::get('/office-assistant/timetable/add-timetable-slots/{id}', [TimetableController::class, 'addTimetableSlots']);
+Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
 //Save timetable slots (Add)
-Route::post('/office-assistant/timetable/save-timetable-slots', [TimetableController::class, 'saveTimetableSlots']);
+Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
+
+
 
 
 
