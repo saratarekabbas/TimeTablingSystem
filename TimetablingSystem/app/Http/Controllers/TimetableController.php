@@ -70,13 +70,11 @@ class TimetableController extends Controller
     {
         //        Validation
         $request->validate([
-            'slots' => 'required|date|date_format:Y-m-d',
+            'slots' => 'required',
         ]);
 
         $id = $request->id;
         $slots = $request->slots;
-
-        dd($request);
 
 //        Create the update query by calling our Course Eloquent Model
         Timetable::where('id', '=', $id)->update([

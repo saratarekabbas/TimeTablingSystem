@@ -16,13 +16,16 @@
     {{Session::get('success')}}
 @endif
 
-<form method="post" action="{{url('/office-assistant/program/save-program-slot')}}">
+<form method="post" action="{{url('/office-assistant/timetable/save-timetable-slot')}}">
     {{--    in laravel we want to use crf token, this is why we pass it--}}
     @csrf
+
+    <input type="hidden" name="id" value="{{$timetable->id}}">
+
     <label>Meetings: </label>
     <ol>
         @for($i = 1; $i<= $meetings_number; $i++)
-           <li> <input type="date" name="slots[]" placeholder="YYYY-MM-DD" value="{{$timetable->id}}"></li>
+           <li> <input type="date" name="slots[]" value="{{$timetable->slots}}"></li>
         @endfor
     </ol>
     @error('slots')
