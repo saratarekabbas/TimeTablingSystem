@@ -121,8 +121,6 @@
                                    class="edit-btn">Edit</a>
                                 <a href="{{url('/office-assistant/timetable/delete-timetable/'.$timetabledata->id)}}"
                                    class="delete-btn">Delete</a>
-                                <a href="{{url('/office-assistant/timetable/add-zeft/'.$timetabledata->id)}}"
-                                   class="delete-btn">Add zeft</a>
 
 
                                 @if($timetabledata->slots == NULL)

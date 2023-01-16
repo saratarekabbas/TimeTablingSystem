@@ -37,7 +37,7 @@ class TimetableController extends Controller
 
     public function saveTimetable(Request $request)
     {
-       //        Validation
+        //        Validation
         $request->validate([
 //            'program_id' => 'required',
             'course_id' => 'required',
@@ -61,9 +61,9 @@ class TimetableController extends Controller
     public function addTimetableSlot($id)
     {
         $timetable = Timetable::where('id', '=', $id)->first();
+        $meetings_number = Course::where('id', '=', $timetable->course_id)->first()->number_of_meetings;
 
-        return view('/office-assistant/timetable/add-timetable-slot/', compact('timetable'));
-
+        return view('/office-assistant/timetable/add-timetable-slot', compact('timetable','meetings_number'));
     }
 
     public function saveTimetableSlot(Request $request)
@@ -76,11 +76,13 @@ class TimetableController extends Controller
         $id = $request->id;
         $slots = $request->slots;
 
+        dd($request);
+
 //        Create the update query by calling our Course Eloquent Model
         Timetable::where('id', '=', $id)->update([
             'slots' => $slots
         ]);
-        return view('/office-assistant/timetable/timetable-list')->with('success', 'Successful: Timetable slots has been added successfully for this entity');
+        return redirect()->back()->with('success', 'Successful: Timetable slot has been created successfully');
     }
 
 
