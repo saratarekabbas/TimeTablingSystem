@@ -25,7 +25,7 @@
     <label>Meetings: </label>
     <ol>
         @for($i = 1; $i<= $meetings_number; $i++)
-           <li> <input type="date" name="slots[]" value="{{$timetable->slots}}"></li>
+           <li> <input type="date" name="slots[]"></li>
         @endfor
     </ol>
     @error('slots')
