@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Program;
+use App\Models\PublicHoliday;
 use App\Models\Timetable;
 use Illuminate\Http\Request;
 
@@ -135,19 +136,29 @@ class TimetableController extends Controller
         $meetings = array();
 
         $timetables = Timetable::all();
-        foreach ($timetables as $timetable) {
+//        foreach ($timetables as $timetable) {
+////            foreach ($timetables->slots as $slot) {
+//            $meetings[] = [
+//                'title' => Course::where('id', '=', $timetable->course_id)->first()->course_name,
+//                'start' => '2023-01-19',
+//                'end' => '2023-01-25',
+//            ];
+////            };
+//        };
+
+        $publicHolidays = PublicHoliday::all();
+
+        foreach ($publicHolidays as $publicHoliday) {
 //            foreach ($timetables->slots as $slot) {
-                $meetings[] = [
-                    'title' => Course::where('id', '=', $timetable->course_id)->first()->course_name,
-                    'start' => '2023-01-19',
-                    'end' => '2023-01-25',
-                ];
+            $meetings[] = [
+                'title' => $publicHoliday->public_holiday_title,
+                'start' => $publicHoliday->public_holiday_start_date . ' 00:00:00',
+                'end' => $publicHoliday->public_holiday_end_date . ' 23:59:59',
+            ];
 //            };
         };
 
-//        return $meetings;
-
-
+//        return ($meetings);
         return view('/office-assistant/timetable/calendar-view/view-calendar', ['meetings' => $meetings]);
     }
 
