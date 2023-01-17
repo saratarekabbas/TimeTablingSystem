@@ -17,10 +17,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    {{--    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 
     <title>Timetable Entities</title>
 </head>
 <body>
+
 
 <div class="row">
     <div class="column side">
@@ -66,13 +68,38 @@
                 {{Session::get('success')}}
             @endif
 
+
             <div class="container-table">
+
+                {{--Modal--}}
+                <div class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal body text goes here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div id="calendar">
 
                 </div>
 
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                        crossorigin="anonymous"></script>
 
                 <script>
                     $(document).ready(function () {
@@ -83,7 +110,13 @@
                                 center: 'title',
                                 right: 'month, agendaWeek, agendaDay'
                             },
-                            events: meetings
+                            events: meetings,
+                            selectable: true,
+                            selectHelper: true,
+                            //Start is the start date, end is the end date
+                            select: function (start, end, allDays) {
+                                $('.modal').modal('toggle');
+                            }
                         })
                     });
                 </script>
