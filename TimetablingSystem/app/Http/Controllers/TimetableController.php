@@ -135,30 +135,36 @@ class TimetableController extends Controller
     {
         $meetings = array();
 
-        $timetables = Timetable::all();
-//        foreach ($timetables as $timetable) {
-////            foreach ($timetables->slots as $slot) {
-//            $meetings[] = [
-//                'title' => Course::where('id', '=', $timetable->course_id)->first()->course_name,
-//                'start' => '2023-01-19',
-//                'end' => '2023-01-25',
-//            ];
-////            };
-//        };
-
+//        Public Holiday calendar Display
         $publicHolidays = PublicHoliday::all();
-
         foreach ($publicHolidays as $publicHoliday) {
-//            foreach ($timetables->slots as $slot) {
             $meetings[] = [
                 'title' => $publicHoliday->public_holiday_title,
                 'start' => $publicHoliday->public_holiday_start_date . ' 00:00:00',
                 'end' => $publicHoliday->public_holiday_end_date . ' 23:59:59',
             ];
-//            };
-        };
+        }
 
-//        return ($meetings);
+//        Timetable calendar display
+        $timetables = Timetable::all();
+        $slots[] = array();
+        foreach ($timetables as $timetable) {
+            $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
+            $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
+
+//            dd($slots);
+
+            if ($slots != NULL) {
+                for ($i = 0; $i < sizeof($slots); $i++) {
+                    $meetings[] = [
+                        'title' => $course_title,
+                        'start' => $slots[$i]. ' 09:00:00',
+                        'end' => $slots[$i] . ' 17:00:00',
+                    ];
+                }
+            }
+            unset($slot);
+        }
         return view('/office-assistant/timetable/calendar-view/view-calendar', ['meetings' => $meetings]);
     }
 
