@@ -51,6 +51,9 @@
             <div class="container-heading">
                 <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New
                     Timetable Entity</a>
+                <br><br><br>
+                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar')}}" class="container-action-btns">View Timetable</a>
+
             </div>
 
             @if(Session::has('success'))

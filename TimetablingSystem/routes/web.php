@@ -166,12 +166,27 @@ Route::post('/office-assistant/timetable/save-timetable', [TimetableController::
 Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
 //Save timetable slots (Add)
 Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
+
+
+
+
+
+
+
 //Edit timetable entity
 Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
 //Edit timetable entity (Update)
 Route::post('/office-assistant/timetable/update-timetable', [TimetableController::class, 'updateTimetable']);
 //Delete timetable entity
 Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableController::class, 'deleteTimetable']);
+
+
+
+
+
+
+//displays the calendar
+Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
 
 
 //----------------------------------------------------------------------------//

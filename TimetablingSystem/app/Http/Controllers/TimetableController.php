@@ -39,8 +39,7 @@ class TimetableController extends Controller
     {
         //        Validation
         $request->validate([
-//            'program_id' => 'required',
-            'course_id' => 'required',
+            'course_id' => 'required|unique:timetables,course_id',
             'venue_id' => 'required',
         ]);
 
@@ -63,7 +62,7 @@ class TimetableController extends Controller
         $timetable = Timetable::where('id', '=', $id)->first();
         $meetings_number = Course::where('id', '=', $timetable->course_id)->first()->number_of_meetings;
 
-        return view('/office-assistant/timetable/add-timetable-slot', compact('timetable','meetings_number'));
+        return view('/office-assistant/timetable/add-timetable-slot', compact('timetable', 'meetings_number'));
     }
 
     public function saveTimetableSlot(Request $request)
@@ -120,9 +119,41 @@ class TimetableController extends Controller
         return redirect()->back()->with('success', 'Successful: Timetable entity has been updated successfully');
     }
 
+
     public function deleteTimetable($id)
     {
         Timetable::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Successful: Timetable entity has been deleted successfully');
     }
+
+    //-------------------------------------------------------------
+    //    Calendar
+    //-------------------------------------------------------------
+
+    public function calendarIndex()
+    {
+        $meetings = array();
+
+        $timetables = Timetable::all();
+        foreach ($timetables as $timetable) {
+//            foreach ($timetables->slots as $slot) {
+                $meetings[] = [
+                    'title' => Course::where('id', '=', $timetable->course_id)->first()->course_name,
+                    'start' => '2023-01-19',
+                    'end' => '2023-01-25',
+                ];
+//            };
+        };
+
+//        return $meetings;
+
+
+        return view('/office-assistant/timetable/calendar-view/view-calendar', ['meetings' => $meetings]);
+    }
+
+//    public function calendarIndex()
+//    {
+//        return view('/office-assistant/timetable/calendar-view/view-calendar');
+//    }
+
 }
