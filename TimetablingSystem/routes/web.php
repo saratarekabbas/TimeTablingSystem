@@ -55,6 +55,11 @@ Route::get('/', function () { //you need to change this later to make it go dire
 });
 
 
+Route::get('/overview', function(){
+    return view('/overview');
+});
+
+
 //|--------------------------------------------------------------------------
 //|                               OFFICE ASSISTANT
 //|--------------------------------------------------------------------------

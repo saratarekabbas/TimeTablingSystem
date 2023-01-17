@@ -149,17 +149,21 @@ class TimetableController extends Controller
         $timetables = Timetable::all();
         $slots[] = array();
         foreach ($timetables as $timetable) {
+            $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
             $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
             $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
+
+
 
 //            dd($slots);
 
             if ($slots != NULL) {
                 for ($i = 0; $i < sizeof($slots); $i++) {
                     $meetings[] = [
-                        'title' => $course_title,
+                        'title' => $course_code .' - ' . $course_title,
                         'start' => $slots[$i]. ' 09:00:00',
                         'end' => $slots[$i] . ' 17:00:00',
+                        'color' => '#E59308'
                     ];
                 }
             }

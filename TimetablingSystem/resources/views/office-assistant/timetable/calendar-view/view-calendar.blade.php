@@ -76,16 +76,16 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Modal title</h5>
+                                <h5 class="modal-title">COURSE CODE - COURSE NAME</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <p>Modal body text goes here.</p>
+                                <p>DATE TIME LECTURER PROGRAM VENUE MEETING NUMBER REMARKS.</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -106,9 +106,11 @@
                         var meetings = @json($meetings);
                         $('#calendar').fullCalendar({
                             header: {
-                                left: 'prev, next today',
+                                left: 'prev,next, today',
                                 center: 'title',
                                 right: 'month, agendaWeek, agendaDay'
+
+
                             },
                             events: meetings,
                             selectable: true,
@@ -116,12 +118,47 @@
                             //Start is the start date, end is the end date
                             select: function (start, end, allDays) {
                                 $('.modal').modal('toggle');
-                            }
+                            },
+
+                            //da onclick 3ala el event
+                            // eventClick: function (info) {
+                            //     alert('hiiii');
+                            //     alert(info)
+                            // }
+
+
+                            // eventClick: function (event) {
+                            //     alert(event.myId)
+                            //     {
+                            //         alert(myId);
+                            //     }
+                            // }
+
+                            // eventRender: function(event, element) {
+                            //     //Check what is the key for description in event and use that one.
+                            //     element.find('.fc-title').append(" " + event.description);
+                            //     element.bind('dblclick', function() {
+                            //         $('#ModalEdit #id').val(event.id);
+                            //         $('#ModalEdit #title').val(event.title);
+                            //         $('#ModalEdit').modal('show');
+                            //     });
+                            // }
+
+
+                            // eventRender: function(event, element) {
+                            //     //Check what is the key for description in event and use that one.
+                            //     element.find('.fc-title').append(" " + event.description);
+                            //     element.bind('dblclick', function() {
+                            //         $('#ModalEdit #id').val(event.id);
+                            //         $('#ModalEdit #title').val(event.title);
+                            //         $('#ModalEdit').modal('show');
+                            //     });
+                            // }
+
                         })
-                    });
+                    })
+                    ;
                 </script>
-
-
             </div>
         </div>
     </div>
@@ -135,4 +172,3 @@
 
 </body>
 </html>
-
