@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\TimetableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
@@ -177,7 +178,6 @@ Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableControl
 
 
 
-
 //Edit timetable entity
 Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
 //Edit timetable entity (Update)
@@ -190,8 +190,21 @@ Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableContro
 
 
 
+
+
 //displays the calendar
 Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
+
+
+
+
+
+
+
+// Print timetable
+//---------------------MODIFY THE ROUTE
+
+Route::get('/office-assistant/timetable/calendar-view/view-calendar', [PdfController::class, 'index']);
 
 
 //----------------------------------------------------------------------------//
