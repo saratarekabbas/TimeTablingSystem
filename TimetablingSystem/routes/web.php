@@ -29,11 +29,16 @@ use App\Http\Controllers\VenueController;
 // 1. Registration
 //----------------------------------------------------------------------------//
 
+Route::get('/registration', function(){
+    return view('/registration');
+});
 
 //----------------------------------------------------------------------------//
 // 2. Login
 //----------------------------------------------------------------------------//
-
+Route::get('/login', function(){
+    return view('/login');
+});
 
 //----------------------------------------------------------------------------//
 // 3. Email
@@ -135,7 +140,7 @@ Route::get('/office-assistant/course/course-list', [CourseController::class, 'in
 Route::get('/office-assistant/course/course-list/{id}', [CourseController::class, 'filterProgram']);
 //Add a program
 Route::get('/office-assistant/course/add-course', [CourseController::class, 'addCourse']);
-//Save program (Add)
+//Save program (Add)S
 Route::post('/office-assistant/course/save-course', [CourseController::class, 'saveCourse']);
 //Edit program
 Route::get('/office-assistant/course/edit-course/{id}', [CourseController::class, 'editCourse']);

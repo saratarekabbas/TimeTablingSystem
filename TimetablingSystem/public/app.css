@@ -243,6 +243,192 @@ body {
 
 
 /*-------------------------------------------*/
+/*     Login, Register & Forgot Password     */
+
+
+.login-page {
+    background-image: url('TtS-background.png');
+    height: 100%;
+    position: relative;
+}
+
+.login-content {
+    width: 794px;
+    height: 614px;
+    background-color: #FFFFFF;
+    margin: auto;
+    position: absolute;
+    overflow: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.login-header {
+    text-align: center
+}
+
+.login-header h1 {
+    font-size: 17.22px;
+    font-weight: bold;
+    font-family: Montserrat, 'Mulish';
+}
+
+.login-header h2 {
+    font-size: 12px;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.4px;
+}
+
+.login-img {
+    padding-top: 30px;
+    width: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-inputbox {
+    height: 48px;
+    width: 265px;
+    margin: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: left;
+    padding-left: 13px;
+}
+
+.login-inputbox::placeholder {
+    color: darkgray;
+    padding-left: 0px;
+}
+
+.login-forgotpassword {
+    text-decoration: none;
+    display: block;
+    color: #A4A6B3;
+    padding-top: 7px;
+    font-size: 12px;
+    font-family: Roboto;
+    font-weight: normal;
+    letter-spacing: 0.4px;
+}
+
+.forgotpasswordA {
+    padding-right: 4px;
+    text-align: right;
+}
+
+.forgotpasswordB {
+    text-align: center;
+
+}
+
+.login-submit {
+    height: 48px;
+    width: 265px;
+    background-color: #59011E;
+    color: white;
+    padding: 14px;
+    margin: 8px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.login-form {
+    width: 275px;
+    margin: auto;
+}
+
+.login-column {
+    width: 794px;
+    height: 614px;
+}
+
+.left-login-column {
+    float: left;
+    width: 413.01px;
+    height: 614px;
+    padding-left: 0;
+}
+
+.left-login-column img {
+    float: left;
+    width: 396.16px;
+    height: 100%;
+    padding-left: 0;
+    padding-top: 106.27px;
+
+}
+
+
+.reset-password-line {
+    float: left;
+    width: 1px;
+    height: 549px;
+    margin-top: 39px;
+    background: #BDBDBD;
+}
+
+.right-login-column {
+    float: left;
+    width: 379.99px;
+    height: 614px;
+    padding-left: 23.99px;
+    padding-top: 62px;
+}
+
+.reset-password-arrow img {
+    width: 16px;
+    height: 16px;
+}
+
+.right-login-column h1 {
+    margin-top: 39px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Roboto;
+    letter-spacing: 0.15px;
+    padding-left: 4.5px;
+}
+
+.right-login-column h2 {
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Roboto;
+    letter-spacing: 0.25px;
+    padding-left: 5px;
+}
+
+
+.left-login-column2 {
+    float: left;
+    width: 413.01px;
+    height: 614px;
+    padding-left: 0;
+}
+
+.left-login-column2 img {
+    float: left;
+    width: 396.16px;
+    height: 100%;
+    padding-left: 0;
+    padding-top: 156px;
+    padding-bottom: 111px;
+
+}
+
+
+/*-------------------------------------------*/
 /*         Office Assistant Overview         */
 
 .header p1 {
@@ -562,4 +748,5 @@ body {
     padding-left: 80px;
     padding-top: 20px;
     padding-bottom: 20px;
+    position: absolute;
 }
