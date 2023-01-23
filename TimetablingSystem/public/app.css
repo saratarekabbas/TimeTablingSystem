@@ -435,7 +435,118 @@ body {
 /*-------------------------------------------*/
 /*             CREATE & UPDATE UI            */
 
+/-------------------------------------------------/
+    /*                   create/Update UI              */
+.container-program {
+    clear: both;
+    display: block;
+    float: left;
+    margin-top: 57px;
+    margin-left: 30px;
+    height: auto;
+    width: 1194px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DFE0EB;
+    position: relative;
+}
 
+.container-program p1 {
+    font-family: Montserrat, 'Mulish';;
+    font-size: 19px;
+    float: left;
+    margin-left: 32px;
+    font-weight: 700;
+    display: inline-block;
+    letter-spacing: 0.4px;
+    color: #252733;
+    margin-top: 32px;
+}
+
+.container-table-program {
+    clear: both;
+    width: 1194px;
+    hight: 100%;
+    float: left;
+    display: inline-block;
+    margin-top: 30px;
+    padding-right: 32px;
+    padding-left: 32px;
+    border-collapse: collapse;
+}
+
+.col-itemname,
+.col-inputbox {
+    font-family: Montserrat, 'Mulish';
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+.col-itemname {
+    width: 196px;
+    color: #252733;
+}
+
+.col-inputbox {
+    width: 912px;
+    color: #9FA2B4;
+}
+
+.create-edit-inputbox {
+    width: 912px;
+    height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    border-radius: 4px;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 30px;
+}
+
+
+.create-edit-inputbox::placeholder {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.44px;
+    color: rgba(0, 0, 0, 0.38);
+}
+
+.container-program td {
+    height: 92px;
+    width: fit-content;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* Change color on hover */
+.container-program tr:hover {
+    background-color: #E59308;
+}
+
+.create-edit-btn {
+    height: 48px;
+    width: 265px;
+    background-color: #59011E;
+    color: white;
+    padding: 14px;
+    margin: 50px 450px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Roboto';
+    font-weight: 500;
+
+
+}
 
 
 /*-------------------------------------------*/
