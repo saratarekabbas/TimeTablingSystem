@@ -241,6 +241,192 @@ body {
     cursor: pointer;
 }
 
+
+/*-------------------------------------------*/
+/*         Office Assistant Overview         */
+
+.header p1{
+    float:left;
+    font-family: Montserrat, 'Mulish';;
+    font-size:24px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    color:  #252733;
+    margin-top: 37px;
+    margin-left: 30px;/
+}
+
+.header p2{
+    float:right;
+    font-family: Montserrat, 'Mulish';;
+    font-size:14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color:  #252733;
+    margin-top: 44px;
+    margin-right: 90px;
+    clear-after: right;
+}
+
+.container-bulletin1 {
+    clear:both;
+}
+
+.container-bulletin1,
+.container-bulletin2,
+.container-bulletin3,
+.container-bulletin4  {
+    float: left;
+    margin-top: 57px;
+    margin-left: 30px;
+    height: 134px;
+    width: 258px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DFE0EB;
+    position: relative;
+    display:block;
+}
+
+.container-bulletin p1{
+    font-family: Montserrat, 'Mulish';;
+    font-size:19px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    color: #9FA2B4;
+    margin-top: 24px;
+    display:block;
+}
+
+.container-bulletin p2{
+    font-family: Montserrat, 'Mulish';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    margin-top: 12px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #252733;
+    display:block;
+}
+/* Change color on hover */
+.container-bulletin1:hover,
+.container-bulletin2:hover,
+.container-bulletin3:hover,
+.container-bulletin4:hover {
+    color: #E59308;
+    border: 4px solid #E59308;
+}
+.container-bulletin p1:hover,
+.container-bulletin p2:hover{
+    color: #E59308;
+}
+.container-announcement1 {
+    clear:both;
+}
+.container-announcement1,
+.container-announcement2 {
+    display:block;
+    float: left;
+    margin-top: 34px;
+    margin-left: 30px;
+    height: 336px;
+    width: 546px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DFE0EB;
+    position: relative;
+}
+.container-announcement p1{
+    font-family: Montserrat, 'Mulish';;
+    font-size:19px;
+    float:left;
+    margin-left:32px;
+    font-weight: bold;
+    display: inline-block;
+    letter-spacing: 0.4px;
+    color: #252733;
+    margin-top: 32px;
+}
+
+.container-announcement a{
+    font-family: Montserrat, 'Mulish';
+    text-decoration: none;
+    font-size:14px;
+    float:right;
+    margin-right:32px;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: 0.4px;
+    color: #59011E;
+    /*line-height: 24px;*/
+    margin-top: 40px;
+}
+/* Change color on hover */
+.container-announcement a:hover {
+    color: #E59308;
+}
+
+.container-table-officeassistantoverview {
+    clear:both;
+    width:100%;
+    hight:100%;
+    float:left;
+    display: inline-block;
+    margin-top: 25px;
+    /*overflow: scroll;*/
+    padding-right: 25px;
+    padding-left: 25px;
+    max-height: 458px;
+    border-collapse: collapse;
+
+
+}
+
+.col1,col2{
+    font-family: Montserrat, 'Mulish';
+    font-size:14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+.col1{
+    width:378px;
+    color:#252733;
+}
+
+.col2{
+    width:80px;
+    color:#9FA2B4;
+}
+
+.container-announcement td {
+    height:58px;
+    width: fit-content;
+    overflow:hidden; /* added */
+    border-bottom: 1px solid #ddd;
+
+}
+
+
+.container-announcement-view {
+    height: 20px;
+    width: 74px;
+    background-color: #FEC400;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+}
+
+
+
 /*-------------------------------------------*/
 /*                  Footer                   */
 .footer {

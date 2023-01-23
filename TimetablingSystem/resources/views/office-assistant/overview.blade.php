@@ -19,7 +19,8 @@
         <img src="/public/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -36,50 +37,147 @@
 
     <div class="column right">
         <div class="header">
-            <p>Office Admin
+            <p1>
+                Overview
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </p>
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </p1>
+            <p2>Office Admin
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </p2>
         </div>
 
+        {{--        ////////////////////--}}
+
         {{--        container for the page content--}}
-        <div class="container">
-            <div class="container-title">
-                <p>All Pending Requests</p>
+        <div class="container-bulletin">
+            <div class="container-bulletin1">
+                <p1> Total Lecturers</p1>
+                <p2> 60</p2>
             </div>
-
-            @if(Session::has('success'))
-                {{--    This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
-
-            <div class="container-table">
-                <table id="table">
-                    <tr>
-                        <th>#</th>
-                        <th>Lecturer Name</th>
-                        <th>Lecturer Email</th>
-                        <th>Respond</th>
-                    </tr>
-                    @php
-                        $i = 1;
-                    @endphp
-                    @foreach($data as $userapplicationdata)
+            <div class="container-bulletin2">
+                <p1> Total Programs</p1>
+                <p2> 60</p2>
+            </div>
+            <div class="container-bulletin3">
+                <p1> Total Venues</p1>
+                <p2> 60</p2>
+            </div>
+            <div class="container-bulletin4">
+                <p1> Total Courses</p1>
+                <p2> 60</p2>
+            </div>
+        </div>
+        <div class="container-announcement">
+            <div class="container-announcement1">
+                <p1> Pending Applications</p1>
+                <a href="/office-assistant/user-application/user-application-list">View All</a>
+                <div class="container-table-officeassistantoverview">
+                    <table>
+                        <col class="col1"/>
+                        <col class="col2"/>
                         <tr>
-                            <td>{{$i++}}</td>
-                            <td>{{$userapplicationdata->lecturer_name}}</td>
-                            <td>{{$userapplicationdata->lecturer_email}}</td>
+                            <td style="color: #252733">January</td>
+                            <td style="color: #9FA2B4">$100</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">February</td>
+                            <td style="color: #9FA2B4">$80</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">January</td>
+                            <td style="color: #9FA2B4">$100</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">February</td>
+                            <td style="color: #9FA2B4">$80</td>
+                    </table>
+                </div>
+            </div>
+            <div class="container-announcement2">
+                <p1> Programs</p1>
+                <a href="/office-assistant/program/program-list">View All</a>
+                <div class="container-table-officeassistantoverview">
+                    <table>
+                        <col class="col1"/>
+                        <col class="col2"/>
+                        <tr>
+                            <td style="color: #C5C7CD">Add a new program</td>
                             <td>
-                                <a href="{{url('/office-assistant/user-application/approve-user-application/'.$userapplicationdata->id)}}"
-                                   class="edit-btn">Approve</a>
-                                <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}"
-                                   class="delete-btn">Disapprove</a>
+                                <i class="fa fa-plus-square-o" aria-hidden="true"
+                                   onclick="javascript:window.location.href='/#'"></i>
+                                {{--                                <input class="container-announcement-view" value="VIEW" onclick="javascript:window.location.href='/#'" >--}}
                             </td>
                         </tr>
-                    @endforeach
-                </table>
+                        <tr>
+                            <td style="color: #252733">February</td>
+                            <td>
+                                <input class="container-announcement-view" value="VIEW"
+                                       onclick="javascript:window.location.href='/#'">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">January</td>
+                            <td>
+                                <input class="container-announcement-view" value="VIEW"
+                                       onclick="javascript:window.location.href='/#'">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">February</td>
+                            <td>
+                                <input class="container-announcement-view" value="VIEW"
+                                       onclick="javascript:window.location.href='/#'">
+                            </td>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+{{--        MINEEEEEEEEEEEEEEEEEEEEE--}}
+
+{{--        container for the page content--}}
+{{--<div class="container">--}}
+{{--    <div class="container-title">--}}
+{{--        <p>All Pending Requests</p>--}}
+{{--    </div>--}}
+
+{{--    @if(Session::has('success'))--}}
+{{--        --}}{{--    This should be an alert--}}
+{{--        {{Session::get('success')}}--}}
+{{--    @endif--}}
+
+{{--    <div class="container-table">--}}
+{{--        <table id="table">--}}
+{{--            <tr>--}}
+{{--                <th>#</th>--}}
+{{--                <th>Lecturer Name</th>--}}
+{{--                <th>Lecturer Email</th>--}}
+{{--                <th>Respond</th>--}}
+{{--            </tr>--}}
+{{--            @php--}}
+{{--                $i = 1;--}}
+{{--            @endphp--}}
+{{--            @foreach($data as $userapplicationdata)--}}
+{{--                <tr>--}}
+{{--                    <td>{{$i++}}</td>--}}
+{{--                    <td>{{$userapplicationdata->lecturer_name}}</td>--}}
+{{--                    <td>{{$userapplicationdata->lecturer_email}}</td>--}}
+{{--                    <td>--}}
+{{--                        <a href="{{url('/office-assistant/user-application/approve-user-application/'.$userapplicationdata->id)}}"--}}
+{{--                           class="edit-btn">Approve</a>--}}
+{{--                        <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}"--}}
+{{--                           class="delete-btn">Disapprove</a>--}}
+{{--                    </td>--}}
+{{--                </tr>--}}
+{{--            @endforeach--}}
+{{--        </table>--}}
+{{--    </div>--}}
+{{--</div>--}}
+</div>
 </div>
 
 {{--all components are added/replaced/shown here--}}

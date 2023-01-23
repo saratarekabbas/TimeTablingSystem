@@ -55,12 +55,6 @@ Route::get('/', function () { //you need to change this later to make it go dire
     return view('welcome');
 });
 
-
-Route::get('/overview', function(){
-    return view('/overview');
-});
-
-
 //|--------------------------------------------------------------------------
 //|                               OFFICE ASSISTANT
 //|--------------------------------------------------------------------------
@@ -212,4 +206,8 @@ Route::get('/office-assistant/timetable/calendar-view/print-calendar', [PdfContr
 //----------------------------------------------------------------------------//
 
 // Office Admin's Dashboard
-Route::get('/office-assistant/overview', [LecturerController::class, 'index']);
+//Route::get('/office-assistant/overview', [LecturerController::class, 'index']);
+
+Route::get('/office-assistant/overview', function(){
+    return view('/office-assistant/overview');
+});
