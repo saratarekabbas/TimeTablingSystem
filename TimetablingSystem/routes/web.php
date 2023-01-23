@@ -50,6 +50,15 @@ Route::get('/registration-approved/{id}' , [LecturerController::class, 'approveR
 //Route for mailing: Registration Disapproved Email
 Route::get('/registration-disapproved/{id}' , [LecturerController::class, 'disapproveRegistrationRequest']);
 
+//----------------------------------------------------------------------------//
+// 4. Forgot Password & Reset Password
+//----------------------------------------------------------------------------//
+
+Route::get('/forgot-password', function(){
+    return view('/forgot-password');
+});
+
+
 
 //----------------------------------------------------------------------------//
 // 4. Other
