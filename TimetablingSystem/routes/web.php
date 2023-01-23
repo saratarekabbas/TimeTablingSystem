@@ -228,3 +228,22 @@ Route::get('/office-assistant/timetable/calendar-view/print-calendar', [PdfContr
 Route::get('/office-assistant/overview', function(){
     return view('/office-assistant/overview');
 });
+
+
+
+
+
+
+
+//|--------------------------------------------------------------------------
+//|                                  LECTURER
+//|--------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------//
+// 1. Overview
+//----------------------------------------------------------------------------//
+
+Route::get('/lecturer/overview', function(){
+    return view('/lecturer/overview');
+});

@@ -734,6 +734,115 @@ body {
 
 }
 
+/*-------------------------------------------*/
+/*             Lecturer Overview            */
+
+.container-bulletin p3{
+    font-family: Montserrat, 'Mulish';;
+    font-size:19px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    color: #9FA2B4;
+    margin-top: 24px;
+    display:block;
+}
+
+.container-bulletin p4{
+    font-family: Montserrat, 'Mulish';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 12px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #252733;
+    display:block;
+}
+.container-comingclass {
+    clear:both;
+}
+
+.container-comingclass,
+.container-comingclassvenue {
+    float: left;
+    margin-top: 57px;
+    margin-left: 30px;
+    height: 175px;
+    width: 546px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DFE0EB;
+    position: relative;
+    display:block;
+}
+
+
+.container-announcement-viewtimetableentity {
+    clear:both;
+    display:block;
+    float: left;
+    margin-top: 34px;
+    margin-left: 30px;
+/height: 336px;/
+height: auto;
+    width: 1122px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DFE0EB;
+    position: relative;
+}
+
+.container-table-timetableentity {
+    clear:both;
+    width:100%;
+    hight:100%;
+    float:left;
+    display: inline-block;
+    margin-top: 25px;
+/overflow: scroll;/
+padding-right: 25px;
+    padding-left: 25px;
+    max-height: 458px;
+    border-collapse: collapse;
+}
+
+.col-program,
+.col-course,
+col-venue,
+col-meeting,
+col-botton
+{
+    font-family: Montserrat, 'Mulish';
+    font-size:14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+.col-program{
+    width:350px;
+    color:#252733;
+}
+
+.col-course{
+    width:200px;
+    color:#9FA2B4;
+}
+
+.col-venue{
+    width:175px;
+    color:#9FA2B4;
+}
+.col-meeting{
+    width:300px;
+    color:#9FA2B4;
+}
+
+.col-botton{
+    width:80px;
+    color:#9FA2B4;
+}
 
 /*-------------------------------------------*/
 /*                  Footer                   */
