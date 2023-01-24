@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Lecturer;
 use App\Models\Program;
 use App\Models\PublicHoliday;
 use App\Models\Timetable;
+use App\Models\Venue;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Carbon;
+use League\CommonMark\Node\Inline\Newline;
 
 
 class TimetableController extends Controller
@@ -154,15 +157,15 @@ class TimetableController extends Controller
         foreach ($timetables as $timetable) {
             $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
             $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
+            $course_lecturer = Lecturer::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
+            $course_venue = Venue::where('id', '=', $timetable->venue_id)->first();
+
             $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
-
-
-//            dd($slots);
 
             if ($slots != NULL) {
                 for ($i = 0; $i < sizeof($slots); $i++) {
                     $meetings[] = [
-                        'title' => $course_code . ' - ' . $course_title,
+                        'title' => $course_code . ' - ' . $course_title . ' ' . nl2br($course_lecturer) . ' @' . nl2br($course_venue->venue_name . ', Level ' . $course_venue->venue_level . ', ' . $course_venue->venue_location),
                         'start' => $slots[$i] . ' 09:00:00',
                         'end' => $slots[$i] . ' 17:00:00',
                         'color' => '#E59308'
