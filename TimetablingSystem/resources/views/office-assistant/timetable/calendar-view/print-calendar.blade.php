@@ -23,36 +23,6 @@
 <body>
 
 {{--        container for the page content--}}
-
-
-@if(Session::has('success'))
-    {{--                This should be an alert--}}
-    {{Session::get('success')}}
-@endif
-
-
-
-{{--Modal--}}
-<div class="modal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">COURSE CODE - COURSE NAME</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>DATE TIME LECTURER PROGRAM VENUE MEETING NUMBER REMARKS.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="saveBtn" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <div id="calendar">
 
 </div>
@@ -61,7 +31,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-
 <script>
     $(document).ready(function () {
         var meetings = @json($meetings);
@@ -70,8 +39,6 @@
                 left: 'prev,next, today',
                 center: 'title',
                 right: 'month, agendaWeek, agendaDay'
-
-
             },
             events: meetings,
             selectable: true,
@@ -80,11 +47,9 @@
             select: function (start, end, allDays) {
                 $('.modal').modal('toggle');
             },
-
         })
-    }) ;
+    });
 </script>
-
 
 {{--all components are added/replaced/shown here--}}
 {{--{{$slot}}--}}
