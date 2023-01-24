@@ -9,14 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    {{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetabling System</title>
 </head>
 <body>
 
 <div class="row">
     <div class="column side">
-        <img src="/public/TtS-Logo.png" alt="TtS Logo">
+        <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"

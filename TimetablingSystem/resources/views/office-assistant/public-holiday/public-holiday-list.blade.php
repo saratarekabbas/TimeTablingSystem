@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    {{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Public Holiday List</title>
 </head>
 <body>
