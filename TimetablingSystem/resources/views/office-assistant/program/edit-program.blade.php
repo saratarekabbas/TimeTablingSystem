@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetabling System</title>
 </head>
 <body>
@@ -19,7 +19,8 @@
         <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -32,39 +33,63 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
+        <a href="/login">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
     </div>
 
     <div class="column right">
         <div class="header">
             <p1>
                 Programs
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p1>
-            <p2>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <p2>Office Assistant
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p2>
         </div>
-
-
+        <div class="success-message">
+            @if(Session::has('success'))
+                {{Session::get('success')}}
+            @endif
+        </div>
         {{--        container for the page content--}}
         <div class="container-program">
-            <p1>Create a New Program</p1>
+            <p1>Edit Program</p1>
+            <a href="/office-assistant/program/program-list">
+                <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
+            </a>
             <div class="container-table-program">
-                <table>
-                    <col class="col-itemname" />
-                    <col class="col-inputbox" />
-                    <tr>
-                        <td style="color: #252733">Program Name</td>
-                        <td ><input type="text" class="create-edit-inputbox" placeholder="Program Name" name="Program Name"></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #252733">Program Code</td>
-                        <td style="color: #9FA2B4"><input type="text" class="create-edit-inputbox" placeholder="Program Code" name="Program Code"></td>
-                    </tr>
-                </table>
-                {{--                <input class="container-create-btn" value="CREATE">--}}
-                <a href="#" class="create-edit-btn">CREATE</a>
+                <form method="post" action="{{url('/office-assistant/program/update-program')}}">
+                    {{--                    in laravel we want to use crf token, this is why we pass it--}}
+                    @csrf
+                    <input type="hidden" name="id" value="{{$data->id}}">
+
+                    <table>
+                        <col class="col-itemname"/>
+                        <col class="col-inputbox"/>
+                        <tr>
+                            <td style="color: #252733">Program Name</td>
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Program Name" name="program_name"
+                                                          value="{{$data->program_name}}">
+                                @error('program_name')
+                                {{$message}}
+                                @enderror</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">Program Code</td>
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Program Code" name="program_code"
+                                                          value="{{$data->program_code}}">
+                                @error('program_code')
+                                {{$message}}
+                                @enderror
+                        </tr>
+                    </table>
+                    {{--                <input class="container-create-btn" value="CREATE">--}}
+                    <button type="submit" class="create-edit-btn">UPDATE</button>
+
+                </form>
             </div>
         </div>
     </div>
@@ -102,7 +127,7 @@
 
 
 {{--<form method="post" action="{{url('/office-assistant/program/update-program')}}">--}}
-{{--    --}}{{--    in laravel we want to use crf token, this is why we pass it--}}
+{{--    in laravel we want to use crf token, this is why we pass it--}}
 {{--    @csrf--}}
 {{--    <input type="hidden" name="id" value="{{$data->id}}">--}}
 
@@ -121,8 +146,8 @@
 {{--    <br>--}}
 
 {{--    <label>Program Package: </label>--}}
-{{--    <input type="checkbox" name="program_package[]" value="package1">Package 1<br   />--}}
-{{--    <input type="checkbox" name="program_package[]" value="package2">Package 2<br   />--}}
+{{--    <input type="checkbox" name="program_package[]" value="package1">Package 1<br/>--}}
+{{--    <input type="checkbox" name="program_package[]" value="package2">Package 2<br/>--}}
 {{--    @error('program_package')--}}
 {{--    {{$message}}--}}
 {{--    @enderror--}}

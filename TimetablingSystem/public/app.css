@@ -103,7 +103,7 @@ body {
 }
 
 .fa-sign-out{
-    margin-top: 325px;
+    /*margin-bottom: 325px;*/
 }
 /* Change color on hover */
 .column.side a:hover {
