@@ -33,7 +33,7 @@
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
         <a href="/login">
-            <i class="fa fa-cog" aria-hidden="true"></i>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
             Logout</a>
 
     </div>

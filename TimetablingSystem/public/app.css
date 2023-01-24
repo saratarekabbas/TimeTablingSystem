@@ -22,11 +22,20 @@ body {
 
 /*Header*/
 /* Style the header */
+
+
 .header {
     background-color: #f1f1f1;
     padding: 10px;
     text-align: right;
+    height:auto;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Montserrat, 'Mulish';
 }
+
+
+
 
 /*Side Nav-Bar*/
 
@@ -93,7 +102,7 @@ body {
     padding-right: 20px;
 }
 
-.fa-cog{
+.fa-sign-out{
     margin-top: 325px;
 }
 /* Change color on hover */
@@ -445,6 +454,7 @@ body {
     margin-left: 30px;
 /
 }
+
 
 .header p2 {
     float: right;
