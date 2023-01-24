@@ -1,6 +1,4 @@
-{{--This Page Contains the list of all public holidays--}}
-
-    <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,7 +17,8 @@
         <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -46,29 +45,54 @@
             </p2>
         </div>
 
-
-        {{--        container for the page content--}}
         <div class="container-program">
             <p1>Add a New Public Holiday</p1>
+
+            @if(Session::has('success'))
+               {{Session::get('success')}}
+            @endif
+
             <div class="container-table-program">
-                <table>
-                    <col class="col-itemname" />
-                    <col class="col-inputbox" />
-                    <tr>
-                        <td style="color: #252733">Public Holiday Name</td>
-                        <td ><input type="text" class="create-edit-inputbox" placeholder="Public Holiday Title" name="Public Holiday Name"></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #252733">Public Holiday Start Date</td>
-                        <td style="color: #9FA2B4"><input type="date" class="create-edit-inputbox" placeholder="YYYY/MM/DD" name="Public Holiday Start Date"></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #252733">Public Holiday End Date</td>
-                        <td style="color: #9FA2B4"><input type="date" class="create-edit-inputbox" placeholder="YYYY/MM/DD" name="Public Holiday End Date"></td>
-                    </tr>
-                </table>
-                {{--                <input class="container-create" value="CREATE">--}}
-                <a href="#" class="create-edit-btn">CREATE</a>
+                <form method="post" action="{{url('/office-assistant/public-holiday/save-public-holiday')}}">
+                    {{--    in laravel we want to use crf token, this is why we pass it--}}
+                    @csrf
+                    <table>
+                        <col class="col-itemname"/>
+                        <col class="col-inputbox"/>
+                        <tr>
+                            <td style="color: #252733">Public Holiday Name</td>
+                            <td><input type="text" class="create-edit-inputbox" placeholder="Public Holiday Title"
+                                       name="public_holiday_title" value="{{old('public_holiday_title')}}">
+                                @error('public_holiday_title')
+                                {{$message}}
+                                @enderror</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">Public Holiday Start Date</td>
+                            <td style="color: #9FA2B4"><input type="date" class="create-edit-inputbox"
+                                                              placeholder="YYYY/MM/DD" name="public_holiday_start_date"
+                                                              value="{{old('public_holiday_start_date')}}">
+                                @error('public_holiday_start_date')
+                                {{$message}}
+                                @enderror
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">Public Holiday End Date</td>
+                            <td style="color: #9FA2B4"><input type="date" class="create-edit-inputbox"
+                                                              placeholder="YYYY/MM/DD" name="public_holiday_end_date"
+                                                              value="{{old('public_holiday_end_date')}}">
+                                @error('public_holiday_end_date')
+                                {{$message}}
+                                @enderror
+                            </td>
+                        </tr>
+
+                    </table>
+                    <button type="submit" class="create-edit-btn">CREATE</button>
+                    <a class="create-edit-btn" href="{{url('/office-assistant/public-holiday/public-holiday-list')}}">Back</a>
+                </form>
+
             </div>
         </div>
     </div>
@@ -85,23 +109,6 @@
 
 {{--MY LOGIC--}}
 
-{{--<!doctype html>--}}
-{{--<html lang="en">--}}
-{{--<head>--}}
-{{--    <meta charset="UTF-8">--}}
-{{--    <meta name="viewport"--}}
-{{--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">--}}
-{{--    <meta http-equiv="X-UA-Compatible" content="ie=edge">--}}
-{{--    <title>Add Public Holiday</title>--}}
-{{--</head>--}}
-{{--<body>--}}
-{{--<h1>Add a New Public Holiday</h1>--}}
-
-{{--This means, display success messge if an item is added successfullyS--}}
-{{--@if(Session::has('success'))--}}
-{{--    --}}{{--    This should be an alert--}}
-{{--    {{Session::get('success')}}--}}
-{{--@endif--}}
 
 {{--<form method="post" action="{{url('/office-assistant/public-holiday/save-public-holiday')}}">--}}
 {{--    --}}{{--    in laravel we want to use crf token, this is why we pass it--}}
@@ -134,5 +141,3 @@
 
 {{--    <a href="{{url('/office-assistant/public-holiday/public-holiday-list')}}">Back</a>--}}
 {{--</form>--}}
-{{--</body>--}}
-{{--</html>--}}
