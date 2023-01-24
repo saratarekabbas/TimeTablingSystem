@@ -7,6 +7,8 @@ use App\Models\Program;
 use App\Models\PublicHoliday;
 use App\Models\Timetable;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class TimetableController extends Controller
 {
@@ -177,4 +179,61 @@ class TimetableController extends Controller
 //        return view('/office-assistant/timetable/calendar-view/view-calendar');
 //    }
 
+
+//PRINT / EXPORT
+//    public function export()
+//    {
+//        $timetable = Timetable::all();
+//
+//        $pdf = Pdf::LoadView('print-calendar', compact('timetable'));
+//        return $pdf->download('timetable.pdf');
+//    }
+
+
+    public function export()
+    {
+
+        $meetings = array();
+
+//        Public Holiday calendar Display
+        $publicHolidays = PublicHoliday::all();
+        foreach ($publicHolidays as $publicHoliday) {
+            $meetings[] = [
+                'title' => $publicHoliday->public_holiday_title,
+                'start' => $publicHoliday->public_holiday_start_date . ' 00:00:00',
+                'end' => $publicHoliday->public_holiday_end_date . ' 23:59:59',
+            ];
+        }
+
+//        Timetable calendar display
+        $timetables = Timetable::all();
+        $slots[] = array();
+        foreach ($timetables as $timetable) {
+            $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
+            $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
+            $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
+
+
+
+//            dd($slots);
+
+            if ($slots != NULL) {
+                for ($i = 0; $i < sizeof($slots); $i++) {
+                    $meetings[] = [
+                        'title' => $course_code .' - ' . $course_title,
+                        'start' => $slots[$i]. ' 09:00:00',
+                        'end' => $slots[$i] . ' 17:00:00',
+                        'color' => '#E59308'
+                    ];
+                }
+            }
+            unset($slot);
+        }
+
+//        ////////
+
+//        $pdf = Pdf::LoadView('/office-assistant/timetable/calendar-view/view-calendar', compact(['meetings' => $meetings]));
+        $pdf = Pdf::LoadView('/office-assistant/timetable/calendar-view/view-calendar', ['meetings' => $meetings]);
+        return $pdf->download('timetable.pdf');
+    }
 }

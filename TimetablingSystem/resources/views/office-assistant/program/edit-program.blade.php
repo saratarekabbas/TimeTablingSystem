@@ -65,7 +65,6 @@
                 </table>
                 {{--                <input class="container-create-btn" value="CREATE">--}}
                 <a href="#" class="create-edit-btn">CREATE</a>
-
             </div>
         </div>
     </div>

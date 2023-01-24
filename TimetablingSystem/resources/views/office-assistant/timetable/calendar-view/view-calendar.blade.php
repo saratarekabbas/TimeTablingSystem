@@ -59,7 +59,7 @@
             </div>
 
             <div class="container-heading">
-                <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Print</a>
+                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/export')}}" class="container-action-btns">Print</a>
 
             </div>
 

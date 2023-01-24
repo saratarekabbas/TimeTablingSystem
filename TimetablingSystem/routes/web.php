@@ -215,7 +215,9 @@ Route::get('/office-assistant/timetable/calendar-view/view-calendar', [Timetable
 // Print timetable
 //---------------------MODIFY THE ROUTE
 
-Route::get('/office-assistant/timetable/calendar-view/print-calendar', [PdfController::class, 'index']);
+//Route::get('/office-assistant/timetable/calendar-view/print-calendar', [PdfController::class, 'index']);
+Route::get('/office-assistant/timetable/calendar-view/view-calendar/print-calendar', [TimetableController::class, 'calendarIndex']);
+Route::get('/office-assistant/timetable/calendar-view/view-calendar/export', [TimetableController::class, 'export']);
 
 
 //----------------------------------------------------------------------------//
