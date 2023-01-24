@@ -93,6 +93,9 @@ body {
     padding-right: 20px;
 }
 
+.fa-cog{
+    margin-top: 325px;
+}
 /* Change color on hover */
 .column.side a:hover {
     background-color: #861A3F;
@@ -455,6 +458,8 @@ body {
     clear-after: right;
 }
 
+
+
 .container-bulletin1 {
     clear: both;
 }
@@ -623,11 +628,16 @@ body {
 
 /-------------------------------------------------/
     /*                   create/Update UI              */
+
+
+
 .container-program {
     clear: both;
+}
+.container-program {
     display: block;
     float: left;
-    margin-top: 57px;
+    margin-top: 30px;
     margin-left: 30px;
     height: auto;
     width: 1194px;
@@ -635,10 +645,27 @@ body {
     border-radius: 8px;
     border: 1px solid #DFE0EB;
     position: relative;
+    display: block;
+}
+.success-message{
+    clear: both;
+    float: left;
+    width:1189px;
+    height:auto;
+    border-radius: 3px;
+    margin-left: 32px;
+    line-height: 36px;
+    font-family: 'roboto';
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    color: #000000;
+    background: #C9FFC8;
+    padding-left: 29px;
+    margin-top: 27px;
 }
 
 .container-program p1 {
-    font-family: Montserrat, 'Mulish';;
+    font-family: Montserrat, 'Mulish';
     font-size: 19px;
     float: left;
     margin-left: 32px;
@@ -649,6 +676,14 @@ body {
     margin-top: 32px;
 }
 
+.container-program i{
+    float: right;
+    margin-top: 32px;
+    margin-right: 32px;
+    font-size: 19px;
+    font-weight: 700;
+    color:#000000;
+}
 .container-table-program {
     clear: both;
     width: 1194px;
@@ -709,9 +744,9 @@ body {
 
 
 /* Change color on hover */
-.container-program tr:hover {
-    background-color: #E59308;
-}
+/*.container-program tr:hover {*/
+/*    background-color: #E59308;*/
+/*}*/
 
 .create-edit-btn {
     height: 48px;
@@ -784,8 +819,7 @@ body {
     float: left;
     margin-top: 34px;
     margin-left: 30px;
-/height: 336px;/
-height: auto;
+    height: auto;
     width: 1122px;
     background-color: #FFFFFF;
     border-radius: 8px;
