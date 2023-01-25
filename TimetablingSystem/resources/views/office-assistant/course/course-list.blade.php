@@ -53,6 +53,8 @@
 
 
                 <h5>FILTER BY PROGRAM</h5>
+
+                <a href="{{url('/office-assistant/course/course-list/')}}">All Programs</a>
                 @foreach($programs as $program)
                     <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}
                         - {{$program->program_name}}</a>
