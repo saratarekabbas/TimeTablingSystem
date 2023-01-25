@@ -45,6 +45,7 @@
 
         </div>
 
+
         {{--        container for the page content--}}
         <div class="container">
             <div class="container-title">
@@ -56,10 +57,12 @@
                     a New Public Holiday</a>
             </div>
 
-            @if(Session::has('success'))
-                {{--    This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
+            <div class="success-message">
+                @if(Session::has('success'))
+                    {{--    This should be an alert--}}
+                    {{Session::get('success')}}
+                @endif
+            </div>
 
             <div class="container-table">
                 <table id="table">

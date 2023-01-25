@@ -33,18 +33,19 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
+        <a href="/login">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
     </div>
 
     <div class="column right">
         <div class="header">
             <p1>
                 Overview
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p1>
-            <p2>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </p2>
+            <p>Office Assistant
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
+            </p>
         </div>
 
         {{--        ////////////////////--}}

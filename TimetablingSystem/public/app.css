@@ -167,6 +167,7 @@ body {
 }
 
 .container-table {
+    clear:both;
     overflow: scroll;
     padding-right: 25px;
     padding-left: 25px;
@@ -195,6 +196,7 @@ body {
 .container-table table {
     border-collapse: collapse;
     width: 99%;
+    margin-top: 30px;
 
 }
 
@@ -650,17 +652,22 @@ body {
     margin-top: 30px;
     margin-left: 30px;
     height: auto;
+    max-height: 600px;
     width: 1194px;
     background-color: #FFFFFF;
     border-radius: 8px;
     border: 1px solid #DFE0EB;
     position: relative;
     display: block;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 .success-message{
     clear: both;
+}
+.success-message{
     float: left;
-    width:1189px;
+    width:90%;
     height:auto;
     border-radius: 3px;
     margin-left: 32px;
@@ -672,6 +679,9 @@ body {
     background: #C9FFC8;
     padding-left: 29px;
     margin-top: 27px;
+}
+.success-message{
+    clear: right;
 }
 
 .container-program p1 {
@@ -689,14 +699,14 @@ body {
 .container-program i{
     float: right;
     margin-top: 32px;
-    margin-right: 32px;
+    margin-right: 40px;
     font-size: 19px;
     font-weight: 700;
     color:#000000;
 }
 .container-table-program {
     clear: both;
-    width: 1194px;
+    width: 99%;
     hight: 100%;
     float: left;
     display: inline-block;
@@ -721,7 +731,7 @@ body {
 }
 
 .col-inputbox {
-    width: 912px;
+    width: 900px;
     color: #9FA2B4;
 }
 
@@ -844,8 +854,7 @@ body {
     float:left;
     display: inline-block;
     margin-top: 25px;
-/overflow: scroll;/
-padding-right: 25px;
+    padding-right: 25px;
     padding-left: 25px;
     max-height: 458px;
     border-collapse: collapse;

@@ -55,20 +55,40 @@
 
 
                 <h5>FILTER BY PROGRAM</h5>
-                @foreach($programs as $program)
-                    <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}
-                        - {{$program->program_name}}</a>
-                @endforeach
+{{--                @foreach($programs as $program)--}}
+{{--                    <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}--}}
+{{--                        - {{$program->program_name}}</a>--}}
+{{--                @endforeach--}}
+
+                @php
+                    $programs = \App\Models\Program::all();
+                @endphp
+                <select class="create-edit-inputbox" placeholder="Program" name="program_id">
+                    @foreach($programs as $program)
+                        <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}
+                            <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}
+                                - {{$program->program_name}}
+                            </a>
+                        </option>
+
+{{--                        <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}--}}
+{{--                            - {{$program->program_name}}--}}
+{{--                        <option value="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}} - {{$program->program_name}}</option>--}}
+{{--                        </a>--}}
+                    @endforeach
+                </select>
 
 
                 <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New
                     Course</a>
             </div>
 
-            @if(Session::has('success'))
-                {{--    This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
+            <div class="success-message">
+                @if(Session::has('success'))
+                    {{--    This should be an alert--}}
+                    {{Session::get('success')}}
+                @endif
+            </div>
 
             <div class="container-table">
                 <table id="table">

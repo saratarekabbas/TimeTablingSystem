@@ -54,10 +54,12 @@
                 <a href="{{url('/office-assistant/program/add-program')}}" class="container-action-btns">Add a New Program</a>
             </div>
 
-            @if(Session::has('success'))
-                {{--    This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
+            <div class="success-message">
+                @if(Session::has('success'))
+                    {{--    This should be an alert--}}
+                    {{Session::get('success')}}
+                @endif
+            </div>
 
             <div class="container-table">
                 <table id="table">

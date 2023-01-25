@@ -160,7 +160,7 @@
 {{--{{$slot}}--}}
 
 {{--footer--}}
-{{--<div class="footer">Created by SSZ Solutions. © 2023</div>--}}
+<div class="footer">Created by SSZ Solutions. © 2023</div>
 
 </body>
 </html>
