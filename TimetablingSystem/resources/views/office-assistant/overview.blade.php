@@ -106,23 +106,22 @@
                 <a href="/office-assistant/user-application/user-application-list">View All</a>
                 <div class="container-table-officeassistantoverview">
                     <table>
+
                         <col class="col1"/>
                         <col class="col2"/>
-                        <tr>
-                            <td style="color: #252733">January</td>
-                            <td style="color: #9FA2B4">$100</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">February</td>
-                            <td style="color: #9FA2B4">$80</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">January</td>
-                            <td style="color: #9FA2B4">$100</td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">February</td>
-                            <td style="color: #9FA2B4">$80</td>
+                        @php
+                            $lecturers = \App\Models\Lecturer::all();
+                        @endphp
+
+                        @foreach($lecturers as $lecturer)
+                            @if($lecturer->lecturer_registration_status == 'pending')
+
+                                <tr>
+                                    <td style="color: #252733">{{$lecturer->lecturer_name}}</td>
+                                    <td style="color: #9FA2B4">{{$lecturer->created_at->toDateString()}}</td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </table>
                 </div>
             </div>
@@ -131,36 +130,19 @@
                 <a href="/office-assistant/program/program-list">View All</a>
                 <div class="container-table-officeassistantoverview">
                     <table>
-                        <col class="col1"/>
-                        <col class="col2"/>
-                        <tr>
-                            <td style="color: #C5C7CD">Add a new program</td>
-                            <td>
-                                <i class="fa fa-plus-square-o" aria-hidden="true"
-                                   onclick="javascript:window.location.href='/#'"></i>
-                                {{--                                <input class="container-announcement-view" value="VIEW" onclick="javascript:window.location.href='/#'" >--}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">February</td>
-                            <td>
-                                <input class="container-announcement-view" value="VIEW"
-                                       onclick="javascript:window.location.href='/#'">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">January</td>
-                            <td>
-                                <input class="container-announcement-view" value="VIEW"
-                                       onclick="javascript:window.location.href='/#'">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">February</td>
-                            <td>
-                                <input class="container-announcement-view" value="VIEW"
-                                       onclick="javascript:window.location.href='/#'">
-                            </td>
+{{--                        <col class="col1"/>--}}
+{{--                        <col class="col2"/>--}}
+
+
+                        @php
+                            $programs = \App\Models\Program::all();
+                        @endphp
+
+                        @foreach($programs as $program)
+                                <tr>
+                                    <td style="color: #252733"><li>{{$program->program_code}} - {{$program->program_name}}</li></td>
+                                </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
@@ -168,52 +150,6 @@
     </div>
 </div>
 
-
-{{--        MINEEEEEEEEEEEEEEEEEEEEE--}}
-
-{{--        container for the page content--}}
-{{--<div class="container">--}}
-{{--    <div class="container-title">--}}
-{{--        <p>All Pending Requests</p>--}}
-{{--    </div>--}}
-
-{{--    @if(Session::has('success'))--}}
-{{--        --}}{{--    This should be an alert--}}
-{{--        {{Session::get('success')}}--}}
-{{--    @endif--}}
-
-{{--    <div class="container-table">--}}
-{{--        <table id="table">--}}
-{{--            <tr>--}}
-{{--                <th>#</th>--}}
-{{--                <th>Lecturer Name</th>--}}
-{{--                <th>Lecturer Email</th>--}}
-{{--                <th>Respond</th>--}}
-{{--            </tr>--}}
-{{--            @php--}}
-{{--                $i = 1;--}}
-{{--            @endphp--}}
-{{--            @foreach($data as $userapplicationdata)--}}
-{{--                <tr>--}}
-{{--                    <td>{{$i++}}</td>--}}
-{{--                    <td>{{$userapplicationdata->lecturer_name}}</td>--}}
-{{--                    <td>{{$userapplicationdata->lecturer_email}}</td>--}}
-{{--                    <td>--}}
-{{--                        <a href="{{url('/office-assistant/user-application/approve-user-application/'.$userapplicationdata->id)}}"--}}
-{{--                           class="edit-btn">Approve</a>--}}
-{{--                        <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}"--}}
-{{--                           class="delete-btn">Disapprove</a>--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--            @endforeach--}}
-{{--        </table>--}}
-{{--    </div>--}}
-{{--</div>--}}
-</div>
-</div>
-
-{{--all components are added/replaced/shown here--}}
-{{--{{$slot}}--}}
 
 {{--footer--}}
 <div class="footer">Created by SSZ Solutions. © 2023</div>
