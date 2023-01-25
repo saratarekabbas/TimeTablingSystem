@@ -212,8 +212,10 @@ Route::get('/office-assistant/timetable/calendar-view/view-calendar/{id}', [Time
 // Print timetable
 //---------------------MODIFY THE ROUTE
 
-Route::get('/office-assistant/timetable/calendar-view/view-calendar/print-calendar', [TimetableController::class, 'calendarIndex']);
-Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'export']);
+//Print All Timetable Entities
+Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'exportAll']);
+//Print for a Specific Program
+Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
 
 
 //----------------------------------------------------------------------------//

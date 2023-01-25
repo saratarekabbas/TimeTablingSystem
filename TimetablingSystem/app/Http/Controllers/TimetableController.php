@@ -217,11 +217,25 @@ class TimetableController extends Controller
     }
 
 //    Export Function for timetable (office assistant view)
-    public function export()
+//    public function export()
+//    {
+//        $timetable = Timetable::get();
+//        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
+//        return $pdf->download('timetable.pdf');
+//    }
+
+    public function exportAll()
     {
         $timetable = Timetable::get();
         $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
         return $pdf->download('timetable.pdf');
     }
 
+    public function export($id)
+    {
+        $findProgram = Program::where('id', $id)->first();
+        $timetable = Timetable::where('program_id', $findProgram->id)->get();
+        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
+        return $pdf->download('timetable.pdf');
+    }
 }

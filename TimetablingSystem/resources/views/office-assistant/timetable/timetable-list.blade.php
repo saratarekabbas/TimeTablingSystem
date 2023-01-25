@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-{{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
+    {{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
     <title>Timetable Entities</title>
 </head>
 <body>
@@ -58,19 +58,35 @@
             @endforeach
 
 
-
             <div class="container-heading">
                 <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New
                     Timetable Entity</a>
                 <br><br><br>
-                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar')}}" class="container-action-btns">View Timetable</a>
+                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar')}}"
+                   class="container-action-btns">View Timetable</a>
                 <br><br><br>
-                <div class="container-heading">
-                    <a href="{{url('/office-assistant/timetable/print-timetable/export')}}"
-                       class="container-action-btns">Print</a>
-                </div>
 
+                {{--                PRINTS--}}
+                {{--            PRINT ALL TIMETABLE ENTITIES    --}}
+
+
+                <a href="{{url('/office-assistant/timetable/print-timetable/export/')}}"
+                   class="container-action-btns">Print All</a>
+
+                <br> <br> <br>
+                @php
+                    $programs = \App\Models\Program::all();
+                @endphp
+                @foreach($programs as $program)
+                    <a href="{{url('/office-assistant/timetable/print-timetable/export/'.$program->id)}}"
+                       class="container-action-btns">Print {{$program->program_code}}
+                        - {{$program->program_name}} </a>
+
+                    <br><br><br>
+                @endforeach
             </div>
+
+
 
             @if(Session::has('success'))
                 This should be an alert
