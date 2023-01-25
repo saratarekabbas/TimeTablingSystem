@@ -177,111 +177,12 @@ class TimetableController extends Controller
         return view('/office-assistant/timetable/calendar-view/view-calendar', ['meetings' => $meetings]);
     }
 
-//    public function calendarIndex()
-//    {
-//        return view('/office-assistant/timetable/calendar-view/view-calendar');
-//    }
-
-
-//PRINT / EXPORT
-//    public function export()
-//    {
-//        $timetable = Timetable::all();
-//
-//        $pdf = Pdf::LoadView('print-calendar', compact('timetable'));
-//        return $pdf->download('timetable.pdf');
-//    }
-
-
+//    Export Function for timetable (office assistant view)
     public function export()
     {
-
-        $meetings = array();
-
-//        Public Holiday calendar Display
-        $publicHolidays = PublicHoliday::all();
-        foreach ($publicHolidays as $publicHoliday) {
-            $meetings[] = [
-                'title' => $publicHoliday->public_holiday_title,
-                'start' => $publicHoliday->public_holiday_start_date . ' 00:00:00',
-                'end' => $publicHoliday->public_holiday_end_date . ' 23:59:59',
-            ];
-        }
-
-//        Timetable calendar display
-        $timetables = Timetable::all();
-        $slots[] = array();
-        foreach ($timetables as $timetable) {
-            $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
-            $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
-            $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
-
-
-
-//            dd($slots);
-
-            if ($slots != NULL) {
-                for ($i = 0; $i < sizeof($slots); $i++) {
-                    $meetings[] = [
-                        'title' => $course_code .' - ' . $course_title,
-                        'start' => $slots[$i]. ' 09:00:00',
-                        'end' => $slots[$i] . ' 17:00:00',
-                        'color' => '#E59308'
-                    ];
-                }
-            }
-            unset($slot);
-        }
-
-//        ////////
-
-//        $pdf = Pdf::LoadView('/office-assistant/timetable/calendar-view/view-calendar', compact(['meetings' => $meetings]));
-        $pdf = Pdf::LoadView('/office-assistant/timetable/calendar-view/print-calendar', ['meetings' => $meetings]);
+        $timetable = Timetable::get();
+        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
         return $pdf->download('timetable.pdf');
     }
-
-//    public function export()
-//    {
-//        $timetables = Timetable::get();
-//
-//        $publicholidays = PublicHoliday::get();
-//
-//        $startdate = '0000-00-00';
-//        $enddate = '0000-00-00';
-//
-//        foreach ($timetables->slots as $slot) {
-//            if ($slot < $startdate) {
-//                $startdate = $slot;
-//            }
-//
-//            if ($slot > $enddate) {
-//                $enddate = $slot;
-//            }
-//        }
-//
-//        foreach ($publicholidays as $publicholiday) {
-//            if ($publicholiday->public_holiday_start_date < $startdate) {
-//                $startdate = $publicholiday->public_holiday_start_date;
-//            }
-//
-//            if ($publicholiday->public_holiday_start_date > $enddate) {
-//                $enddate = $publicholiday->public_holiday_start_date;
-//            }
-//
-//            if ($publicholiday->public_holiday_end_date < $startdate) {
-//                $startdate = $publicholiday->public_holiday_end_date;
-//            }
-//
-//            if ($publicholiday->public_holiday_end_date > $enddate) {
-//                $enddate = $publicholiday->public_holiday_end_date;
-//            }
-//        }
-//
-////        $startday = Carbon::createFromFormat('Y/m/d', $startdate)->format('l'); //Saturday
-////        $endday = Carbon::createFromFormat('Y/m/d', $enddate)->format('l'); //Saturday
-//
-//        $pdf = Pdf::LoadView('/office-assistant/timetable/calendar-view/print-calendar', compact('timetables', 'startdate', 'enddate'));
-//        return $pdf->download('timetable.pdf');
-//    }
 
 }

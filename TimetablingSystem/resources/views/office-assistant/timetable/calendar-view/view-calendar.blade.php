@@ -55,11 +55,6 @@
                 <p>Calendar View</p>
             </div>
 
-            <div class="container-heading">
-                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/export')}}"
-                   class="container-action-btns">Print</a>
-            </div>
-
             @if(Session::has('success'))
                 {{--                This should be an alert--}}
                 {{Session::get('success')}}

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+{{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
     <title>Timetable Entities</title>
 </head>
 <body>
@@ -53,6 +53,11 @@
                     Timetable Entity</a>
                 <br><br><br>
                 <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar')}}" class="container-action-btns">View Timetable</a>
+                <br><br><br>
+                <div class="container-heading">
+                    <a href="{{url('/office-assistant/timetable/print-timetable/export')}}"
+                       class="container-action-btns">Print</a>
+                </div>
 
             </div>
 
