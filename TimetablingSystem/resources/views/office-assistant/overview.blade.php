@@ -54,19 +54,50 @@
         <div class="container-bulletin">
             <div class="container-bulletin1">
                 <p1> Total Lecturers</p1>
-                <p2> 60</p2>
+
+                @php
+                    $lecturers = \App\Models\Lecturer::all();
+                    $i = 0;
+                foreach($lecturers as $lecturer){
+                    if($lecturer->lecturer_registration_status == 'approved'){
+                        $i++;
+                    }
+                }
+                @endphp
+                <p2> {{$i}}</p2>
             </div>
             <div class="container-bulletin2">
                 <p1> Total Programs</p1>
-                <p2> 60</p2>
+                @php
+                    $programs = \App\Models\Program::all();
+                    $i = 0;
+                foreach($programs as $program){
+                        $i++;
+                }
+                @endphp
+                <p2> {{$i}}</p2>
             </div>
             <div class="container-bulletin3">
                 <p1> Total Venues</p1>
-                <p2> 60</p2>
+                @php
+                    $venues = \App\Models\Venue::all();
+                    $i = 0;
+                foreach($venues as $venue){
+                        $i++;
+                }
+                @endphp
+                <p2> {{$i}}</p2>
             </div>
             <div class="container-bulletin4">
                 <p1> Total Courses</p1>
-                <p2> 60</p2>
+                @php
+                    $courses = \App\Models\Course::all();
+                    $i = 0;
+                foreach($courses as $course){
+                        $i++;
+                }
+                @endphp
+                <p2> {{$i}}</p2>
             </div>
         </div>
         <div class="container-announcement">

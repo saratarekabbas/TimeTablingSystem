@@ -520,13 +520,7 @@ body {
 .container-bulletin2:hover,
 .container-bulletin3:hover,
 .container-bulletin4:hover {
-    color: #E59308;
     border: 4px solid #E59308;
-}
-
-.container-bulletin p1:hover,
-.container-bulletin p2:hover {
-    color: #E59308;
 }
 
 .container-announcement1 {
@@ -785,8 +779,6 @@ body {
     display: inline-block;
     font-family: 'Roboto';
     font-weight: 500;
-
-
 }
 
 /*-------------------------------------------*/
@@ -814,6 +806,7 @@ body {
     color: #252733;
     display:block;
 }
+
 .container-comingclass {
     clear:both;
 }
