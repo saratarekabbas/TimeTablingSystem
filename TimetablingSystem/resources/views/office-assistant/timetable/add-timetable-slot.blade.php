@@ -26,8 +26,6 @@
     <ol>
         @for($i = 1; $i<= $meetings_number; $i++)
            <li> <input type="date" name="slots[]"></li>
-{{--        YA EMMA HATE#MELEEHA KEDA W T7OTTI START W END DATE YA EMMA HAN-HARD CODE BA2A... LET'S SEE HOW THIS GOES--}}
-{{--           <li> <input type="datetime-local" name="slots[]"></li> --}}
         @endfor
     </ol>
     @error('slots')

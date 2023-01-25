@@ -165,7 +165,7 @@
                                     <a href="{{url('/office-assistant/timetable/add-timetable-slot/'.$timetabledata->id)}}"
                                        class="delete-btn">Add Slots</a>
                                 @else
-                                    <a href="{{url('/office-assistant/timetable/edit-timetable-slots/'.$timetabledata->id)}}"
+                                    <a href="{{url('/office-assistant/timetable/edit-timetable-slot/'.$timetabledata->id)}}"
                                        class="delete-btn">Edit Slots</a>
                                 @endif
                             </td>

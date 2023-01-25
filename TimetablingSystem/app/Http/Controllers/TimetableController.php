@@ -111,6 +111,32 @@ class TimetableController extends Controller
         return redirect()->back()->with('success', 'Successful: Timetable entity has been updated successfully');
     }
 
+    public function editTimetableSlot($id)
+    {
+        $timetable = Timetable::where('id', '=', $id)->first();
+        $meetings_number = Course::where('id', '=', $timetable->course_id)->first()->number_of_meetings;
+
+        return view('/office-assistant/timetable/edit-timetable-slot', compact('timetable', 'meetings_number'));
+    }
+
+    public function updateTimetableSlot(Request $request)
+    {
+        //        Validation
+        $request->validate([
+            'slots' => 'required',
+        ]);
+
+        $id = $request->id;
+        $slots = $request->slots;
+
+//        Create the update query by calling our Course Eloquent Model
+        Timetable::where('id', '=', $id)->update([
+
+            'slots' => $slots,
+        ]);
+
+        return redirect()->back()->with('success', 'Successful: Timetable entity has been updated successfully');
+    }
 
     public function deleteTimetable($id)
     {
