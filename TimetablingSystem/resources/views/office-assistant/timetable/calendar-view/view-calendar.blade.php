@@ -55,6 +55,18 @@
                 <p>Calendar View</p>
             </div>
 
+            <div class="container-heading">
+                <h5>FILTER BY PROGRAM</h5>
+                @php
+                    $programs = \App\Models\Program::all();
+                @endphp
+                @foreach($programs as $program)
+                    <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/'.$program->id)}}">{{$program->program_code}}
+                        - {{$program->program_name}}</a>
+                @endforeach
+            </div>
+
+
             @if(Session::has('success'))
                 {{--                This should be an alert--}}
                 {{Session::get('success')}}

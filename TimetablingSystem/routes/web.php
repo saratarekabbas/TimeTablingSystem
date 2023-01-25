@@ -200,6 +200,8 @@ Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableContro
 
 //displays the calendar
 Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
+//Filter calendar by program
+Route::get('/office-assistant/timetable/calendar-view/view-calendar/{id}', [TimetableController::class, 'filterCalendar']);
 
 
 
