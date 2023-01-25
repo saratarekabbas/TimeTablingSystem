@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetable Entities</title>
 </head>
 <body>
@@ -33,15 +33,12 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
-        <a href="/login">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            Logout</a>
     </div>
 
     <div class="column right">
         <div class="header">
-            <p>Office Assistant
-                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
+            <p>Office Admin
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p>
         </div>
 
@@ -59,12 +56,10 @@
 
             </div>
 
-            <div class="success-message">
-                @if(Session::has('success'))
-                    {{--    This should be an alert--}}
-                    {{Session::get('success')}}
-                @endif
-            </div>
+            @if(Session::has('success'))
+                This should be an alert
+                {{Session::get('success')}}
+            @endif
 
             <div class="container-table">
                 <table id="table">

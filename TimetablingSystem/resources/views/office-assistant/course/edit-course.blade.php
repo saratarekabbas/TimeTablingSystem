@@ -52,7 +52,7 @@
         </div>
 
         <div class="container-program">
-            <p1>Create a New Course</p1>
+            <p1>Edit Course</p1>
             <a href="/office-assistant/course/course-list">
                 <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
             </a>
