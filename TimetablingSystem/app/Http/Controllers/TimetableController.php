@@ -23,6 +23,14 @@ class TimetableController extends Controller
         return view('/office-assistant/timetable/timetable-list', compact('timetable'));
     }
 
+    public function filterProgram($id)
+    {
+        $findProgram = Program::where('id', $id)->first();
+        $timetable = Timetable::where('program_id', $findProgram->id)->get();
+        $programs = Program::all();
+        return view('/office-assistant/timetable/timetable-list', compact('timetable', 'programs'));
+    }
+
     public function addTimetable()
     {
         $courses = Course::get();

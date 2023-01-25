@@ -166,17 +166,12 @@ Route::get('/office-assistant/course/delete-course/{id}', [CourseController::cla
 // 6. Timetable Routings
 //----------------------------------------------------------------------------//
 
-////displays all list of timetable entities
-//Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
-
-
-
 //displays all list of all timetable entities
 Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
 //Add a timetable entity
 Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
-//Filter course by program
-//Route::get('/office-assistant/timetable/add-timetable/{program}', [TimetableController::class, 'filterProgram']);
+//Filter timetable entities by program
+Route::get('/office-assistant/timetable/timetable-list/{id}', [TimetableController::class, 'filterProgram']);
 //Save timetable entity (Add)
 Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
 // Add timetable slots

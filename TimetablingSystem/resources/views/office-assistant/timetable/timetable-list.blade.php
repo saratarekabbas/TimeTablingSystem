@@ -48,6 +48,17 @@
                 <p> List of Entities</p>
             </div>
 
+            <h5>FILTER BY PROGRAM</h5>
+            @php
+                $programs = \App\Models\Program::all();
+            @endphp
+            @foreach($programs as $program)
+                <a href="{{url('/office-assistant/timetable/timetable-list/'.$program->id)}}">{{$program->program_code}}
+                    - {{$program->program_name}}</a>
+            @endforeach
+
+
+
             <div class="container-heading">
                 <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New
                     Timetable Entity</a>
