@@ -181,9 +181,6 @@ Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableControl
 
 
 
-
-
-
 //Edit timetable entity
 Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
 //Edit timetable entity (Update)

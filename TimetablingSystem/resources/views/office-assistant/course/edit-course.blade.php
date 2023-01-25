@@ -60,6 +60,7 @@
                 <form method="post" action="{{url('/office-assistant/course/update-course')}}">
                     {{--                                        in laravel we want to use crf token, this is why we pass it--}}
                     @csrf
+                    <input type="hidden" name="id" value="{{$data->id}}">
                     <table>
                         <col class="col-itemname"/>
                         <col class="col-inputbox"/>

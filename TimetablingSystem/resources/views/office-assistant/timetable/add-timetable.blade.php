@@ -19,17 +19,6 @@
 
 <form method="post" action="{{url('/office-assistant/timetable/save-timetable')}}">
     @csrf
-{{--    <label>Program: </label>--}}
-{{--        <select name="program_id"--}}
-{{--                onchange="location.assign('/office-assistant/timetable/add-timetable/' + this.options[this.selectedIndex].value)">--}}
-{{--            @foreach($programs as $program)--}}
-{{--                <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>--}}
-{{--            @endforeach--}}
-{{--        </select>--}}
-{{--        @error('program_id')--}}
-{{--        {{$message}}--}}
-{{--        @enderror--}}
-{{--    <br>--}}
 
     <label>Course: </label>
     <select name="course_id">
@@ -58,10 +47,6 @@
     {{$message}}
     @enderror
     <br>
-
-    @php
-
-    @endphp
 
     <button type="submit">PROCEED TO ADD TIMETABLE SLOTS</button>
     <a href="{{url('/office-assistant/timetable/timetable-list')}}">Back</a>

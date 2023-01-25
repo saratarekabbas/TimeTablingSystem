@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Course</title>
+    <title>Edit Timetable Entity</title>
 </head>
 <body>
-<h1>Edit Course</h1>
+<h1>Edit Timetable Entity</h1>
 
 {{--This means, display success messge if an item is added successfullyS--}}
 @if(Session::has('success'))
@@ -16,88 +16,41 @@
     {{Session::get('success')}}
 @endif
 
+<a href="{{url('/office-assistant/timetable/timetable-list')}}">
+    <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
+</a>
 
-<form method="post" action="{{url('/office-assistant/course/update-course')}}">
+<form method="post" action="{{url('/office-assistant/timetable/update-timetable')}}">
     @csrf
-    <label>Course Name: </label>
-    <input type="text" name="course_name" placeholder="Course Name..."
-           value="{{$data->course_code}}">
+    <input type="hidden" name="id" value="{{$timetable->id}}">
+    <label>Course: </label>
+       <input type="text" placeholder="Course" name="course_id"  disabled
+              value="{{$course->course_name}}">
+    </select>
     @error('course_name')
     {{$message}}
     @enderror
     <br>
 
-    <label>Course Code: </label>
-    <input type="text" name="course_code" placeholder="Course Code..."
-           value="{{$data->course_code}}">
-    @error('course_code')
-    {{$message}}
-    @enderror
-    <br>
-
-    <label>Course Type: </label>
-    <select name="course_type">
-        <option value="Core Course">Core Course</option>
-        <option value="Elective Coursee">Elective Course</option>
-        <option value="Master's Project">Master's Project</option>
-        <option value="General University Course">General University Course</option>
-    </select>
-    @error('course_type')
-    {{$message}}
-    @enderror
-    <br>
-
-    <label>Program: </label>
+    <label>Venue: </label>
     @php
-        $programs = \App\Models\Program::all();
+        $venues = \App\Models\Venue::all();
     @endphp
-    <select name="program_id">
-        @foreach($programs as $program)
-            <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>
+    <select name="venue_id">
+        @foreach($venues as $venue)
+            <option value="{{$venue->id}}">{{$venue->venue_name}}, {{$venue->venue_level}}, {{$venue->venue_location}}
+                ({{$venue->venue_capacity}} pax)
+            </option>
         @endforeach
     </select>
-    @error('program_id')
-    {{$message}}
-    @enderror
-
-    <br>
-
-    <label>Section Number: </label>
-    <input type="text" name="section_number" placeholder="Section Number..."
-           value="{{$data->section_number}}">
-    @error('section_number')
+    @error('venue_id')
     {{$message}}
     @enderror
     <br>
 
-    <label>Lecturer: </label>
-    @php
-   $lecturers = \App\Models\Lecturer::all();
-    @endphp
-    <select name="lecturer_id">
-        @foreach($lecturers as $lecturer)
-            @if($lecturer->lecturer_registration_status == 'approved')
-                <option value="{{$lecturer->id}}">{{$lecturer->lecturer_name}}</option>
-            @endif
-        @endforeach
-    </select>
-    @error('lecturer_id')
-    {{$message}}
-    @enderror
-
-    <br>
-    <label>Number of Meetings: </label>
-    <input type="text" name="number_of_meetings" placeholder="Number of Meetings..."
-           value="{{$data->number_of_meetings}}">
-    @error('number_of_meetings')
-    {{$message}}
-    @enderror
-    <br>
-
-    <button type="submit">CREATE</button>
+    <button type="submit">UPDATE</button>
 
 
-    <a href="{{url('/office-assistant/course/course-list')}}">Back</a>
 </form>
 </body>
 </html>
