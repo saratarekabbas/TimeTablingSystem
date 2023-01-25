@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetabling System</title>
 </head>
 <body>
@@ -19,7 +19,8 @@
         <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>
+        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
+                                                                              aria-hidden="true"></i>
             User Applications</a>
         <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>
             Public Holidays</a>
@@ -32,48 +33,81 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
+        <a href="/login">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
     </div>
 
     <div class="column right">
         <div class="header">
             <p1>
-                Venues<i class="fa fa-sign-out" aria-hidden="true"></i>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Venues
             </p1>
-            <p2>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <p2>Office Assistant
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p2>
         </div>
-
+        <div class="success-message">
+            @if(Session::has('success'))
+                {{Session::get('success')}}
+            @endif
+        </div>
 
         {{--        container for the page content--}}
         <div class="container-program">
             <p1>Create a New Venue</p1>
+            <a href="/office-assistant/venue/venue-list">
+                <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
+            </a>
             <div class="container-table-program">
-                <table>
-                    <col class="col-itemname" />
-                    <col class="col-inputbox" />
-                    <tr>
-                        <td style="color: #252733">Venue Name</td>
-                        <td ><input type="text" class="create-edit-inputbox" placeholder="Venue Name" name="Venue Name"></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #252733">Venue Level</td>
-                        <td ><input type="text" class="create-edit-inputbox" placeholder="Venue Level" name="Venue Level"></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #252733">Venue Capacity</td>
-                        <td ><input type="text" class="create-edit-inputbox" placeholder="Venue Capacity" name="Venue Capacity"></td>
-                    </tr>
-                    <tr>
-                        <td style="color: #252733">Venue Location</td>
-                        <td ><input type="text" class="create-edit-inputbox" placeholder="Venue Location" name="Venue Location"></td>
-                    </tr>
+                <form method="post" action="{{url('/office-assistant/venue/save-venue')}}">
+                    {{--                    in laravel we want to use crf token, this is why we pass it--}}
+                    @csrf
+                    <table>
+                        <col class="col-itemname"/>
+                        <col class="col-inputbox"/>
+                        <tr>
+                            <td style="color: #252733">Venue Name</td>
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Venue Name" name="venue_name"
+                                                          value="{{old('venue_name')}}">
+                                @error('venue_name')
+                                {{$message}}
+                                @enderror</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">Venue Level</td>
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Venue Level" name="venue_level"
+                                                          value="{{old('venue_level')}}">
+                                @error('venue_level')
+                                {{$message}}
+                                @enderror</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">Venue Capacity</td>
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Venue Capacity" name="venue_capacity"
+                                                          value="{{old('venue_capacity')}}">
+                                @error('venue_capacity')
+                                {{$message}}
+                                @enderror</td>
+                        </tr>
+                        <tr>
+                            <td style="color: #252733">Venue Location</td>
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Venue Location" name="venue_location"
+                                                          value="{{old('venue_location')}}">
+                                @error('venue_location')
+                                {{$message}}
+                                @enderror</td>
+                        </tr>
 
-                </table>
-                {{--                <input class="container-create" value="CREATE">--}}
-                <a href="#" class="create-edit-btn">CREATE</a>
+                    </table>
+                    {{--                <input class="container-create" value="CREATE">--}}
+                    <button type="submit" class="create-edit-btn">CREATE</button>
 
+                </form>
             </div>
         </div>
     </div>
@@ -110,7 +144,7 @@
 {{--@endif--}}
 
 {{--<form method="post" action="{{url('/office-assistant/venue/save-venue')}}">--}}
-{{--    --}}{{--    in laravel we want to use crf token, this is why we pass it--}}
+{{--    in laravel we want to use crf token, this is why we pass it--}}
 {{--    @csrf--}}
 {{--    <label>Venue Name: </label>--}}
 {{--    <input type="text" name="venue_name" placeholder="Venue Name..."--}}

@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-{{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
     <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Course List</title>
 </head>
@@ -17,7 +16,7 @@
 
 <div class="row">
     <div class="column side">
-        <img src="/public/TtS-Logo.png" alt="TtS Logo">
+        <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
         <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus"
@@ -34,12 +33,15 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
+        <a href="/login">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
     </div>
 
     <div class="column right">
         <div class="header">
             <p>Office Assistant
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p>
         </div>
 
@@ -65,10 +67,12 @@
                     Course</a>
             </div>
 
-            @if(Session::has('success'))
-                {{--    This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
+            <div class="success-message">
+                @if(Session::has('success'))
+                    {{--    This should be an alert--}}
+                    {{Session::get('success')}}
+                @endif
+            </div>
 
             <div class="container-table">
                 <table id="table">

@@ -9,7 +9,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    {{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
     <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetabling System</title>
 </head>
@@ -34,18 +33,19 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
+        <a href="/login">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
     </div>
 
     <div class="column right">
         <div class="header">
             <p1>
                 Overview
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p1>
-            <p2>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </p2>
+            <p>Office Assistant
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
+            </p>
         </div>
 
         {{--        ////////////////////--}}

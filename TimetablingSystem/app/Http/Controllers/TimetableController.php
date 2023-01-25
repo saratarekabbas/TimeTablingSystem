@@ -238,4 +238,49 @@ class TimetableController extends Controller
         $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
         return $pdf->download('timetable.pdf');
     }
+
+//    public function export()
+//    {
+//        $timetables = Timetable::get();
+//
+//        $publicholidays = PublicHoliday::get();
+//
+//        $startdate = '0000-00-00';
+//        $enddate = '0000-00-00';
+//
+//        foreach ($timetables->slots as $slot) {
+//            if ($slot < $startdate) {
+//                $startdate = $slot;
+//            }
+//
+//            if ($slot > $enddate) {
+//                $enddate = $slot;
+//            }
+//        }
+//
+//        foreach ($publicholidays as $publicholiday) {
+//            if ($publicholiday->public_holiday_start_date < $startdate) {
+//                $startdate = $publicholiday->public_holiday_start_date;
+//            }
+//
+//            if ($publicholiday->public_holiday_start_date > $enddate) {
+//                $enddate = $publicholiday->public_holiday_start_date;
+//            }
+//
+//            if ($publicholiday->public_holiday_end_date < $startdate) {
+//                $startdate = $publicholiday->public_holiday_end_date;
+//            }
+//
+//            if ($publicholiday->public_holiday_end_date > $enddate) {
+//                $enddate = $publicholiday->public_holiday_end_date;
+//            }
+//        }
+//
+////        $startday = Carbon::createFromFormat('Y/m/d', $startdate)->format('l'); //Saturday
+////        $endday = Carbon::createFromFormat('Y/m/d', $enddate)->format('l'); //Saturday
+//
+//        $pdf = Pdf::LoadView('/office-assistant/timetable/calendar-view/print-calendar', compact('timetables', 'startdate', 'enddate'));
+//        return $pdf->download('timetable.pdf');
+//    }
+
 }

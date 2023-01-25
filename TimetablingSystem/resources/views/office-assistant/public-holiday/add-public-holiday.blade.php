@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+{{--    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">--}}
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Timetabling System</title>
 </head>
 <body>
@@ -31,27 +32,31 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
+        <a href="/login">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
+
     </div>
 
     <div class="column right">
         <div class="header">
             <p1>
                 Public Holiday
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p1>
-            <p2>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <p2>Office Assistant
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p2>
         </div>
-
+        <div class="success-message">
+            @if(Session::has('success'))
+                {{Session::get('success')}}
+            @endif
+        </div>
         <div class="container-program">
             <p1>Add a New Public Holiday</p1>
-
-            @if(Session::has('success'))
-               {{Session::get('success')}}
-            @endif
-
+            <a href="/office-assistant/public-holiday/public-holiday-list">
+                <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
+            </a>
             <div class="container-table-program">
                 <form method="post" action="{{url('/office-assistant/public-holiday/save-public-holiday')}}">
                     {{--    in laravel we want to use crf token, this is why we pass it--}}
@@ -61,7 +66,7 @@
                         <col class="col-inputbox"/>
                         <tr>
                             <td style="color: #252733">Public Holiday Name</td>
-                            <td><input type="text" class="create-edit-inputbox" placeholder="Public Holiday Title"
+                            <td style="color: red"><input type="text" class="create-edit-inputbox" placeholder="Public Holiday Title"
                                        name="public_holiday_title" value="{{old('public_holiday_title')}}">
                                 @error('public_holiday_title')
                                 {{$message}}
@@ -69,7 +74,7 @@
                         </tr>
                         <tr>
                             <td style="color: #252733">Public Holiday Start Date</td>
-                            <td style="color: #9FA2B4"><input type="date" class="create-edit-inputbox"
+                            <td style="color: red"><input type="date" class="create-edit-inputbox"
                                                               placeholder="YYYY/MM/DD" name="public_holiday_start_date"
                                                               value="{{old('public_holiday_start_date')}}">
                                 @error('public_holiday_start_date')
@@ -79,7 +84,7 @@
                         </tr>
                         <tr>
                             <td style="color: #252733">Public Holiday End Date</td>
-                            <td style="color: #9FA2B4"><input type="date" class="create-edit-inputbox"
+                            <td style="color: red"><input type="date" class="create-edit-inputbox"
                                                               placeholder="YYYY/MM/DD" name="public_holiday_end_date"
                                                               value="{{old('public_holiday_end_date')}}">
                                 @error('public_holiday_end_date')
@@ -90,9 +95,8 @@
 
                     </table>
                     <button type="submit" class="create-edit-btn">CREATE</button>
-                    <a class="create-edit-btn" href="{{url('/office-assistant/public-holiday/public-holiday-list')}}">Back</a>
-                </form>
 
+                </form>
             </div>
         </div>
     </div>

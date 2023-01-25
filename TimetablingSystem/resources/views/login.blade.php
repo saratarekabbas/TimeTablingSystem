@@ -13,7 +13,7 @@
 <div class="login-page">
     <div class="login-content">
         <div class="login-header">
-            <img class="login-img" src="TtS-Logo-White.png">
+            <img class="login-img" src="/TtS-Logo-White.png">
             <h1>Timetabling System</h1>
             <h2>Login to access your profile</h2>
         </div>
