@@ -57,6 +57,7 @@
 
             <div class="container-heading">
                 <h5>FILTER BY PROGRAM</h5>
+                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/')}}">All Programs</a>
                 @php
                     $programs = \App\Models\Program::all();
                 @endphp
