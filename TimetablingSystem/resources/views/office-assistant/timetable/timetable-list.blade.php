@@ -55,7 +55,7 @@
             <div class="container-heading">
 
                 <div class="dropdown">
-                    <button onclick="myFunction1()" class="dropbtn"><i class="fa fa-filter" aria-hidden="true"></i>
+                    <button onclick="myFunction1()" class="dropbtn"><i class="fa fa-filter fa-2x" aria-hidden="true"></i>
                         Filter by Program
                     </button>
                     <div id="myDropdown1" class="dropdown-content">
@@ -100,7 +100,7 @@
                     Timetable Entity</a>
 
                 <div class="dropdown">
-                    <button onclick="myFunction2()" class="dropbtn"><i class="fa fa-print" aria-hidden="true"></i>
+                    <button onclick="myFunction2()" class="dropbtn"><i class="fa fa-print fa-2x" aria-hidden="true"></i>
                         Print by Program
                     </button>
                     <div id="myDropdown2" class="dropdown-content">

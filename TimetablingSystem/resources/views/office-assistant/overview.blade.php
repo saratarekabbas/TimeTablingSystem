@@ -130,7 +130,7 @@
                 <a href="/office-assistant/program/program-list">View All</a>
                 <div class="container-table-officeassistantoverview">
                     <table>
-{{--                        <col class="col1"/>--}}
+                        <col class="col3"/>
 {{--                        <col class="col2"/>--}}
 
 

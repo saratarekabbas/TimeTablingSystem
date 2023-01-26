@@ -575,12 +575,13 @@ body {
 
 .container-table-officeassistantoverview {
     clear: both;
-    width: 100%;
+    width: 99%;
     hight: 100%;
     float: left;
     display: inline-block;
     margin-top: 25px;
-    /*overflow: scroll;*/
+    overflow: scroll;
+    overflow-x: hidden;
     padding-right: 25px;
     padding-left: 25px;
     max-height: 458px;
@@ -589,7 +590,7 @@ body {
 
 }
 
-.col1, col2 {
+.col1, col2,col3{
     font-family: Montserrat, 'Mulish';
     font-size: 14px;
     font-weight: 600;
@@ -603,10 +604,13 @@ body {
 }
 
 .col2 {
-    width: 80px;
+    width: 100px;
     color: #9FA2B4;
 }
-
+.col3 {
+    width: 546px;
+    color: #252733;
+}
 .container-announcement td {
     height: 58px;
     width: fit-content;
