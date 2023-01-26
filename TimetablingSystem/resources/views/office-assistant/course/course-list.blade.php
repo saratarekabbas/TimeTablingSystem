@@ -54,14 +54,44 @@
             <div class="container-heading">
 
 
-                <h5>FILTER BY PROGRAM</h5>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn"><i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+                        Filter by Program
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
 
-                <a href="{{url('/office-assistant/course/course-list/')}}">All Programs</a>
-                @foreach($programs as $program)
-                    <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}
-                        - {{$program->program_name}}</a>
-                @endforeach
+                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                        <a href="{{url('/office-assistant/course/course-list/')}}">All Programs</a>
+                        @foreach($programs as $program)
+                            <a href="{{url('/office-assistant/course/course-list/'.$program->id)}}">{{$program->program_code}}
+                                - {{$program->program_name}}</a>
+                        @endforeach
+                    </div>
+                </div>
 
+                <script>
+                    /* When the user clicks on the button,
+                    toggle between hiding and showing the dropdown content */
+                    function myFunction() {
+                        document.getElementById("myDropdown").classList.toggle("show");
+                    }
+
+                    function filterFunction() {
+                        var input, filter, ul, li, a, i;
+                        input = document.getElementById("myInput");
+                        filter = input.value.toUpperCase();
+                        div = document.getElementById("myDropdown");
+                        a = div.getElementsByTagName("a");
+                        for (i = 0; i < a.length; i++) {
+                            txtValue = a[i].textContent || a[i].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                a[i].style.display = "";
+                            } else {
+                                a[i].style.display = "none";
+                            }
+                        }
+                    }
+                </script>
 
                 <a href="{{url('/office-assistant/course/add-course')}}" class="container-action-btns">Add a New
                     Course</a>
