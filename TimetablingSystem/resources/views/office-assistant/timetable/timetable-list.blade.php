@@ -145,24 +145,7 @@
                    class="container-action-btns">View Timetable</a>
                 <br><br><br>
 
-                {{--                PRINTS--}}
-                {{--            PRINT ALL TIMETABLE ENTITIES    --}}
 
-
-                <a href="{{url('/office-assistant/timetable/print-timetable/export/')}}"
-                   class="container-action-btns">Print All</a>
-
-                <br> <br> <br>
-                @php
-                    $programs = \App\Models\Program::all();
-                @endphp
-                @foreach($programs as $program)
-                    <a href="{{url('/office-assistant/timetable/print-timetable/export/'.$program->id)}}"
-                       class="container-action-btns">Print {{$program->program_code}}
-                        - {{$program->program_name}} </a>
-
-                    <br><br><br>
-                @endforeach
             </div>
 
 
