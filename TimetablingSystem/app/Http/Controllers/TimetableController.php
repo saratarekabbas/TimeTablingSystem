@@ -131,7 +131,6 @@ class TimetableController extends Controller
 
 //        Create the update query by calling our Course Eloquent Model
         Timetable::where('id', '=', $id)->update([
-
             'slots' => $slots,
         ]);
 

@@ -72,12 +72,22 @@ Route::get('/', function () { //you need to change this later to make it go dire
     return view('welcome');
 });
 
+
 //|--------------------------------------------------------------------------
 //|                               OFFICE ASSISTANT
 //|--------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------//
-// 1. User Application Routings
+// 1. Overview
+//----------------------------------------------------------------------------//
+
+Route::get('/office-assistant/overview', function(){
+    return view('/office-assistant/overview');
+});
+
+
+//----------------------------------------------------------------------------//
+// 2. User Application Routings
 //----------------------------------------------------------------------------//
 
 //displays all list of public holidays
@@ -89,7 +99,7 @@ Route::get('/office-assistant/user-application/disapprove-user-application/{id}'
 
 
 //----------------------------------------------------------------------------//
-// 2. Public Holiday Routings
+// 3. Public Holiday Routings
 //----------------------------------------------------------------------------//
 
 //displays all list of public holidays
@@ -107,7 +117,7 @@ Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [Publi
 
 
 //----------------------------------------------------------------------------//
-// 3. Programs Routings
+// 4. Programs Routings
 //----------------------------------------------------------------------------//
 
 //displays all list of programs
@@ -125,7 +135,7 @@ Route::get('/office-assistant/program/delete-program/{id}', [ProgramController::
 
 
 //----------------------------------------------------------------------------//
-// 4. Venue Routings
+// 5. Venue Routings
 //----------------------------------------------------------------------------//
 
 //displays all list of venues
@@ -143,7 +153,7 @@ Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class,
 
 
 //----------------------------------------------------------------------------//
-// 5. Course Routings
+// 6. Course Routings
 //----------------------------------------------------------------------------//
 
 //displays all list of programs
@@ -163,58 +173,37 @@ Route::get('/office-assistant/course/delete-course/{id}', [CourseController::cla
 
 
 //----------------------------------------------------------------------------//
-// 6. Timetable Routings
+// 7. Timetable Routings
 //----------------------------------------------------------------------------//
 
 //displays all list of all timetable entities
 Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
-//Add a timetable entity
-Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
 //Filter timetable entities by program
 Route::get('/office-assistant/timetable/timetable-list/{id}', [TimetableController::class, 'filterProgram']);
+//Add a timetable entity
+Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
 //Save timetable entity (Add)
 Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
-// Add timetable slots
-Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
-//Save timetable slots (Add)
-Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
-
-
-
 //Edit timetable entity
 Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
 //Edit timetable entity (Update)
 Route::post('/office-assistant/timetable/update-timetable', [TimetableController::class, 'updateTimetable']);
-
+// Add timetable slots
+Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
+//Save timetable slots (Add)
+Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
 //Edit timetable slot
 Route::get('/office-assistant/timetable/edit-timetable-slot/{id}', [TimetableController::class, 'editTimetableSlot']);
 //Edit timetable entity (Update)
 Route::post('/office-assistant/timetable/update-timetable-slot', [TimetableController::class, 'updateTimetableSlot']);
-
-
 //Delete timetable entity
 Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableController::class, 'deleteTimetable']);
 //Delete timetable slots
-
-
-
-
-
-
 
 //displays the calendar
 Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
 //Filter calendar by program
 Route::get('/office-assistant/timetable/calendar-view/view-calendar/{id}', [TimetableController::class, 'filterCalendar']);
-
-
-
-
-
-
-
-// Print timetable
-//---------------------MODIFY THE ROUTE
 
 //Print All Timetable Entities
 Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'exportAll']);
@@ -222,23 +211,10 @@ Route::get('/office-assistant/timetable/print-timetable/export', [TimetableContr
 Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
 
 
-//----------------------------------------------------------------------------//
-// 7. Other
-//----------------------------------------------------------------------------//
-
-// Office Admin's Dashboard
-//Route::get('/office-assistant/overview', [LecturerController::class, 'index']);
-
-Route::get('/office-assistant/overview', function(){
-    return view('/office-assistant/overview');
-});
-
-
 
 //|--------------------------------------------------------------------------
 //|                                  LECTURER
 //|--------------------------------------------------------------------------
-
 
 //----------------------------------------------------------------------------//
 // 1. Overview
