@@ -10,7 +10,8 @@ use App\Models\Timetable;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 use League\CommonMark\Node\Inline\Newline;
 
 
@@ -67,22 +68,62 @@ class TimetableController extends Controller
         return view('/office-assistant/timetable/add-timetable-slot', compact('timetable', 'meetings_number'));
     }
 
+//    public function saveTimetableSlot(Request $request)
+//    {
+//
+//        $request->validate([
+//            'slots' => 'required', 'array']);
+//
+//        $id = $request->id;
+//        $slots = $request->slots;
+//
+////        Create the update query by calling our Eloquent Model
+//        Timetable::where('id', '=', $id)->update([
+//            'slots' => $slots
+//        ]);
+//        return redirect()->back()->with('success', 'Successful: Timetable slot has been created successfully');
+//    }
+
+
+
     public function saveTimetableSlot(Request $request)
     {
-        //        Validation
-        $request->validate([
-            'slots' => 'required',
+        $validator = Validator::make($request->all(), [
+            'slots.*' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    $publicHolidays = PublicHoliday::all();
+                    $meetingDate = Carbon::parse($value);
+
+                    foreach ($publicHolidays as $publicHoliday) {
+                        $publicHolidayStart = Carbon::parse($publicHoliday->public_holiday_start_date);
+                        $publicHolidayEnd = Carbon::parse($publicHoliday->public_holiday_end_date);
+
+                        if ($meetingDate->between($publicHolidayStart, $publicHolidayEnd)) {
+                            $fail("Sorry, you cannot have a meeting on {$value} because it is a public holiday.");
+                        }
+                    }
+                }
+            ]
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $id = $request->id;
         $slots = $request->slots;
 
-//        Create the update query by calling our Course Eloquent Model
         Timetable::where('id', '=', $id)->update([
             'slots' => $slots
         ]);
+
         return redirect()->back()->with('success', 'Successful: Timetable slot has been created successfully');
     }
+
+
 
 
     public function editTimetable($id)

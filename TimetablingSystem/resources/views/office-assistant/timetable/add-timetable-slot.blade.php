@@ -24,13 +24,27 @@
 
     <label>Meetings: </label>
     <ol>
-        @for($i = 1; $i<= $meetings_number; $i++)
-           <li> <input type="date" name="slots[]"></li>
+{{--        @for($i = 1; $i<= $meetings_number; $i++)--}}
+{{--           <li> <input type="date" name="slots[]"></li>--}}
+
+{{--        @endfor--}}
+{{--            @error('slots.*')--}}
+{{--            <p style="color:red;">{{ $message }}</p>--}}
+{{--            @enderror--}}
+
+        @for($i = 0; $i< $meetings_number; $i++)
+            <li>
+                <input type="date" name="slots[{{ $i }}]">
+                @if($errors->has("slots.{$i}"))
+                    <p style="color:red;">{{ $errors->first("slots.{$i}") }}</p>
+                @endif
+            </li>
         @endfor
+
     </ol>
-    @error('slots')
-    {{$message}}
-    @enderror
+{{--    @error('slots')--}}
+{{--    {{$message}}--}}
+{{--    @enderror--}}
     <br>
 
     <button type="submit">CREATE</button>
