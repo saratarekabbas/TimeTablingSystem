@@ -68,24 +68,6 @@ class TimetableController extends Controller
         return view('/office-assistant/timetable/add-timetable-slot', compact('timetable', 'meetings_number'));
     }
 
-//    public function saveTimetableSlot(Request $request)
-//    {
-//
-//        $request->validate([
-//            'slots' => 'required', 'array']);
-//
-//        $id = $request->id;
-//        $slots = $request->slots;
-//
-////        Create the update query by calling our Eloquent Model
-//        Timetable::where('id', '=', $id)->update([
-//            'slots' => $slots
-//        ]);
-//        return redirect()->back()->with('success', 'Successful: Timetable slot has been created successfully');
-//    }
-
-
-
     public function saveTimetableSlot(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -108,6 +90,20 @@ class TimetableController extends Controller
                             $fail("Sorry, you cannot have a meeting on {$value} because it is a public holiday.");
                         }
                     }
+
+//                    Venue Validations
+
+                    $timetable = Timetable::find($request->id);
+                    $venue_id = $timetable->venue_id;
+
+                    $timetables = Timetable::where('venue_id', $venue_id)->get();
+
+                    foreach ($timetables as $timetable) {
+                        if (is_array($timetable->slots) && in_array($value, $timetable->slots)) {
+                            $fail("Sorry, the venue is occupied on {$value}");
+                        }
+                    }
+
                 }
             ]
         ]);
@@ -127,9 +123,6 @@ class TimetableController extends Controller
 
         return redirect()->back()->with('success', 'Successful: Timetable slot has been created successfully');
     }
-
-
-
 
     public function editTimetable($id)
     {
