@@ -87,11 +87,13 @@ class AuthController extends Controller
                     'message' => 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.'
                 ], 401);
             } else {
-                return redirect()->route('/lecturer/overview');
+//                return redirect()->route('/lecturer/overview');
+                return view('/lecturer/overview');
+
             }
         } else if ($user->role === 'office_assistant') {
-            return redirect()->route('/office-assistant/overview');
-//            return view('/office-assistant/timetable/add-timetable-slot', compact('timetable', 'meetings_number'));
+//            return redirect()->route('/office-assistant/overview');
+            return view('/office-assistant/overview');
         }
 
         $token = $user->createToken('authToken')->accessToken;

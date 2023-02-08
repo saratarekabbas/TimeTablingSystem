@@ -27,9 +27,13 @@
                 <form method="post" action="{{url('/login')}}">
                 @csrf
                 <input type="text" class="login-inputbox" placeholder="Email Address" name="email">
-
+                    @error('email')
+                    {{$message}}
+                    @enderror
                 <input type="password" class="login-inputbox" placeholder="Password" name="password">
-
+                    @error('password')
+                    {{$message}}
+                    @enderror
                 <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
 
                     <button type="submit" class="login-submit" id="registerBtn">LOGIN</button>
