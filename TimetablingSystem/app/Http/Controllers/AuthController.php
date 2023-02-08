@@ -70,10 +70,10 @@ class AuthController extends Controller
             ], 401);
         }
 
-
         if (!Auth::attempt($credentials)) {
+            dd($request->email, $request->password);
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
             ], 401);
         }
 
@@ -87,11 +87,11 @@ class AuthController extends Controller
                     'message' => 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.'
                 ], 401);
             } else {
-
                 return redirect()->route('/lecturer/overview');
             }
         } else if ($user->role === 'office_assistant') {
             return redirect()->route('/office-assistant/overview');
+//            return view('/office-assistant/timetable/add-timetable-slot', compact('timetable', 'meetings_number'));
         }
 
         $token = $user->createToken('authToken')->accessToken;
