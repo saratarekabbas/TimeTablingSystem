@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\VenueController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -29,36 +30,38 @@ use App\Http\Controllers\VenueController;
 // 1. Registration
 //----------------------------------------------------------------------------//
 
-Route::get('/registration', function(){
-    return view('/registration');
+Route::get('/registration', function () {
+    return view('registration');
 });
+Route::post('/registration', [AuthController::class, 'registration']);
 
 //----------------------------------------------------------------------------//
 // 2. Login
 //----------------------------------------------------------------------------//
-Route::get('/login', function(){
-    return view('/login');
+Route::get('/login', function () {
+    return view('login');
 });
+Route::post('/login', [AuthController::class, 'login']);
 
 //----------------------------------------------------------------------------//
 // 3. Email
 //----------------------------------------------------------------------------//
 
 //Route for mailing: Registration Approved Email
-Route::get('/registration-approved/{id}' , [LecturerController::class, 'approveRegistrationRequest']);
+Route::get('/registration-approved/{id}', [LecturerController::class, 'approveRegistrationRequest']);
 
 //Route for mailing: Registration Disapproved Email
-Route::get('/registration-disapproved/{id}' , [LecturerController::class, 'disapproveRegistrationRequest']);
+Route::get('/registration-disapproved/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
 
 //----------------------------------------------------------------------------//
 // 4. Forgot Password & Reset Password
 //----------------------------------------------------------------------------//
 
-Route::get('/forgot-password', function(){
+Route::get('/forgot-password', function () {
     return view('/forgot-password');
 });
 
-Route::get('/reset-password', function(){
+Route::get('/reset-password', function () {
     return view('/reset-password');
 });
 
@@ -69,8 +72,11 @@ Route::get('/reset-password', function(){
 
 Route::get('/', function () { //you need to change this later to make it go directly to the login page
 //    return view('/office-assistant/user-application/user-application-list');
-    return view('welcome');
+    return view('login');
 });
+
+Route::get('/logout', [AuthController::class, 'logout']);
+
 
 
 //|--------------------------------------------------------------------------
@@ -81,7 +87,7 @@ Route::get('/', function () { //you need to change this later to make it go dire
 // 1. Overview
 //----------------------------------------------------------------------------//
 
-Route::get('/office-assistant/overview', function(){
+Route::get('/office-assistant/overview', function () {
     return view('/office-assistant/overview');
 });
 
@@ -211,7 +217,6 @@ Route::get('/office-assistant/timetable/print-timetable/export', [TimetableContr
 Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
 
 
-
 //|--------------------------------------------------------------------------
 //|                                  LECTURER
 //|--------------------------------------------------------------------------
@@ -220,6 +225,6 @@ Route::get('/office-assistant/timetable/print-timetable/export/{id}', [Timetable
 // 1. Overview
 //----------------------------------------------------------------------------//
 
-Route::get('/lecturer/overview', function(){
+Route::get('/lecturer/overview', function () {
     return view('/lecturer/overview');
 });

@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
+
     <title>Login Page</title>
 </head>
 <body>
@@ -19,24 +20,27 @@
         </div>
 
         <div class="login-form">
-            <form>
-                <input type="text" class="login-inputbox" placeholder="Email Address" name="email-address">
+            @if(Session::has('success'))
+                {{--    This should be an alert--}}
+                {{Session::get('success')}}
+            @endif
+                <form method="post" action="{{url('/login')}}">
+                @csrf
+                <input type="text" class="login-inputbox" placeholder="Email Address" name="email">
 
                 <input type="password" class="login-inputbox" placeholder="Password" name="password">
 
-                <a href="#" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
+                <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
 
-                <input class="login-submit" value="LOGIN">
+                    <button type="submit" class="login-submit" id="registerBtn">LOGIN</button>
 
-                <a href="#" class="login-forgotpassword forgotpasswordB">No account yet? <b>Register here.</b></a>
+                <a href="/registration" class="login-forgotpassword forgotpasswordB">No account yet? <b>Register here.</b></a>
             </form>
         </div>
     </div>
 
     <div class="footer">Created by SSZ Solutions. © 2023</div>
 
-
 </div>
-
 </body>
 </html>

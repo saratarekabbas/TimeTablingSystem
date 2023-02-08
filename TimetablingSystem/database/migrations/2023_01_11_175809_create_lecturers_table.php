@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('lecturer_name');
             $table->string('lecturer_email')->unique();
+            $table->string('lecturer_password');
             $table->string('lecturer_registration_status');
             $table->timestamps();
         });

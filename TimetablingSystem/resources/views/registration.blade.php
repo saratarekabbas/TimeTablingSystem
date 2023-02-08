@@ -18,15 +18,31 @@
             <h2>Register an account now.</h2>
         </div>
 
+
         <div class="login-form">
-            <form>
-                <input type="text" class="login-inputbox" placeholder="Full Name" name="email-address">
-                <input type="email" class="login-inputbox" placeholder="Email Address" name="password">
-                <input type="password" class="login-inputbox" placeholder="Password" name="password">
+            @if(Session::has('success'))
+                {{--    This should be an alert--}}
+                {{Session::get('success')}}
+            @endif
+            <form method="post" action="{{url('/registration')}}">
+                @csrf
+                <input type="text" class="login-inputbox" placeholder="Full Name" id="name" name="name">
+                @error('name')
+                {{$message}}
+                @enderror
+                <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email">
+                @error('email')
+                {{$message}}
+                @enderror
+                <input type="password" class="login-inputbox" placeholder="Password" id="password" name="password">
+                @error('password')
+                {{$message}}
+                @enderror
 
-                <input class="login-submit" value="REGISTER">
+                <button type="submit" class="login-submit" id="registerBtn">REGISTER</button>
 
-                <a href="#" class="login-forgotpassword forgotpasswordB">Already have an account? <b>Login here.</b></a>
+                <a href="/login" class="login-forgotpassword forgotpasswordB">Already have an account? <b>Login
+                        here.</b></a>
             </form>
         </div>
     </div>
@@ -35,6 +51,5 @@
 
 
 </div>
-
 </body>
 </html>
