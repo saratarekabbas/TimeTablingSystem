@@ -29,6 +29,11 @@ class Timetable extends Model
         return $this->hasMany(Course::class);
     }
 
+    public function course()
+    {
+        return $this->belongsTo('App\Models\Course');
+    }
+
     protected $casts = [
         'slots' => 'array'
     ];

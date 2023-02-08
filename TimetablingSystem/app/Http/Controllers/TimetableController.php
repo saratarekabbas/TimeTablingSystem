@@ -104,6 +104,23 @@ class TimetableController extends Controller
                         }
                     }
 
+//                  Lecturer Validations
+                    $timetable = Timetable::find($request->id);
+                    $course = Course::find($timetable->course_id);
+                    $lecturer_id = $course->lecturer_id;
+
+                    $otherTimetables = Timetable::where('course_id', '!=', $timetable->course_id)
+                        ->whereHas('course', function ($query) use ($lecturer_id) {
+                            $query->where('lecturer_id', $lecturer_id);
+                        })->get();
+
+                    foreach ($otherTimetables as $otherTimetable) {
+                        if (is_array($otherTimetable->slots) && in_array($value, $otherTimetable->slots)) {
+                            $fail("Sorry, the lecturer has another class on {$value}");
+                        }
+                    }
+
+
                 }
             ]
         ]);
