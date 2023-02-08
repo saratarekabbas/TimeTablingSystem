@@ -34,7 +34,7 @@
 
         @for($i = 0; $i< $meetings_number; $i++)
             <li>
-                <input type="date" name="slots[{{ $i }}]">
+                <input type="date" name="slots[{{ $i }}]" value="{{ old('slots.' . $i) }}">
                 @if($errors->has("slots.{$i}"))
                     <p style="color:red;">{{ $errors->first("slots.{$i}") }}</p>
                 @endif

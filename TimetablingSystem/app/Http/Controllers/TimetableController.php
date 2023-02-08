@@ -91,7 +91,12 @@ class TimetableController extends Controller
         $validator = Validator::make($request->all(), [
             'slots.*' => [
                 'required',
-                function ($attribute, $value, $fail) {
+                function ($attribute, $value, $fail) use ($request) {
+                    $currentIndex = array_search($value, $request->slots);
+                    if ($currentIndex > 0 && $value <= $request->slots[$currentIndex - 1]) {
+                        return $fail("Meeting " . ($currentIndex + 1) . " must be after meeting " . $currentIndex);
+                    }
+
                     $publicHolidays = PublicHoliday::all();
                     $meetingDate = Carbon::parse($value);
 
