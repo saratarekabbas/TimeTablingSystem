@@ -20,10 +20,16 @@
         </div>
 
         <div class="login-form">
-            @if(Session::has('success'))
-                {{--    This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
+{{--            @if(Session::has('success'))--}}
+{{--                --}}{{--    This should be an alert--}}
+{{--                {{Session::get('success')}}--}}
+{{--            @endif--}}
+            <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?php echo $_SESSION['success']; ?>
+            </div>
+            <?php unset($_SESSION['success']); ?>
+            <?php endif; ?>
                 <form method="post" action="{{url('/login')}}">
                 @csrf
                 <input type="text" class="login-inputbox" placeholder="Email Address" name="email">

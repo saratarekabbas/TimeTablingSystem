@@ -38,11 +38,6 @@ class AuthController extends Controller
         );
 
         return redirect()->back()->with('success', 'Your Registration Request Has Been Submitted Successfully!');
-
-//        return response()->json([
-//            'message' => 'Your Registration Request Has Been Submitted Successfully!',
-//            'user' => $user
-//        ], 201);
     }
 
 
@@ -87,14 +82,15 @@ class AuthController extends Controller
                     'message' => 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.'
                 ], 401);
             } else {
-//                return redirect()->route('/lecturer/overview');
                 return view('/lecturer/overview');
-
             }
         } else if ($user->role === 'office_assistant') {
-//            return redirect()->route('/office-assistant/overview');
             return view('/office-assistant/overview');
         }
+
+        session_start();
+        $_SESSION['success'] = 'Login successful';
+
 
         $token = $user->createToken('authToken')->accessToken;
 
