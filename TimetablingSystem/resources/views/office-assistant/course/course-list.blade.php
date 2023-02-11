@@ -142,14 +142,13 @@
 
 
                             @php
-                                $lecturers = \App\Models\Lecturer::all();
+                                $lecturers = \App\Models\User::all();
                             @endphp
                             @foreach($lecturers as $lecturer)
                                 @if($lecturer->id == $coursedata->lecturer_id)
-                                    <td>{{$lecturer->lecturer_name}}</td>
+                                    <td>{{$lecturer->name}}</td>
                                 @endif
                             @endforeach
-
 
                             <td>{{$coursedata->number_of_meetings}}</td>
 

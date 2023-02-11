@@ -125,12 +125,12 @@
                             <td style="color: #252733">Lecturer</td>
                             <td style="color: red">
                                 @php
-                                    $lecturers = \App\Models\Lecturer::all();
+                                    $lecturers = \App\Models\User::all();
                                 @endphp
                                 <select class="create-edit-inputbox"  placeholder="Lecturer" name="lecturer_id">
                                     @foreach($lecturers as $lecturer)
                                         @if($lecturer->lecturer_registration_status == 'approved')
-                                            <option value="{{$lecturer->id}}">{{$lecturer->lecturer_name}}</option>
+                                            <option value="{{$lecturer->id}}">{{$lecturer->name}}</option>
                                         @endif
                                     @endforeach
                                 </select>
