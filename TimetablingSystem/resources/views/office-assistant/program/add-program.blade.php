@@ -64,8 +64,9 @@
                         <col class="col-inputbox"/>
                         <tr>
                             <td style="color: #252733">Program Name</td>
-                            <td style="color: red"><input type="text" class="create-edit-inputbox" placeholder="Program Name"
-                                       name="program_name" value="{{old('program_name')}}">
+                            <td style="color: red"><input type="text" class="create-edit-inputbox"
+                                                          placeholder="Program Name"
+                                                          name="program_name" value="{{old('program_name')}}">
                                 @error('program_name')
                                 {{$message}}
                                 @enderror</td>
@@ -73,8 +74,8 @@
                         <tr>
                             <td style="color: #252733">Program Code</td>
                             <td style="color: red"><input type="text" class="create-edit-inputbox"
-                                                              placeholder="Program Code" name="program_code"
-                                                              value="{{old('program_code')}}">
+                                                          placeholder="Program Code" name="program_code"
+                                                          value="{{old('program_code')}}">
                                 @error('program_code')
                                 {{$message}}
                                 @enderror</td>

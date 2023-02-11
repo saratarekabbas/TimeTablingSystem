@@ -66,8 +66,6 @@
                         - {{$program->program_name}}</a>
                 @endforeach
             </div>
-
-
             @if(Session::has('success'))
                 {{--                This should be an alert--}}
                 {{Session::get('success')}}
