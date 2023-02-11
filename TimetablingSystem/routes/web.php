@@ -90,16 +90,13 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //----------------------------------------------------------------------------//
 // 1. Overview
 //----------------------------------------------------------------------------//
-
     Route::get('/office-assistant/overview', function () {
         return view('/office-assistant/overview');
     })->name('office_assistant.overview');
 
-
 //----------------------------------------------------------------------------//
 // 2. User Application Routings
 //----------------------------------------------------------------------------//
-
     //displays all list of user applications
     Route::get('/office-assistant/user-application/user-application-list', [LecturerController::class, 'index']);
     //Approve User Registration Request
@@ -107,11 +104,9 @@ Route::middleware(['role:office_assistant'])->group(function () {
     //disapprove User Registration Request
     Route::get('/office-assistant/user-application/disapprove-user-application/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
 
-
 //----------------------------------------------------------------------------//
 // 3. Public Holiday Routings
 //----------------------------------------------------------------------------//
-
 //displays all list of public holidays
     Route::get('/office-assistant/public-holiday/public-holiday-list', [PublicHolidayController::class, 'index']);
 //Add a public holiday
@@ -125,11 +120,9 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //Delete public holiday
     Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [PublicHolidayController::class, 'deletePublicHoliday']);
 
-
 //----------------------------------------------------------------------------//
 // 4. Programs Routings
 //----------------------------------------------------------------------------//
-
 //displays all list of programs
     Route::get('/office-assistant/program/program-list', [ProgramController::class, 'index']);
 //Add a program
@@ -143,11 +136,9 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //Delete program
     Route::get('/office-assistant/program/delete-program/{id}', [ProgramController::class, 'deleteProgram']);
 
-
 //----------------------------------------------------------------------------//
 // 5. Venue Routings
 //----------------------------------------------------------------------------//
-
 //displays all list of venues
     Route::get('/office-assistant/venue/venue-list', [VenueController::class, 'index']);
 //Add a venues
@@ -161,11 +152,9 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //Delete venue
     Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class, 'deleteVenue']);
 
-
 //----------------------------------------------------------------------------//
 // 6. Course Routings
 //----------------------------------------------------------------------------//
-
 //displays all list of programs
     Route::get('/office-assistant/course/course-list', [CourseController::class, 'index']);
 //Filter course by program
@@ -181,11 +170,9 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //Delete program
     Route::get('/office-assistant/course/delete-course/{id}', [CourseController::class, 'deleteCourse']);
 
-
 //----------------------------------------------------------------------------//
 // 7. Timetable Routings
 //----------------------------------------------------------------------------//
-
 //displays all list of all timetable entities
     Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
 //Filter timetable entities by program
@@ -219,7 +206,6 @@ Route::middleware(['role:office_assistant'])->group(function () {
     Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'exportAll']);
 //Print for a Specific Program
     Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
-
 });
 
 

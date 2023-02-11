@@ -120,14 +120,15 @@
                         <col class="col1"/>
                         <col class="col2"/>
                         @php
-                            $lecturers = \App\Models\Lecturer::all();
+                            $lecturers = \App\Models\User::all();
                         @endphp
 
                         @foreach($lecturers as $lecturer)
+
                             @if($lecturer->lecturer_registration_status == 'pending')
 
                                 <tr>
-                                    <td style="color: #252733">{{$lecturer->lecturer_name}}</td>
+                                    <td style="color: #252733">{{$lecturer->name}}</td>
                                     <td style="color: #9FA2B4">{{$lecturer->created_at->toDateString()}}</td>
                                 </tr>
                             @endif
