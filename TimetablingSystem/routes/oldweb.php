@@ -75,8 +75,10 @@ Route::get('/', function () { //you need to change this later to make it go dire
     return view('login');
 });
 
-
+//Route::post('logout', 'AuthController@logout')->name('logout');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 
 
@@ -84,28 +86,33 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //|                               OFFICE ASSISTANT
 //|--------------------------------------------------------------------------
 
-// middleware group
-Route::middleware(['role:office_assistant'])->group(function () {
-
 //----------------------------------------------------------------------------//
 // 1. Overview
 //----------------------------------------------------------------------------//
 
-    Route::get('/office-assistant/overview', function () {
-        return view('/office-assistant/overview');
-    })->name('office_assistant.overview');
+
+//Route::get('/office-assistant/overview', function () {
+//    return view('/office-assistant/overview');
+//})->name('office_assistant.overview');
+
+
+//Route::middleware(['auth', 'role:office_assistant'])->group(function () {
+//    Route::get('/office-assistant/overview', function () {
+//        return view('/office-assistant/overview');
+//    })->name('office_assistant.overview');
+//});
 
 
 //----------------------------------------------------------------------------//
 // 2. User Application Routings
 //----------------------------------------------------------------------------//
 
-    //displays all list of user applications
-    Route::get('/office-assistant/user-application/user-application-list', [LecturerController::class, 'index']);
-    //Approve User Registration Request
-    Route::get('/office-assistant/user-application/approve-user-application/{id}', [LecturerController::class, 'approveRegistrationRequest']);
-    //disapprove User Registration Request
-    Route::get('/office-assistant/user-application/disapprove-user-application/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
+//displays all list of user applications
+Route::get('/office-assistant/user-application/user-application-list', [LecturerController::class, 'index']);
+//Approve User Registration Request
+Route::get('/office-assistant/user-application/approve-user-application/{id}', [LecturerController::class, 'approveRegistrationRequest']);
+//disapprove User Registration Request
+Route::get('/office-assistant/user-application/disapprove-user-application/{id}', [LecturerController::class, 'disapproveRegistrationRequest']);
 
 
 //----------------------------------------------------------------------------//
@@ -113,17 +120,17 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //----------------------------------------------------------------------------//
 
 //displays all list of public holidays
-    Route::get('/office-assistant/public-holiday/public-holiday-list', [PublicHolidayController::class, 'index']);
+Route::get('/office-assistant/public-holiday/public-holiday-list', [PublicHolidayController::class, 'index']);
 //Add a public holiday
-    Route::get('/office-assistant/public-holiday/add-public-holiday', [PublicHolidayController::class, 'addPublicHoliday']);
+Route::get('/office-assistant/public-holiday/add-public-holiday', [PublicHolidayController::class, 'addPublicHoliday']);
 //Save public holiday (Add)
-    Route::post('/office-assistant/public-holiday/save-public-holiday', [PublicHolidayController::class, 'savePublicHoliday']);
+Route::post('/office-assistant/public-holiday/save-public-holiday', [PublicHolidayController::class, 'savePublicHoliday']);
 //Edit public holiday
-    Route::get('/office-assistant/public-holiday/edit-public-holiday/{id}', [PublicHolidayController::class, 'editPublicHoliday']);
+Route::get('/office-assistant/public-holiday/edit-public-holiday/{id}', [PublicHolidayController::class, 'editPublicHoliday']);
 //Edit public holiday (Update)
-    Route::post('/office-assistant/public-holiday/update-public-holiday', [PublicHolidayController::class, 'updatePublicHoliday']);
+Route::post('/office-assistant/public-holiday/update-public-holiday', [PublicHolidayController::class, 'updatePublicHoliday']);
 //Delete public holiday
-    Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [PublicHolidayController::class, 'deletePublicHoliday']);
+Route::get('/office-assistant/public-holiday/delete-public-holiday/{id}', [PublicHolidayController::class, 'deletePublicHoliday']);
 
 
 //----------------------------------------------------------------------------//
@@ -131,17 +138,17 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //----------------------------------------------------------------------------//
 
 //displays all list of programs
-    Route::get('/office-assistant/program/program-list', [ProgramController::class, 'index']);
+Route::get('/office-assistant/program/program-list', [ProgramController::class, 'index']);
 //Add a program
-    Route::get('/office-assistant/program/add-program', [ProgramController::class, 'addProgram']);
+Route::get('/office-assistant/program/add-program', [ProgramController::class, 'addProgram']);
 //Save program (Add)
-    Route::post('/office-assistant/program/save-program', [ProgramController::class, 'saveProgram']);
+Route::post('/office-assistant/program/save-program', [ProgramController::class, 'saveProgram']);
 //Edit program
-    Route::get('/office-assistant/program/edit-program/{id}', [ProgramController::class, 'editProgram']);
+Route::get('/office-assistant/program/edit-program/{id}', [ProgramController::class, 'editProgram']);
 //Edit program (Update)
-    Route::post('/office-assistant/program/update-program', [ProgramController::class, 'updateProgram']);
+Route::post('/office-assistant/program/update-program', [ProgramController::class, 'updateProgram']);
 //Delete program
-    Route::get('/office-assistant/program/delete-program/{id}', [ProgramController::class, 'deleteProgram']);
+Route::get('/office-assistant/program/delete-program/{id}', [ProgramController::class, 'deleteProgram']);
 
 
 //----------------------------------------------------------------------------//
@@ -149,17 +156,17 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //----------------------------------------------------------------------------//
 
 //displays all list of venues
-    Route::get('/office-assistant/venue/venue-list', [VenueController::class, 'index']);
+Route::get('/office-assistant/venue/venue-list', [VenueController::class, 'index']);
 //Add a venues
-    Route::get('/office-assistant/venue/add-venue', [VenueController::class, 'addVenue']);
+Route::get('/office-assistant/venue/add-venue', [VenueController::class, 'addVenue']);
 //Save venues (Add)
-    Route::post('/office-assistant/venue/save-venue', [VenueController::class, 'saveVenue']);
+Route::post('/office-assistant/venue/save-venue', [VenueController::class, 'saveVenue']);
 //Edit venues
-    Route::get('/office-assistant/venue/edit-venue/{id}', [VenueController::class, 'editVenue']);
+Route::get('/office-assistant/venue/edit-venue/{id}', [VenueController::class, 'editVenue']);
 //Edit venues (Update)
-    Route::post('/office-assistant/venue/update-venue', [VenueController::class, 'updateVenue']);
+Route::post('/office-assistant/venue/update-venue', [VenueController::class, 'updateVenue']);
 //Delete venue
-    Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class, 'deleteVenue']);
+Route::get('/office-assistant/venue/delete-venue/{id}', [VenueController::class, 'deleteVenue']);
 
 
 //----------------------------------------------------------------------------//
@@ -167,19 +174,19 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //----------------------------------------------------------------------------//
 
 //displays all list of programs
-    Route::get('/office-assistant/course/course-list', [CourseController::class, 'index']);
+Route::get('/office-assistant/course/course-list', [CourseController::class, 'index']);
 //Filter course by program
-    Route::get('/office-assistant/course/course-list/{id}', [CourseController::class, 'filterProgram']);
+Route::get('/office-assistant/course/course-list/{id}', [CourseController::class, 'filterProgram']);
 //Add a program
-    Route::get('/office-assistant/course/add-course', [CourseController::class, 'addCourse']);
+Route::get('/office-assistant/course/add-course', [CourseController::class, 'addCourse']);
 //Save program (Add)S
-    Route::post('/office-assistant/course/save-course', [CourseController::class, 'saveCourse']);
+Route::post('/office-assistant/course/save-course', [CourseController::class, 'saveCourse']);
 //Edit program
-    Route::get('/office-assistant/course/edit-course/{id}', [CourseController::class, 'editCourse']);
+Route::get('/office-assistant/course/edit-course/{id}', [CourseController::class, 'editCourse']);
 //Edit program (Update)
-    Route::post('/office-assistant/course/update-course', [CourseController::class, 'updateCourse']);
+Route::post('/office-assistant/course/update-course', [CourseController::class, 'updateCourse']);
 //Delete program
-    Route::get('/office-assistant/course/delete-course/{id}', [CourseController::class, 'deleteCourse']);
+Route::get('/office-assistant/course/delete-course/{id}', [CourseController::class, 'deleteCourse']);
 
 
 //----------------------------------------------------------------------------//
@@ -187,52 +194,53 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //----------------------------------------------------------------------------//
 
 //displays all list of all timetable entities
-    Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
+Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
 //Filter timetable entities by program
-    Route::get('/office-assistant/timetable/timetable-list/{id}', [TimetableController::class, 'filterProgram']);
+Route::get('/office-assistant/timetable/timetable-list/{id}', [TimetableController::class, 'filterProgram']);
 //Add a timetable entity
-    Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
+Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
 //Save timetable entity (Add)
-    Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
+Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
 //Edit timetable entity
-    Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
+Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
 //Edit timetable entity (Update)
-    Route::post('/office-assistant/timetable/update-timetable', [TimetableController::class, 'updateTimetable']);
+Route::post('/office-assistant/timetable/update-timetable', [TimetableController::class, 'updateTimetable']);
 // Add timetable slots
-    Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
+Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
 //Save timetable slots (Add)
-    Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
+Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
 //Edit timetable slot
-    Route::get('/office-assistant/timetable/edit-timetable-slot/{id}', [TimetableController::class, 'editTimetableSlot']);
+Route::get('/office-assistant/timetable/edit-timetable-slot/{id}', [TimetableController::class, 'editTimetableSlot']);
 //Edit timetable entity (Update)
-    Route::post('/office-assistant/timetable/update-timetable-slot', [TimetableController::class, 'updateTimetableSlot']);
+Route::post('/office-assistant/timetable/update-timetable-slot', [TimetableController::class, 'updateTimetableSlot']);
 //Delete timetable entity
-    Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableController::class, 'deleteTimetable']);
+Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableController::class, 'deleteTimetable']);
 //Delete timetable slots
 
 //displays the calendar
-    Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
+Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
 //Filter calendar by program
-    Route::get('/office-assistant/timetable/calendar-view/view-calendar/{id}', [TimetableController::class, 'filterCalendar']);
+Route::get('/office-assistant/timetable/calendar-view/view-calendar/{id}', [TimetableController::class, 'filterCalendar']);
 
 //Print All Timetable Entities
-    Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'exportAll']);
+Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'exportAll']);
 //Print for a Specific Program
-    Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
-
-});
+Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
 
 
 //|--------------------------------------------------------------------------
 //|                                  LECTURER
 //|--------------------------------------------------------------------------
 
-Route::middleware(['role:lecturer'])->group(function () {
-
 //----------------------------------------------------------------------------//
 // 1. Overview
 //----------------------------------------------------------------------------//
-    Route::get('/lecturer/overview', function () {
-        return view('/lecturer/overview');
-    })->name('lecturer.overview');
-});
+
+
+Route::get('/lecturer/overview', function () {
+    return view('/lecturer/overview');
+})->middleware('role:lecturer')->name('lecturer.overview');
+
+Route::get('/office-assistant/overview', function () {
+    return view('/office-assistant/overview');
+})->middleware('role:office_assistant')->name('office_assistant.overview');

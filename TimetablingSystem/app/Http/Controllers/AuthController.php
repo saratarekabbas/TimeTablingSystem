@@ -88,11 +88,19 @@ class AuthController extends Controller
     }
 
 
+//    public function logout()
+//    {
+//        Auth::logout();
+////        return redirect()->route('/login')->with('success', 'You have successfully logged out.');
+//        return redirect('/login')->with('success', 'You have successfully logged out.');
+//
+//    }
+
     public function logout()
     {
         Auth::logout();
-//        return redirect()->route('/login')->with('success', 'You have successfully logged out.');
-        return redirect('/login')->with('success', 'You have successfully logged out.');
-
+        return redirect('/login')->with('message', 'You have successfully logged out.')->withInput()->header('Cache-Control','no-cache, no-store, must-revalidate');
     }
+
+
 }
