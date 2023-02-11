@@ -66,7 +66,7 @@
                 <p1> Total Lecturers</p1>
 
                 @php
-                    $lecturers = \App\Models\Lecturer::all();
+                    $lecturers = \App\Models\User::all();
                     $i = 0;
                 foreach($lecturers as $lecturer){
                     if($lecturer->lecturer_registration_status == 'approved'){

@@ -8,14 +8,6 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-//    public function index()
-//    { //fetch all records and display lists
-//        $data = Course::get();
-//        //compact is to pass $data basically
-//        return view('/office-assistant/course/course-list', compact('data'));
-//    }
-
-
     public function index()
     {
         $data = Course::get();
