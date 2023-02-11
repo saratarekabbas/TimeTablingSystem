@@ -43,4 +43,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+//    public function courses()
+//    {
+//        return $this->hasMany(Course::class); //means, one lecturer can have many courses
+//    }
+
+    public function courses()
+    {
+        if ($this->hasRole('lecturer')) {
+            return $this->hasMany(Course::class);
+        }
+        return null;
+    }
+
 }

@@ -71,8 +71,8 @@
                     @foreach($data as $userapplicationdata)
                         <tr>
                             <td>{{$i++}}</td>
-                            <td>{{$userapplicationdata->lecturer_name}}</td>
-                            <td>{{$userapplicationdata->lecturer_email}}</td>
+                            <td>{{$userapplicationdata->name}}</td>
+                            <td>{{$userapplicationdata->email}}</td>
                             <td>
                                 <a href="{{url('/office-assistant/user-application/approve-user-application/'.$userapplicationdata->id)}}"
                                    class="edit-btn">Approve</a>

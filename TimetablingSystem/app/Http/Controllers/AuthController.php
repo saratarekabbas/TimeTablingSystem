@@ -74,8 +74,8 @@ class AuthController extends Controller
         if ($user->hasRole('lecturer')) {
             if ($user->lecturer_registration_status == 'pending') {
                 return redirect()->back()->with('error', 'Sorry, your registration request is still pending.');
-            } else if ($user->lecturer_registration_status == 'denied') {
-                return redirect()->back()->with('error', 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.');
+            } else if ($user->lecturer_registration_status == 'disapproved') {
+                return redirect()->back()->with('error', 'Sorry, your registration request has been disapproved. Please, contact the Office for more assistance.');
             } else if ($user->lecturer_registration_status == 'approved') {
                 return redirect()->route('lecturer.overview')->with('success', 'Welcome, You are now logged in!');
             }
@@ -87,14 +87,6 @@ class AuthController extends Controller
         }
     }
 
-
-//    public function logout()
-//    {
-//        Auth::logout();
-////        return redirect()->route('/login')->with('success', 'You have successfully logged out.');
-//        return redirect('/login')->with('success', 'You have successfully logged out.');
-//
-//    }
 
     public function logout()
     {

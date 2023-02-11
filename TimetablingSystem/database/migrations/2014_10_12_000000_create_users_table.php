@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('role')->default('lecturer'); //lecturer or office assistant
+//            $table->string('role')->default('lecturer'); //lecturer or office assistant
             $table->string('lecturer_registration_status')->default('pending');
             $table->string('name');
             $table->string('email')->unique();
