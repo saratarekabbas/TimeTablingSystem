@@ -36,6 +36,16 @@
         <a href="/login">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             Logout</a>
+
+
+{{--LOGOUT--}}
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+
+
+
     </div>
 
     <div class="column right">

@@ -43,6 +43,7 @@ Route::get('/login', function () {
 });
 Route::post('/login', [AuthController::class, 'login']);
 
+
 //----------------------------------------------------------------------------//
 // 3. Email
 //----------------------------------------------------------------------------//
@@ -71,11 +72,13 @@ Route::get('/reset-password', function () {
 //----------------------------------------------------------------------------//
 
 Route::get('/', function () { //you need to change this later to make it go directly to the login page
-//    return view('/office-assistant/user-application/user-application-list');
     return view('login');
 });
 
-Route::get('/logout', [AuthController::class, 'logout']);
+//Route::post('logout', 'AuthController@logout')->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 
 

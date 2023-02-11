@@ -29,6 +29,15 @@
         {{--            Venues</a>--}}
         {{--        <a href="/office-assistant/course/course-list"><i class="fa fa-server" aria-hidden="true"></i>--}}
         {{--            Courses</a>--}}
+
+        {{--        LOGOUT--}}
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+
+
+
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
