@@ -24,12 +24,22 @@
 {{--                --}}{{--    This should be an alert--}}
 {{--                {{Session::get('success')}}--}}
 {{--            @endif--}}
-            <?php if (isset($_SESSION['success'])): ?>
-            <div class="alert alert-success">
-                <?php echo $_SESSION['success']; ?>
-            </div>
-            <?php unset($_SESSION['success']); ?>
-            <?php endif; ?>
+
+
+{{--            <?php if (isset($_SESSION['success'])): ?>--}}
+{{--            <div class="alert alert-success">--}}
+{{--                <?php echo $_SESSION['success']; ?>--}}
+{{--            </div>--}}
+{{--            <?php unset($_SESSION['success']); ?>--}}
+{{--            <?php endif; ?>--}}
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+
                 <form method="post" action="{{url('/login')}}">
                 @csrf
                 <input type="text" class="login-inputbox" placeholder="Email Address" name="email">
