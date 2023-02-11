@@ -90,22 +90,24 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // 1. Overview
 //----------------------------------------------------------------------------//
 
+
 //Route::get('/office-assistant/overview', function () {
 //    return view('/office-assistant/overview');
+//})->name('office_assistant.overview');
+
+
+//Route::middleware(['auth', 'role:office_assistant'])->group(function () {
+//    Route::get('/office-assistant/overview', function () {
+//        return view('/office-assistant/overview');
+//    })->name('office_assistant.overview');
 //});
-
-Route::get('/office-assistant/overview', function () {
-    return view('/office-assistant/overview');
-})->name('office_assistant.overview');
-
-//Route::get('/office_assistant/overview', [AuthController::class, 'overview'])->name('office_assistant.overview');
 
 
 //----------------------------------------------------------------------------//
 // 2. User Application Routings
 //----------------------------------------------------------------------------//
 
-//displays all list of public holidays
+//displays all list of user applications
 Route::get('/office-assistant/user-application/user-application-list', [LecturerController::class, 'index']);
 //Approve User Registration Request
 Route::get('/office-assistant/user-application/approve-user-application/{id}', [LecturerController::class, 'approveRegistrationRequest']);
@@ -236,10 +238,19 @@ Route::get('/office-assistant/timetable/print-timetable/export/{id}', [Timetable
 
 //Route::get('/lecturer/overview', function () {
 //    return view('/lecturer/overview');
+//})->name('lecturer.overview');
+
+//Route::middleware(['auth', 'role:lecturer'])->group(function () {
+//    Route::get('/lecturer/overview', function () {
+//        return view('/lecturer/overview');
+//    })->name('lecturer.overview');
 //});
+
 
 Route::get('/lecturer/overview', function () {
     return view('/lecturer/overview');
-})->name('lecturer.overview');
+})->middleware('role:lecturer')->name('lecturer.overview');
 
-//Route::get('/lecturer/overview', [AuthController::class, 'overview'])->name('lecturer.overview');
+Route::get('/office-assistant/overview', function () {
+    return view('/office-assistant/overview');
+})->middleware('role:office_assistant')->name('office_assistant.overview');

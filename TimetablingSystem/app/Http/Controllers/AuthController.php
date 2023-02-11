@@ -30,10 +30,12 @@ class AuthController extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
-                'role' => $validatedData['role'],
+                'role' => $validatedData['role'], //remove this
                 'lecturer_registration_status' => $validatedData['lecturer_registration_status']
             ]
         );
+
+        $user->assignRole('lecturer');
 
         return redirect()->back()->with('success', 'Your Registration Request Has Been Submitted Successfully!');
     }
@@ -69,7 +71,7 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.');
         }
 
-        if ($user->role == 'lecturer') {
+        if ($user->hasRole('lecturer')) {
             if ($user->lecturer_registration_status == 'pending') {
                 return redirect()->back()->with('error', 'Sorry, your registration request is still pending.');
             } else if ($user->lecturer_registration_status == 'denied') {
@@ -77,9 +79,12 @@ class AuthController extends Controller
             } else if ($user->lecturer_registration_status == 'approved') {
                 return redirect()->route('lecturer.overview')->with('success', 'Welcome, You are now logged in!');
             }
+        }elseif ($user->hasRole('office_assistant')) {
+            return redirect()->route('office_assistant.overview')->with('success', 'Welcome, You are now logged in!');
+        } else {
+            Auth::logout();
+            return redirect()->back()->with('error', 'You do not have a role assigned. Please contact the Office for more assistance.');
         }
-
-        return redirect()->route('office_assistant.overview')->with('success', 'Welcome, You are now logged in!');
     }
 
 
@@ -90,8 +95,4 @@ class AuthController extends Controller
         return redirect('/login')->with('success', 'You have successfully logged out.');
 
     }
-
-
-
-
 }
