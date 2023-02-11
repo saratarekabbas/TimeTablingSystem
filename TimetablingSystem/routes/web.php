@@ -87,9 +87,15 @@ Route::get('/logout', [AuthController::class, 'logout']);
 // 1. Overview
 //----------------------------------------------------------------------------//
 
+//Route::get('/office-assistant/overview', function () {
+//    return view('/office-assistant/overview');
+//});
+
 Route::get('/office-assistant/overview', function () {
     return view('/office-assistant/overview');
-});
+})->name('office_assistant.overview');
+
+//Route::get('/office_assistant/overview', [AuthController::class, 'overview'])->name('office_assistant.overview');
 
 
 //----------------------------------------------------------------------------//
@@ -225,6 +231,12 @@ Route::get('/office-assistant/timetable/print-timetable/export/{id}', [Timetable
 // 1. Overview
 //----------------------------------------------------------------------------//
 
+//Route::get('/lecturer/overview', function () {
+//    return view('/lecturer/overview');
+//});
+
 Route::get('/lecturer/overview', function () {
     return view('/lecturer/overview');
-});
+})->name('lecturer.overview');
+
+//Route::get('/lecturer/overview', [AuthController::class, 'overview'])->name('lecturer.overview');

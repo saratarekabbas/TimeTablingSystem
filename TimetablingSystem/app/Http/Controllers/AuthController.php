@@ -42,61 +42,97 @@ class AuthController extends Controller
 
 
 //Login user
+//    public function login(Request $request)
+//    {
+//        $credentials = $request->validate([
+//            'email' => 'required|email',
+//            'password' => 'required|min:8'
+//        ]);
+//
+//        $user = User::where('email', $request->email)->first();
+//
+////        Invalid user
+//        if (!$user) {
+////            return response()->json([
+////                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
+////            ], 401);
+//            $message = 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.';
+//            return view('login', compact('message'));
+//        }
+//
+////        Invalid password
+//        if (!Hash::check($request->password, $user->password)) {
+////            return response()->json([
+////                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
+////            ], 401);
+//            $message = 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.';
+//            return view('login', compact('message'));
+//        }
+//
+//        if (!Auth::attempt($credentials)) {
+//            dd($request->email, $request->password);
+////            return response()->json([
+////                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
+////            ], 401);
+//            $message = 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.';
+//            return view('login', compact('message'));
+//
+//        }
+//
+//        if ($user->hasRole('lecturer')) {
+//            if ($user->lecturer_registration_status === 'pending') {
+////                return response()->json([
+////                    'message' => 'Sorry, your registration request is still pending.'
+////                ], 401);
+//                $message = 'Sorry, your registration request is still pending.';
+//                return view('login', compact('message'));
+//            } elseif ($user->lecturer_registration_status === 'disapproved') {
+////                return response()->json([
+//////                    'message' => 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.'
+//////                ], 401);
+//                $message = 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.';
+//                return view('login', compact('message'));
+//            } else {
+//                return redirect()->route('lecturer.overview');
+//            }
+//        } else if ($user->role === 'office_assistant') {
+//            return redirect()->route('office_assistant.overview');
+//        }
+//
+//        session_start();
+//        $_SESSION['success'] = 'Login successful';
+//
+//
+//        $token = $user->createToken('authToken')->accessToken;
+//
+//        return response()->json([
+//            'user' => $user,
+//            'token' => $token
+//        ], 200);
+//    }
+
+
+
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $validatedData = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:6',
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-//        Invalid user
-        if (!$user) {
-            return response()->json([
-                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
-            ], 401);
-        }
-
-//        Invalid password
-        if (!Hash::check($request->password, $user->password)) {
-            return response()->json([
-                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
-            ], 401);
-        }
-
-        if (!Auth::attempt($credentials)) {
-            dd($request->email, $request->password);
-            return response()->json([
-                'message' => 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.'
-            ], 401);
-        }
-
-        if ($user->hasRole('lecturer')) {
-            if ($user->lecturer_registration_status === 'pending') {
-                return response()->json([
-                    'message' => 'Sorry, your registration request is still pending.'
-                ], 401);
-            } elseif ($user->lecturer_registration_status === 'disapproved') {
-                return response()->json([
-                    'message' => 'Sorry, your registration request has been denied. Please, contact the Office for more assistance.'
-                ], 401);
-            } else {
-                return view('/lecturer/overview');
+        if (Auth::attempt(['email' => $validatedData['email'], 'password' => $validatedData['password']])) {
+            $user = Auth::user();
+            if ($user->role === 'office_assistant') {
+                return redirect()->route('office_assistant.overview')->with('success', 'You have successfully logged in OA!');
+            } else if ($user->role === 'lecturer') {
+                return redirect()->route('lecturer.overview')->with('success', 'You have successfully logged in LC!');
             }
-        } else if ($user->role === 'office_assistant') {
-            return view('/office-assistant/overview');
         }
 
-        session_start();
-        $_SESSION['success'] = 'Login successful';
-
-
-        $token = $user->createToken('authToken')->accessToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token
-            ], 200);
+        return redirect()->back()->with('error', 'Email or password is incorrect.');
     }
+
+
+
+
 }
