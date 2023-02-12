@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
     <script src="/app.js"></script>
-    <link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>
@@ -56,15 +56,58 @@
             </div>
 
             <div class="container-heading">
-                <h5>FILTER BY PROGRAM</h5>
-                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/')}}">All Programs</a>
-                @php
-                    $programs = \App\Models\Program::all();
-                @endphp
-                @foreach($programs as $program)
-                    <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/'.$program->id)}}">{{$program->program_code}}
-                        - {{$program->program_name}}</a>
-                @endforeach
+{{--                <h5>FILTER BY PROGRAM</h5>--}}
+{{--                <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/')}}">All Programs</a>--}}
+{{--                @php--}}
+{{--                    $programs = \App\Models\Program::all();--}}
+{{--                @endphp--}}
+{{--                @foreach($programs as $program)--}}
+{{--                    <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/'.$program->id)}}">{{$program->program_code}}--}}
+{{--                        - {{$program->program_name}}</a>--}}
+{{--                @endforeach--}}
+
+
+                <div class="dropdown">
+                    <button onclick="myFunction3()" class="dropbtn"><i class="fa fa-filter" aria-hidden="true"></i>
+                        Filter by Program
+                    </button>
+                    <div id="myDropdown3" class="dropdown-content">
+
+                        <input type="text" placeholder="Search.." id="myInput3" onkeyup="filterFunction3()">
+                        <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/')}}">All Programs</a>
+                        @php
+                            $programs = \App\Models\Program::all();
+                        @endphp
+                        @foreach($programs as $program)
+                            <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar/'.$program->id)}}">{{$program->program_code}}
+                                - {{$program->program_name}}</a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <script>
+                    /* When the user clicks on the button,
+                    toggle between hiding and showing the dropdown content */
+                    function myFunction3() {
+                        document.getElementById("myDropdown3").classList.toggle("show");
+                    }
+
+                    function filterFunction3() {
+                        var input, filter, ul, li, a, i;
+                        input = document.getElementById("myInput3");
+                        filter = input.value.toUpperCase();
+                        div = document.getElementById("myDropdown3");
+                        a = div.getElementsByTagName("a");
+                        for (i = 0; i < a.length; i++) {
+                            txtValue = a[i].textContent || a[i].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                a[i].style.display = "";
+                            } else {
+                                a[i].style.display = "none";
+                            }
+                        }
+                    }
+                </script>
             </div>
 
 

@@ -55,7 +55,7 @@
             <div class="container-heading">
 
                 <div class="dropdown">
-                    <button onclick="myFunction1()" class="dropbtn"><i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+                    <button onclick="myFunction1()" class="dropbtn"><i class="fa fa-filter" aria-hidden="true"></i>
                         Filter by Program
                     </button>
                     <div id="myDropdown1" class="dropdown-content">
@@ -96,11 +96,10 @@
                     }
                 </script>
 
-                <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New
-                    Timetable Entity</a>
+
 
                 <div class="dropdown">
-                    <button onclick="myFunction2()" class="dropbtn"><i class="fa fa-print fa-2x" aria-hidden="true"></i>
+                    <button onclick="myFunction2()" class="dropbtn"><i class="fa fa-print" aria-hidden="true"></i>
                         Print by Program
                     </button>
                     <div id="myDropdown2" class="dropdown-content">
@@ -140,7 +139,10 @@
                     }
                 </script>
 
-                <br><br><br>
+                <a href="{{url('/office-assistant/timetable/add-timetable')}}" class="container-action-btns">Add a New
+                    Timetable Entity</a>
+
+
                 <a href="{{url('/office-assistant/timetable/calendar-view/view-calendar')}}"
                    class="container-action-btns">View Timetable</a>
                 <br><br><br>
@@ -150,10 +152,12 @@
 
 
 
-            @if(Session::has('success'))
-                This should be an alert
-                {{Session::get('success')}}
-            @endif
+            <div class="success-message">
+                @if(Session::has('success'))
+                    {{--    This should be an alert--}}
+                    {{Session::get('success')}}
+                @endif
+            </div>
 
             <div class="container-table">
                 <table id="table">
@@ -195,7 +199,7 @@
                             @endphp
                             @foreach($venues as $venue)
                                 @if($venue->id == $timetabledata->venue_id)
-                                    <td>{{$venue->venue_name}}, {{$venue->venue_level}}, {{$venue->venue_location}}</td>
+                                    <td>{{$venue->venue_name}}, Level {{$venue->venue_level}}, {{$venue->venue_location}}</td>
                                 @endif
                             @endforeach
                             <td>
@@ -222,10 +226,10 @@
 
                                 @if($timetabledata->slots == NULL)
                                     <a href="{{url('/office-assistant/timetable/add-timetable-slot/'.$timetabledata->id)}}"
-                                       class="delete-btn">Add Slots</a>
+                                       class="slots-btn">Add Slots</a>
                                 @else
                                     <a href="{{url('/office-assistant/timetable/edit-timetable-slot/'.$timetabledata->id)}}"
-                                       class="delete-btn">Edit Slots</a>
+                                       class="slots-btn">Edit Slots</a>
                                 @endif
                             </td>
                         </tr>
