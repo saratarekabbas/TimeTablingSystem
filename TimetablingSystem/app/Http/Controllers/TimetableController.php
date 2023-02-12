@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\Lecturer;
+use App\Models\User;
 use App\Models\Program;
 use App\Models\PublicHoliday;
 use App\Models\Timetable;
 use App\Models\Venue;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use League\CommonMark\Node\Inline\Newline;
@@ -23,6 +24,24 @@ class TimetableController extends Controller
         //compact is to pass $data basically
         return view('/office-assistant/timetable/timetable-list', compact('timetable'));
     }
+
+
+    public function lecturerIndex()
+    {
+        $user = Auth::user();
+//        $userId = $user->id;
+
+        $userId = ($user instanceof User) ? $user->id : null;
+
+        $courses = Course::where('lecturer_id', $userId)->get();
+        $courseIds = $courses->pluck('id')->toArray();
+
+        $timetable = Timetable::whereIn('course_id', $courseIds)->get();
+
+        return view('/lecturer/view-schedule', compact('timetable'));
+    }
+
+
 
     public function filterProgram($id)
     {
@@ -223,7 +242,7 @@ class TimetableController extends Controller
         foreach ($timetables as $timetable) {
             $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
             $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
-            $course_lecturer = Lecturer::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
+            $course_lecturer = User::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
             $course_venue = Venue::where('id', '=', $timetable->venue_id)->first();
 
             $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
@@ -264,7 +283,7 @@ class TimetableController extends Controller
         foreach ($timetables as $timetable) {
             $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
             $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
-            $course_lecturer = Lecturer::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
+            $course_lecturer = User::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
             $course_venue = Venue::where('id', '=', $timetable->venue_id)->first();
 
             $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;

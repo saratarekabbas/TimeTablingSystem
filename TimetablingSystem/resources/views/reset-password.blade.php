@@ -18,15 +18,20 @@
         <div class="reset-password-line">
         </div>
         <div class="login-column right-login-column">
-            <form>
+            <form method="POST" action="{{ route('password.update') }}">
+                @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
                 <a href="#" class="reset-password-arrow">
                     <img src="Reset-password-arrow.png">
                 </a>
                 <h1>Reset Your Password</h1>
                 <h2>Please, enter your new password.</h2>
-                <input type="password" class="login-inputbox" placeholder="New Password" name="password">
-                <input type="password" class="login-inputbox" placeholder="Confirm New Password" name="password">
-                <input class="login-submit" value="RESET PASSWORD">
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
+                </div>
+                <input type="password" class="login-inputbox" placeholder="New Password" name="password" required>
+                <input type="password" class="login-inputbox" placeholder="Confirm New Password" name="password_confirmation" required>
+                <button type="submit" class="login-submit">RESET PASSWORD</button>
             </form>
         </div>
     </div>

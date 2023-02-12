@@ -50,7 +50,8 @@
                     @error('password')
                     {{$message}}
                     @enderror
-                <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
+                    <a href="{{ route('password.request') }}" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
+
 
                     <button type="submit" class="login-submit" id="registerBtn">LOGIN</button>
 

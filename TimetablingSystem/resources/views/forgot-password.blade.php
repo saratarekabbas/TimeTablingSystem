@@ -18,14 +18,15 @@
         <div class="reset-password-line">
         </div>
         <div class="login-column right-login-column">
-            <form>
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
                 <a href="#" class="reset-password-arrow">
                     <img src="Reset-password-arrow.png">
                 </a>
                 <h1>Reset Your Password</h1>
                 <h2>Lost your password? Please enter your email address. You will receive a link to create a new password via email.</h2>
-                <input type="email" class="login-inputbox" placeholder="Enter email address" name="email-address">
-                <input class="login-submit" value="SUBMIT">
+                <input type="email" class="login-inputbox" placeholder="Enter email address" name="email" required>
+                <button type="submit" class="login-submit">SUBMIT</button>
             </form>
         </div>
     </div>

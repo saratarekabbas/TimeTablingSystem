@@ -16,7 +16,7 @@ class Course extends Model
 
     public function lecturer()
     {
-        return $this->belongsTo(Lecturer::class);
+        return $this->belongsTo(User::class);
     }
 
     public function timetable()
