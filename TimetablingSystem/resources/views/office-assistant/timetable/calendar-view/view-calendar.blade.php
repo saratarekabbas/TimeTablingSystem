@@ -109,8 +109,6 @@
                     }
                 </script>
             </div>
-
-
             @if(Session::has('success'))
                 {{--                This should be an alert--}}
                 {{Session::get('success')}}

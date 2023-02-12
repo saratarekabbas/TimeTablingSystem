@@ -108,8 +108,6 @@
                                 left: 'prev,next, today',
                                 center: 'title',
                                 right: 'month, agendaWeek, agendaDay'
-
-
                             },
                             events: meetings,
                             selectable: true,
@@ -118,42 +116,6 @@
                             select: function (start, end, allDays) {
                                 $('.modal').modal('toggle');
                             },
-
-                            //da onclick 3ala el event
-                            // eventClick: function (info) {
-                            //     alert('hiiii');
-                            //     alert(info)
-                            // }
-
-
-                            // eventClick: function (event) {
-                            //     alert(event.myId)
-                            //     {
-                            //         alert(myId);
-                            //     }
-                            // }
-
-                            // eventRender: function(event, element) {
-                            //     //Check what is the key for description in event and use that one.
-                            //     element.find('.fc-title').append(" " + event.description);
-                            //     element.bind('dblclick', function() {
-                            //         $('#ModalEdit #id').val(event.id);
-                            //         $('#ModalEdit #title').val(event.title);
-                            //         $('#ModalEdit').modal('show');
-                            //     });
-                            // }
-
-
-                            // eventRender: function(event, element) {
-                            //     //Check what is the key for description in event and use that one.
-                            //     element.find('.fc-title').append(" " + event.description);
-                            //     element.bind('dblclick', function() {
-                            //         $('#ModalEdit #id').val(event.id);
-                            //         $('#ModalEdit #title').val(event.title);
-                            //         $('#ModalEdit').modal('show');
-                            //     });
-                            // }
-
                         })
                     })
                     ;

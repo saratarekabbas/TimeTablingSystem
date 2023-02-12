@@ -18,29 +18,14 @@
     <div class="column side">
         <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
-        <a href="/office-assistant/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i> Overview</a>
-        {{--        <a href="/office-assistant/user-application/user-application-list"><i class="fa fa-user-plus" aria-hidden="true"></i>--}}
-        {{--            User Applications</a>--}}
-        {{--        <a href="/office-assistant/public-holiday/public-holiday-list"><i class="fa fa-plane" aria-hidden="true"></i>--}}
-        {{--            Public Holidays</a>--}}
-        {{--        <a href="/office-assistant/program/program-list"><i class="fa fa-building" aria-hidden="true"></i>--}}
-        {{--            Programs</a>--}}
-        {{--        <a href="/office-assistant/venue/venue-list"><i class="fa fa-map-marker" aria-hidden="true"></i>--}}
-        {{--            Venues</a>--}}
-        {{--        <a href="/office-assistant/course/course-list"><i class="fa fa-server" aria-hidden="true"></i>--}}
-        {{--            Courses</a>--}}
-
+        <a href="/lecturer/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i>Overview</a>
+                <a href="/lecturer/view-schedule"><i class="fa fa-server" aria-hidden="true"></i>
+                    Schedule</a>
         {{--        LOGOUT--}}
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit">Logout</button>
         </form>
-
-
-
-        <a href="/office-assistant/timetable/timetable-list">
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-            Timetable</a>
     </div>
 
     <div class="column right">
@@ -59,27 +44,28 @@
         {{--        container for the page content--}}
         <div class="container-bulletin">
             <div class="container-comingclass">
-                <p3> Coming Class </p3>
+                <p3> Coming Class</p3>
                 <p4> 2023-01-01 9:00am <br> MANP1163(02)</p4>
             </div>
             <div class="container-comingclassvenue">
-                <p3> Coming Class Venue </p3>
-                <p4> Lvl 3 Professional Training <br> (10pax) </p4>
+                <p3> Coming Class Venue</p3>
+                <p4> Lvl 3 Professional Training <br> (10pax)</p4>
             </div>
         </div>
         <div class="container-announcement">
             <div class="container-announcement-viewtimetableentity">
-                <p1> Timetable Entity </p1>
+                <p1> Timetable Entity</p1>
                 <a href="/office-assistant/user-application/user-application-list">View All</a>
                 <div class="container-table-timetableentity">
                     <table>
-                        <col class="col-program" />
-                        <col class="col-course" />
-                        <col class="col-venue" />
-                        <col class="col-meeting" />
-                        <col class="col-botton" />
+                        <col class="col-program"/>
+                        <col class="col-course"/>
+                        <col class="col-venue"/>
+                        <col class="col-meeting"/>
+                        <col class="col-botton"/>
                         <tr>
-                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)</td>
+                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)
+                            </td>
                             <td style="color: #252733">UANP0013-RESEARCH METHODOLOGY</td>
                             <td style="color: #252733">Lvl 3 Professional Training 1 (10pax)</td>
                             <td style="color: #252733">·meeting1：2023-01-01 9:00am
@@ -90,11 +76,13 @@
                                 ·meeting6：2023-01-01 9:00am
                             </td>
                             <td>
-                                <input class="container-announcement-view" value="EDIT" onclick="javascript:window.location.href='/#'" >
+                                <input class="container-announcement-view" value="EDIT"
+                                       onclick="javascript:window.location.href='/#'">
                             </td>
                         </tr>
                         <tr>
-                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)</td>
+                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)
+                            </td>
                             <td style="color: #252733">UANP0013-RESEARCH METHODOLOGY</td>
                             <td style="color: #252733">Lvl 3 Professional Training 1 (10pax)</td>
                             <td style="color: #252733">·meeting1：2023-01-01 9:00am
@@ -102,7 +90,8 @@
                                 ·meeting3：2023-01-01 9:00am
                             </td>
                             <td>
-                                <input class="container-announcement-view" value="EDIT" onclick="javascript:window.location.href='/#'" >
+                                <input class="container-announcement-view" value="EDIT"
+                                       onclick="javascript:window.location.href='/#'">
                             </td>
                         </tr>
                     </table>

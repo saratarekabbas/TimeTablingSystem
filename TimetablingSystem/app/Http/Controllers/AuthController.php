@@ -30,7 +30,6 @@ class AuthController extends Controller
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
                 'password' => bcrypt($request->input('password')),
-                'role' => $validatedData['role'], //remove this
                 'lecturer_registration_status' => $validatedData['lecturer_registration_status']
             ]
         );
@@ -60,16 +59,18 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.');
         }
 
+        if ($user->login_attempts >= 3) {
+            return redirect()->back()->with('error', 'Error: Invalid Password Attempts Exceeded. Please Reset Your Password');
+        }
+
         if (!Auth::attempt($credentials)) {
-            ////            Add this field 'login_attempts' to the DB
-////            if ($user->login_attempts >= 2) {
-////                return redirect()->back()->with('error', 'Error: Invalid Password Attempts Exceeded. Please Reset Your Password');
-////            }
-////
-////            $user->login_attempts = $user->login_attempts + 1;
-////            $user->save();
+            $user->login_attempts = $user->login_attempts + 1;
+            $user->save();
             return redirect()->back()->with('error', 'Invalid Email and/or Password. Please, make sure you have inserted the correct credentials.');
         }
+
+        $user->login_attempts = 0;
+        $user->save();
 
         if ($user->hasRole('lecturer')) {
             if ($user->lecturer_registration_status == 'pending') {
