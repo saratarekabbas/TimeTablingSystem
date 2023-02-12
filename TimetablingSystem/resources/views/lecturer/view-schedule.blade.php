@@ -62,7 +62,7 @@
                 <table id="table">
                     <tr>
                         <th>#</th>
-                        <th>Program</th>
+{{--                        <th>Program</th>--}}
                         <th>Course</th>
                         <th>Venue</th>
                         <th>Meetings</th>
@@ -82,14 +82,15 @@
                                 $courses = \App\Models\Course::where('lecturer_id', $userId)->get();
                                 $programIds = $courses->pluck('program_id')->toArray(); //Program IDs affiliated to this lecturer
                                 $programs = \App\Models\Program::where('id', $programIds)->get();
+                                $programs = \App\Models\Program::whereIn('id', $programIds)->get();
                             @endphp
-                            @foreach($programs as $program)
-                                @if($program->id == $timetabledata->program_id)
-                                    <td>{{$program->program_code}} - {{$program->program_name}}</td>
-                                @endif
-                            @endforeach
+{{--                            @foreach($programs as $program)--}}
+{{--                                @if($program->id == $timetabledata->program_id)--}}
+{{--                                    <td>{{$program->program_code}} - {{$program->program_name}}</td>--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
 
-                            @php
+                        @php
                                 $courses = \App\Models\Course::all();
                             @endphp
                             @foreach($courses as $course)
@@ -130,7 +131,7 @@
                             </td>
                             <td>
                                 @if($timetabledata->slots == NULL)
-                                    <b> No Slots have been added yet </b>
+                                    No Slots have been added yet
                                 @else
                                     <a href="{{url('/lecturer/schedule/edit-schedule-slot/'.$timetabledata->id)}}"
                                        class="edit-btn">Edit Slots</a>
