@@ -26,10 +26,10 @@ class TimetableController extends Controller
     }
 
 
+//  LECTURER
     public function lecturerIndex()
     {
         $user = Auth::user();
-//        $userId = $user->id;
 
         $userId = ($user instanceof User) ? $user->id : null;
 
@@ -41,8 +41,87 @@ class TimetableController extends Controller
         return view('/lecturer/view-schedule', compact('timetable'));
     }
 
+    public function editScheduleSlot($id)
+    {
+        $timetable = Timetable::where('id', '=', $id)->first();
+        $meetings_number = Course::where('id', '=', $timetable->course_id)->first()->number_of_meetings;
 
+        return view('/lecturer/edit-schedule-slot', compact('timetable', 'meetings_number'));
+    }
 
+    public function updateScheduleSlot(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'slots.*' => [
+                'required',
+                function ($attribute, $value, $fail) use ($request) {
+                    $currentIndex = array_search($value, $request->slots);
+                    if ($currentIndex > 0 && $value <= $request->slots[$currentIndex - 1]) {
+                        return $fail("Meeting " . ($currentIndex + 1) . " must be after meeting " . $currentIndex);
+                    }
+
+                    $publicHolidays = PublicHoliday::all();
+                    $meetingDate = Carbon::parse($value);
+
+                    foreach ($publicHolidays as $publicHoliday) {
+                        $publicHolidayStart = Carbon::parse($publicHoliday->public_holiday_start_date);
+                        $publicHolidayEnd = Carbon::parse($publicHoliday->public_holiday_end_date);
+
+                        if ($meetingDate->between($publicHolidayStart, $publicHolidayEnd)) {
+                            $fail("Sorry, you cannot have a meeting on {$value} because it is a public holiday.");
+                        }
+                    }
+
+//                    Venue Validations
+
+                    $timetable = Timetable::find($request->id);
+                    $venue_id = $timetable->venue_id;
+
+                    $timetables = Timetable::where('venue_id', $venue_id)->get();
+
+                    foreach ($timetables as $timetable) {
+                        if (is_array($timetable->slots) && in_array($value, $timetable->slots)) {
+                            $fail("Sorry, the venue is occupied on {$value}");
+                        }
+                    }
+
+//                  Lecturer Validations
+                    $timetable = Timetable::find($request->id);
+                    $course = Course::find($timetable->course_id);
+                    $lecturer_id = $course->lecturer_id;
+
+                    $otherTimetables = Timetable::where('course_id', '!=', $timetable->course_id)
+                        ->whereHas('course', function ($query) use ($lecturer_id) {
+                            $query->where('lecturer_id', $lecturer_id);
+                        })->get();
+
+                    foreach ($otherTimetables as $otherTimetable) {
+                        if (is_array($otherTimetable->slots) && in_array($value, $otherTimetable->slots)) {
+                            $fail("Sorry, you have another lecture on {$value}");
+                        }
+                    }
+                }
+            ]]);
+
+        $id = $request->id;
+        $slots = $request->slots;
+//        $remarks = $request->remarks;
+
+//        Create the update query by calling our Course Eloquent Model
+        Timetable::where('id', '=', $id)->update([
+            'slots' => $slots,
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        return redirect()->back()->with('success', 'Successful: Schedule slots have been updated successfully');
+    }
+
+////////////////////////////////////////////////
+///     Office Assistant
     public function filterProgram($id)
     {
         $findProgram = Program::where('id', $id)->first();
@@ -138,8 +217,6 @@ class TimetableController extends Controller
                             $fail("Sorry, the lecturer has another class on {$value}");
                         }
                     }
-
-
                 }
             ]
         ]);

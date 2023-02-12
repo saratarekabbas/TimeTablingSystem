@@ -61,14 +61,11 @@ Route::get('/registration-disapproved/{id}', [LecturerController::class, 'disapp
 //----------------------------------------------------------------------------//
 
 
-
-
 //Route::get('/forgot-password', function () {
 //    return view('/forgot-password');
 //});
 //
 //Route::post('/forgot-password', 'ResetPasswordController@sendResetPasswordEmail');
-
 
 
 //Route::get('/reset-password', function () {
@@ -88,14 +85,11 @@ Route::get('/registration-disapproved/{id}', [LecturerController::class, 'disapp
 //Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 
 
-
 Route::get('/forgot-password', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-
-
 
 
 //----------------------------------------------------------------------------//
@@ -108,7 +102,6 @@ Route::get('/', function () { //you need to change this later to make it go dire
 
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
 
 
 //|--------------------------------------------------------------------------
@@ -253,40 +246,15 @@ Route::middleware(['role:lecturer'])->group(function () {
         return view('/lecturer/overview');
     })->name('lecturer.overview');
 
-
-
     //displays all list of all timetable entities
     Route::get('/lecturer/view-schedule', [TimetableController::class, 'lecturerIndex']);
 
+//Edit timetable slot
+    Route::get('/lecturer/schedule/edit-schedule-slot/{id}', [TimetableController::class, 'editScheduleSlot']);
 
+//Edit timetable slot (Update)
+    Route::post('/lecturer/schedule/update-schedule-slot', [TimetableController::class, 'updateScheduleSlot']);
 
-//----------------------------------------------------------------------------//
-// 7. Timetable Routings
-//----------------------------------------------------------------------------//
-////displays all list of all timetable entities
-//    Route::get('/office-assistant/timetable/timetable-list', [TimetableController::class, 'index']);
-//////Filter timetable entities by program
-//    Route::get('/office-assistant/timetable/timetable-list/{id}', [TimetableController::class, 'filterProgram']);
-//////Add a timetable entity
-//    Route::get('/office-assistant/timetable/add-timetable', [TimetableController::class, 'addTimetable']);
-//////Save timetable entity (Add)
-//    Route::post('/office-assistant/timetable/save-timetable', [TimetableController::class, 'saveTimetable']);
-//////Edit timetable entity
-//    Route::get('/office-assistant/timetable/edit-timetable/{id}', [TimetableController::class, 'editTimetable']);
-//////Edit timetable entity (Update)
-//    Route::post('/office-assistant/timetable/update-timetable', [TimetableController::class, 'updateTimetable']);
-////// Add timetable slots
-//    Route::get('/office-assistant/timetable/add-timetable-slot/{id}', [TimetableController::class, 'addTimetableSlot']);
-//////Save timetable slots (Add)
-//    Route::post('/office-assistant/timetable/save-timetable-slot', [TimetableController::class, 'saveTimetableSlot']);
-//////Edit timetable slot
-//    Route::get('/office-assistant/timetable/edit-timetable-slot/{id}', [TimetableController::class, 'editTimetableSlot']);
-//////Edit timetable entity (Update)
-//    Route::post('/office-assistant/timetable/update-timetable-slot', [TimetableController::class, 'updateTimetableSlot']);
-////Delete timetable entity
-//    Route::get('/office-assistant/timetable/delete-timetable/{id}', [TimetableController::class, 'deleteTimetable']);
-////Delete timetable slots
-//
 ////displays the calendar
 //    Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
 ////Filter calendar by program

@@ -44,53 +44,9 @@
 
             <div class="container-heading">
 
-                <div class="dropdown">
-                    <button onclick="myFunction1()" class="dropbtn"><i class="fa fa-filter fa-2x" aria-hidden="true"></i>
-                        Filter by Program
-                    </button>
-                    <div id="myDropdown1" class="dropdown-content">
 
-                        <input type="text" placeholder="Search.." id="myInput1" onkeyup="filterFunction1()">
-                        <a href="{{url('/lecturer/timetable/timetable-list/')}}">All Programs</a>
-                        @php
-                            $programs = \App\Models\Program::all();
-                        @endphp
-                        @foreach($programs as $program)
-                            <a href="{{url('/office-assistant/timetable/timetable-list/'.$program->id)}}">{{$program->program_code}}
-                                - {{$program->program_name}}</a>
-                        @endforeach
-                    </div>
-                </div>
-
-                <script>
-                    /* When the user clicks on the button,
-                    toggle between hiding and showing the dropdown content */
-                    function myFunction1() {
-                        document.getElementById("myDropdown1").classList.toggle("show");
-                    }
-
-                    function filterFunction1() {
-                        var input, filter, ul, li, a, i;
-                        input = document.getElementById("myInput1");
-                        filter = input.value.toUpperCase();
-                        div = document.getElementById("myDropdown1");
-                        a = div.getElementsByTagName("a");
-                        for (i = 0; i < a.length; i++) {
-                            txtValue = a[i].textContent || a[i].innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                a[i].style.display = "";
-                            } else {
-                                a[i].style.display = "none";
-                            }
-                        }
-                    }
-                </script>
-
-
-
-
-
-              <a href="{{url('/lecturer/timetable/print-schedule/export')}}" class="container-action-btns">  <i class="fa fa-print fa-2x" aria-hidden="true"></i> Print Schedule</a>
+                <a href="{{url('/lecturer/timetable/print-schedule/export')}}" class="container-action-btns"> <i
+                        class="fa fa-print fa-2x" aria-hidden="true"></i> Print Schedule</a>
 
                 <br><br><br>
                 <a href="{{url('/lecturer/timetable/calendar-view/view-calendar')}}"
@@ -121,7 +77,11 @@
                         <tr>
                             <td>{{$i++}}</td>
                             @php
-                                $programs = \App\Models\Program::all();
+                                $user = Auth::user();
+                                $userId = ($user instanceof User) ? $user->id : null;
+                                $courses = \App\Models\Course::where('lecturer_id', $userId)->get();
+                                $programIds = $courses->pluck('program_id')->toArray(); //Program IDs affiliated to this lecturer
+                                $programs = \App\Models\Program::where('id', $programIds)->get();
                             @endphp
                             @foreach($programs as $program)
                                 @if($program->id == $timetabledata->program_id)
@@ -165,14 +125,14 @@
                                 @if($timetabledata->remarks == NULL)
                                     No Remarks
                                 @else
-                                {{$timetable->remarks}}
+                                    {{$timetable->remarks}}
                                 @endif
                             </td>
                             <td>
                                 @if($timetabledata->slots == NULL)
                                     <b> No Slots have been added yet </b>
                                 @else
-                                    <a href="{{url('/lecturer/timetable/edit-timetable-slot/'.$timetabledata->id)}}"
+                                    <a href="{{url('/lecturer/schedule/edit-schedule-slot/'.$timetabledata->id)}}"
                                        class="edit-btn">Edit Slots</a>
                                 @endif
                             </td>

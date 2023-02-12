@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('course_id');
             $table->foreignId('venue_id');
             $table->json('slots')->nullable();
+            $table->string('remarks')->nullable();
             $table->timestamps();
         });
     }

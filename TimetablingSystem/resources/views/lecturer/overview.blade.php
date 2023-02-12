@@ -35,7 +35,12 @@
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p1>
-            <p2>Othman Yusop
+            <p2>
+                @php
+                    $user = Auth::user();
+                    $userName = ($user instanceof User) ? $user->name : "Lecturer";
+                       @endphp
+                {{$userName}}
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p2>
         </div>
