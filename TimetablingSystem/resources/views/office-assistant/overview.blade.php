@@ -33,15 +33,16 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
-        <a href="/login">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            Logout</a>
+{{--        <a href="/login">--}}
+{{--            <i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+{{--            Logout</a>--}}
 
 
 {{--LOGOUT--}}
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button type="submit">Logout</button>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <button type="submit" class="logout-btn">Logout</button>
         </form>
 
 

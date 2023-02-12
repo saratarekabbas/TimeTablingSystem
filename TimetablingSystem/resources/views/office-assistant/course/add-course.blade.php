@@ -32,9 +32,16 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
-        <a href="/login">
+{{--        <a href="/login">--}}
+{{--            <i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+{{--            Logout</a>--}}
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
             <i class="fa fa-sign-out" aria-hidden="true"></i>
-            Logout</a>
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+
     </div>
 
     <div class="column right">
@@ -85,10 +92,10 @@
                         <tr>
                             <td style="color: #252733">Course Type</td>
                             <td style="color: red">
-                                <select class="create-edit-inputbox"
-                                                          placeholder="Course Type" name="course_type">
+                                <select class="create-edit-inputbox" name="course_type">
+                                    <option value="" disabled selected>Course Type</option>
                                     <option value="Core Course">Core Course</option>
-                                    <option value="Elective Coursee">Elective Course</option>
+                                    <option value="Elective Course">Elective Course</option>
                                     <option value="Master's Project">Master's Project</option>
                                     <option value="General University Course">General University Course</option>
                                 </select>
@@ -102,7 +109,8 @@
                                 @php
                                     $programs = \App\Models\Program::all();
                                 @endphp
-                                <select class="create-edit-inputbox" placeholder="Program" name="program_id">
+                                <select class="create-edit-inputbox"  name="program_id">
+                                    <option value="" disabled selected>Program</option>
                                     @foreach($programs as $program)
                                         <option value="{{$program->id}}">{{$program->program_code}} - {{$program->program_name}}</option>
                                     @endforeach
@@ -127,7 +135,8 @@
                                 @php
                                     $lecturers = \App\Models\User::all();
                                 @endphp
-                                <select class="create-edit-inputbox"  placeholder="Lecturer" name="lecturer_id">
+                                <select class="create-edit-inputbox"   name="lecturer_id">
+                                    <option value="" disabled selected>Lecturer</option>
                                     @foreach($lecturers as $lecturer)
                                         @if($lecturer->lecturer_registration_status == 'approved')
                                             <option value="{{$lecturer->id}}">{{$lecturer->name}}</option>

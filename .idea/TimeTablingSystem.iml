@@ -8,6 +8,13 @@
       <sourceFolder url="file://$MODULE_DIR$/TimetablingSystem/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/masterminds/html5" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/barryvdh/laravel-dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/spatie/laravel-permission" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/TimetablingSystem/vendor/dompdf/dompdf" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

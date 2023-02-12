@@ -87,7 +87,9 @@ body {
     text-align: center;
 }
 
-.column.side a {
+.column.side a,
+.column.side form
+{
     display: block;
     color: #A4A6B3;
     text-align: left;
@@ -97,16 +99,38 @@ body {
     font-size: 16px;
 }
 
+.logout-btn {
+    /*height: 48px;*/
+    /*width: 265px;*/
+    background-color: #840E35;
+    color: #A4A6B3;
+    /*padding: 14px 16px;*/
+    /*margin: 50px 450px;*/
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    /*border-radius: 4px;*/
+    border:none;
+    font-size: 18px;
+    /*letter-spacing: 1px;*/
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Roboto';
+    /*font-weight: 500;*/
+}
+
 .column.side i {
     padding-left: 0px;
     padding-right: 20px;
 }
 
 .fa-sign-out{
-    /*margin-bottom: 325px;*/
+    padding-left: 0px;
+    padding-right: 20px;
 }
 /* Change color on hover */
-.column.side a:hover {
+.column.side a:hover,
+.column.side form:hover{
     background-color: #861A3F;
     color: #E59308;
 }
@@ -222,8 +246,10 @@ body {
     color: #252733;
 }
 
-.edit-btn {
-    width: 120px;
+.edit-btn,
+.delete-btn,
+.slots-btn{
+    width: 100px;
     border-radius: 4px;
     border: none;
     color: white;
@@ -234,27 +260,21 @@ body {
     font-family: Montserrat, 'Mulish';
     font-weight: bold;
     font-size: 11px;
-    background-color: #E59308;
     cursor: pointer;
+}
+.edit-btn{
+    background-color: #E59308;
 }
 
 .delete-btn {
-    width: 120px;
-    border-radius: 4px;
-    border: none;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-family: Montserrat, 'Mulish';
-    font-weight: bold;
-    font-size: 11px;
     background-color: #FF0000;
     margin-left: 5px;
-    cursor: pointer;
+    clear-after: right;
 }
-
+.slots-btn{
+    background-color: #FF0000;
+    margin-top:5px
+}
 
 /*-------------------------------------------*/
 /*     Login, Register & Forgot Password     */
@@ -444,6 +464,10 @@ body {
 
 /*-------------------------------------------*/
 /*         Office Assistant Overview         */
+
+
+
+
 
 .header p1 {
     float: left;
@@ -651,7 +675,7 @@ body {
     margin-top: 30px;
     margin-left: 30px;
     height: auto;
-    max-height: 600px;
+    max-height: 500px;
     width: 1194px;
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -742,6 +766,8 @@ body {
     text-align: left;
     font-size: 16px;
     padding-left: 30px;
+    clear:both;
+    display:block;
 }
 
 
@@ -911,12 +937,13 @@ col-botton
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    margin: 4px 32px;
+    margin: 4px 20px;
 }
 
 .container-action-btns {
-    position: absolute;
-    right: 25px;
+    position: relative;
+    /*right: 5px;*/
+    /*padding-left: 32px;*/
     border-radius: 4px;
     border: none;
     color: white;
@@ -928,13 +955,14 @@ col-botton
     font-weight: bold;
     font-size: 11px;
     background-color: #59011E;
-    margin: 4px 2px;
+    margin: 4px 20px;
+    float:right;
     cursor: pointer;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #FEC400;
-}
+/*.dropbtn:hover, .dropbtn:focus {*/
+/*    background-color: #FEC400;*/
+/*}*/
 
 #myInput,
 #myInput1,

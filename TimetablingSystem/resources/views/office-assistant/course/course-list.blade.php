@@ -33,9 +33,16 @@
         <a href="/office-assistant/timetable/timetable-list">
             <i class="fa fa-calendar" aria-hidden="true"></i>
             Timetable</a>
-        <a href="/login">
+{{--        <a href="/login">--}}
+{{--            <i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+{{--            Logout</a>--}}
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
             <i class="fa fa-sign-out" aria-hidden="true"></i>
-            Logout</a>
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+
     </div>
 
     <div class="column right">
@@ -55,7 +62,7 @@
 
 
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn"><i class="fa fa-filter fa-2x" aria-hidden="true"></i>
+                    <button onclick="myFunction()" class="dropbtn"><i class="fa fa-filter" aria-hidden="true"></i>
                         Filter by Program
                     </button>
                     <div id="myDropdown" class="dropdown-content">
