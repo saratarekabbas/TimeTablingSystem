@@ -120,6 +120,103 @@ class TimetableController extends Controller
         return redirect()->back()->with('success', 'Successful: Schedule slots have been updated successfully');
     }
 
+
+    public function lecturerCalendarIndex()
+    {
+        $meetings = array();
+
+//        Public Holiday calendar Display
+        $publicHolidays = PublicHoliday::all();
+        foreach ($publicHolidays as $publicHoliday) {
+            $meetings[] = [
+                'title' => $publicHoliday->public_holiday_title,
+                'start' => $publicHoliday->public_holiday_start_date . ' 00:00:00',
+                'end' => $publicHoliday->public_holiday_end_date . ' 23:59:59',
+            ];
+        }
+
+//        Timetable calendar display
+        $timetables = Timetable::all();
+        $slots[] = array();
+        foreach ($timetables as $timetable) {
+            $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
+            $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
+            $course_lecturer = User::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
+            $course_venue = Venue::where('id', '=', $timetable->venue_id)->first();
+
+            $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
+
+            if ($slots != NULL) {
+                for ($i = 0; $i < sizeof($slots); $i++) {
+                    $meetings[] = [
+                        'title' => $course_code . ' - ' . $course_title . ' ' . nl2br($course_lecturer) . ' @' . nl2br($course_venue->venue_name . ', Level ' . $course_venue->venue_level . ', ' . $course_venue->venue_location),
+                        'start' => $slots[$i] . ' 09:00:00',
+                        'end' => $slots[$i] . ' 17:00:00',
+                        'color' => '#E59308'
+                    ];
+                }
+            }
+            unset($slot);
+        }
+        return view('/lecturer/lecturer-view-calendar', ['meetings' => $meetings]);
+    }
+
+    public function lecturerFilterCalendar($id)
+    {
+        $meetings = array();
+
+//        Public Holiday calendar Display
+        $publicHolidays = PublicHoliday::all();
+        foreach ($publicHolidays as $publicHoliday) {
+            $meetings[] = [
+                'title' => $publicHoliday->public_holiday_title,
+                'start' => $publicHoliday->public_holiday_start_date . ' 00:00:00',
+                'end' => $publicHoliday->public_holiday_end_date . ' 23:59:59',
+            ];
+        }
+
+//        Timetable calendar display
+        $findProgram = Program::where('id', $id)->first();
+        $timetables = Timetable::where('program_id', $findProgram->id)->get();
+        $slots[] = array();
+        foreach ($timetables as $timetable) {
+            $course_code = Course::where('id', '=', $timetable->course_id)->first()->course_code;
+            $course_title = Course::where('id', '=', $timetable->course_id)->first()->course_name;
+            $course_lecturer = User::where('id', '=', Course::where('id', '=', $timetable->course_id)->first()->lecturer_id)->first()->lecturer_name;
+            $course_venue = Venue::where('id', '=', $timetable->venue_id)->first();
+            $slots = Timetable::where('id', '=', $timetable->id)->first()->slots;
+
+            if ($slots != NULL) {
+                for ($i = 0; $i < sizeof($slots); $i++) {
+                    $meetings[] = [
+                        'title' => $course_code . ' - ' . $course_title . ' ' . nl2br($course_lecturer) . ' @' . nl2br($course_venue->venue_name . ', Level ' . $course_venue->venue_level . ', ' . $course_venue->venue_location),
+                        'start' => $slots[$i] . ' 09:00:00',
+                        'end' => $slots[$i] . ' 17:00:00',
+                        'color' => '#E59308'
+                    ];
+                }
+            }
+            unset($slot);
+        }
+        return view('/lecturer/lecturer-view-calendar/', ['meetings' => $meetings]);
+    }
+
+
+    public function lecturerExportAll()
+    {
+        $timetable = Timetable::get();
+        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
+        return $pdf->download('timetable.pdf');
+    }
+
+    public function lecturerExport($id)
+    {
+        $findProgram = Program::where('id', $id)->first();
+        $timetable = Timetable::where('program_id', $findProgram->id)->get();
+        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
+        return $pdf->download('timetable.pdf');
+    }
+
 ////////////////////////////////////////////////
 ///     Office Assistant
     public function filterProgram($id)

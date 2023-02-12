@@ -45,11 +45,11 @@
             <div class="container-heading">
 
 
-                <a href="{{url('/lecturer/timetable/print-schedule/export')}}" class="container-action-btns"> <i
+                <a href="{{url('/lecturer/lecturer-print-timetable/export')}}" class="container-action-btns"> <i
                         class="fa fa-print fa-2x" aria-hidden="true"></i> Print Schedule</a>
 
                 <br><br><br>
-                <a href="{{url('/lecturer/timetable/calendar-view/view-calendar')}}"
+                <a href="{{url('/lecturer/lecturer-view-calendar')}}"
                    class="container-action-btns">View Calendar</a>
                 <br><br><br>
             </div>

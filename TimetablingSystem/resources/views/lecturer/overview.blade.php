@@ -28,13 +28,6 @@
             <button type="submit" class="logout-btn">Logout</button>
         </form>
 
-
-
-
-{{--        <form action="{{ route('logout') }}" method="POST">--}}
-{{--            @csrf--}}
-{{--            <button type="submit">Logout</button>--}}
-{{--        </form>--}}
     </div>
 
     <div class="column right">

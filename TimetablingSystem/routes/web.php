@@ -232,16 +232,12 @@ Route::middleware(['role:office_assistant'])->group(function () {
     Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
 });
 
-
 //|--------------------------------------------------------------------------
 //|                                  LECTURER
 //|--------------------------------------------------------------------------
 
 Route::middleware(['role:lecturer'])->group(function () {
 
-//----------------------------------------------------------------------------//
-// 1. Overview
-//----------------------------------------------------------------------------//
     Route::get('/lecturer/overview', function () {
         return view('/lecturer/overview');
     })->name('lecturer.overview');
@@ -255,14 +251,14 @@ Route::middleware(['role:lecturer'])->group(function () {
 //Edit timetable slot (Update)
     Route::post('/lecturer/schedule/update-schedule-slot', [TimetableController::class, 'updateScheduleSlot']);
 
-////displays the calendar
-//    Route::get('/office-assistant/timetable/calendar-view/view-calendar', [TimetableController::class, 'calendarIndex']);
-////Filter calendar by program
-//    Route::get('/office-assistant/timetable/calendar-view/view-calendar/{id}', [TimetableController::class, 'filterCalendar']);
-//
-////Print All Timetable Entities
-//    Route::get('/office-assistant/timetable/print-timetable/export', [TimetableController::class, 'exportAll']);
-////Print for a Specific Program
-//    Route::get('/office-assistant/timetable/print-timetable/export/{id}', [TimetableController::class, 'export']);
+//displays the calendar
+//    Route::get('/lecturer/lecturer-view-calendar', [TimetableController::class, 'lecturerCalendarIndex']);
+    Route::get('/lecturer/lecturer-view-calendar', [TimetableController::class, 'lecturerCalendarIndex']);
 
+//Filter calendar by program
+    Route::get('/lecturer/lecturer-view-calendar/{id}', [TimetableController::class, 'lecturerFilterCalendar']);
+////Print All Timetable Entities
+    Route::get('/lecturer/lecturer-print-timetable/export', [TimetableController::class, 'lecturerExportAll']);
+//Print for a Specific Program
+    Route::get('/lecturer/lecturer-print-timetable/export/{id}', [TimetableController::class, 'lecturerExport']);
 });
