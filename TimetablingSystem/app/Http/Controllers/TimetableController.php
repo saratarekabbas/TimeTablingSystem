@@ -204,18 +204,19 @@ class TimetableController extends Controller
 
     public function lecturerExportAll()
     {
-        $timetable = Timetable::get();
-        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
+        $user = Auth::user();
+
+        $userId = ($user instanceof User) ? $user->id : null;
+
+        $courses = Course::where('lecturer_id', $userId)->get();
+        $courseIds = $courses->pluck('id')->toArray();
+
+        $timetable = Timetable::whereIn('course_id', $courseIds)->get();
+
+        $pdf = Pdf::LoadView('/lecturer/lecturer-print-timetable', compact('timetable', 'user'));
         return $pdf->download('timetable.pdf');
     }
 
-    public function lecturerExport($id)
-    {
-        $findProgram = Program::where('id', $id)->first();
-        $timetable = Timetable::where('program_id', $findProgram->id)->get();
-        $pdf = Pdf::LoadView('/office-assistant/timetable/print-timetable', compact('timetable'));
-        return $pdf->download('timetable.pdf');
-    }
 
 ////////////////////////////////////////////////
 ///     Office Assistant

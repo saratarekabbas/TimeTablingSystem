@@ -260,5 +260,5 @@ Route::middleware(['role:lecturer'])->group(function () {
 ////Print All Timetable Entities
     Route::get('/lecturer/lecturer-print-timetable/export', [TimetableController::class, 'lecturerExportAll']);
 //Print for a Specific Program
-    Route::get('/lecturer/lecturer-print-timetable/export/{id}', [TimetableController::class, 'lecturerExport']);
+//    Route::get('/lecturer/lecturer-print-timetable/export/{id}', [TimetableController::class, 'lecturerExport']);
 });

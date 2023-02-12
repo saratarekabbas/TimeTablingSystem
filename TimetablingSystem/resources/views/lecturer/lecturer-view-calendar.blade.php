@@ -51,7 +51,7 @@
             <div class="container-heading">
                 <div class="dropdown">
                     <button onclick="myFunction3()" class="dropbtn"><i class="fa fa-filter" aria-hidden="true"></i>
-                        Filter by Program
+                        Filter
                     </button>
                     <div id="myDropdown3" class="dropdown-content">
 
