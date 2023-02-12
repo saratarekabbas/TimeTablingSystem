@@ -1,4 +1,12 @@
-{{--This Page Contains the list of all public holidays--}}
+@php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\User;
+use App\Models\Course;
+use App\Models\Timetable;
+use App\Models\Venue;
+
+@endphp
+
 
     <!doctype html>
 <html lang="en">
@@ -19,8 +27,8 @@
         <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
         <a href="/lecturer/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i>Overview</a>
-                <a href="/lecturer/view-schedule"><i class="fa fa-server" aria-hidden="true"></i>
-                    Schedule</a>
+        <a href="/lecturer/view-schedule"><i class="fa fa-server" aria-hidden="true"></i>
+            Schedule</a>
         {{--        LOGOUT--}}
         <form action="{{ route('logout') }}" method="POST">
             @csrf
@@ -41,24 +49,59 @@
                 @php
                     $user = Auth::user();
                     $userName = ($user instanceof User) ? $user->name : "Lecturer";
-                       @endphp
+                @endphp
                 {{$userName}}
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
             </p2>
         </div>
+                <div class="container-bulletin">
+                    <div class="container-comingclass">
+                        <p3> Upcoming Class</p3>
+                        <p4>
+                            @php
+                                $user = \Auth::user();
+                                $userId = ($user instanceof User) ? $user->id : null;
+                                $courses = \App\Models\Course::where('lecturer_id', $userId)->get();
+                                $courseIds = $courses->pluck('id')->toArray(); // Course IDs affiliated to this lecturer
+                                $timetables = \App\Models\Timetable::whereIn('course_id', $courseIds)->get();
+                                $nextClass = null;
+                                $currentDate = date('Y-m-d');
+                                foreach ($timetables as $timetable) {
+                                  $slots = $timetable->slots;
+                                  foreach ($slots as $slot) {
+                                    if ($slot >= $currentDate) {
+                                      $nextClass = $slot;
+                                      break 2;
+                                    }
+                                  }
+                                }
+                                if ($nextClass) {
+                                  echo $nextClass . " 9:00am <br>";
+                                  $course = \App\Models\Course::find($timetable->course_id);
+                                  echo $course->course_code . " (" . $course->section_number . ")";
+                                } else {
+                                  echo "No upcoming class";
+                                }
+                            @endphp
+                        </p4>
+                    </div>
+                    <div class="container-comingclassvenue">
+                        <p3> Upcoming Class Venue</p3>
+                        <p4>
+                            @php
+                                if($nextClass){
+                                $venue = \App\Models\Venue::find($timetable->venue_id);
+                                echo $venue->venue_name . ", Level " . $venue->venue_level . ", " . $venue->venue_location . "<br>(" . $venue->venue_capacity . "pax)";
+                                }
+                               else{
+                                echo "No upcoming venue";
+                                }
+                            @endphp
+                        </p4>
+                    </div>
+                </div>
 
 
-        {{--        container for the page content--}}
-        <div class="container-bulletin">
-            <div class="container-comingclass">
-                <p3> Coming Class</p3>
-                <p4> 2023-01-01 9:00am <br> MANP1163(02)</p4>
-            </div>
-            <div class="container-comingclassvenue">
-                <p3> Coming Class Venue</p3>
-                <p4> Lvl 3 Professional Training <br> (10pax)</p4>
-            </div>
-        </div>
         <div class="container-announcement">
             <div class="container-announcement-viewtimetableentity">
                 <p1> Timetable Entity</p1>

@@ -237,24 +237,18 @@ Route::middleware(['role:office_assistant'])->group(function () {
 //|--------------------------------------------------------------------------
 
 Route::middleware(['role:lecturer'])->group(function () {
-
     Route::get('/lecturer/overview', function () {
         return view('/lecturer/overview');
     })->name('lecturer.overview');
-
     //displays all list of all timetable entities
     Route::get('/lecturer/view-schedule', [TimetableController::class, 'lecturerIndex']);
-
 //Edit timetable slot
     Route::get('/lecturer/schedule/edit-schedule-slot/{id}', [TimetableController::class, 'editScheduleSlot']);
-
 //Edit timetable slot (Update)
     Route::post('/lecturer/schedule/update-schedule-slot', [TimetableController::class, 'updateScheduleSlot']);
-
 //displays the calendar
 //    Route::get('/lecturer/lecturer-view-calendar', [TimetableController::class, 'lecturerCalendarIndex']);
     Route::get('/lecturer/lecturer-view-calendar', [TimetableController::class, 'lecturerCalendarIndex']);
-
 //Filter calendar by program
     Route::get('/lecturer/lecturer-view-calendar/{id}', [TimetableController::class, 'lecturerFilterCalendar']);
 ////Print All Timetable Entities

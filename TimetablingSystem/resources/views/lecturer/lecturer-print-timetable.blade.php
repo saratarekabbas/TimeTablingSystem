@@ -1,5 +1,12 @@
 {{--This Page Contains the list of all Programs--}}
+@php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\User;
+use App\Models\Course;
+use App\Models\Timetable;
+use App\Models\Venue;
 
+@endphp
     <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +34,6 @@
 <h3>Lecturer: {{$user->name}}</h3>
 <br>
 
-
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -36,9 +42,11 @@
         <th>Course</th>
         <th>Venue</th>
         <th>Meetings</th>
+        <th>Remarks</th>
     </tr>
     </thead>
     <tbody>
+
     @php
         $i = 1;
     @endphp
@@ -87,9 +95,16 @@
                     </ol>
                 @endif
             </td>
+            <td>
+                @if($timetabledata->remarks == NULL)
+                    No Remarks
+                @else
+                    {{$timetable->remarks}}
+                @endif
+            </td>
+
         </tr>
     @endforeach
-    </tbody>
 </table>
 
 {{--footer--}}

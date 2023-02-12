@@ -1,5 +1,11 @@
-{{--This Page Contains the list of all Programs--}}
+@php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\User;
+use App\Models\Course;
+use App\Models\Timetable;
+use App\Models\Venue;
 
+@endphp
     <!doctype html>
 <html lang="en">
 <head>
@@ -62,7 +68,7 @@
                 <table id="table">
                     <tr>
                         <th>#</th>
-{{--                        <th>Program</th>--}}
+                        <th>Program</th>
                         <th>Course</th>
                         <th>Venue</th>
                         <th>Meetings</th>
@@ -84,15 +90,15 @@
                                 $programs = \App\Models\Program::where('id', $programIds)->get();
                                 $programs = \App\Models\Program::whereIn('id', $programIds)->get();
                             @endphp
-{{--                            @foreach($programs as $program)--}}
-{{--                                @if($program->id == $timetabledata->program_id)--}}
-{{--                                    <td>{{$program->program_code}} - {{$program->program_name}}</td>--}}
-{{--                                @endif--}}
-{{--                            @endforeach--}}
+                            @foreach($programs as $program)
+                                @if($program->id == $timetabledata->program_id)
+                                    <td>{{$program->program_code}} - {{$program->program_name}}</td>
+                                @endif
+                            @endforeach
 
-                        @php
-                                $courses = \App\Models\Course::all();
-                            @endphp
+{{--                            @php--}}
+{{--                                $courses = \App\Models\Course::all();--}}
+{{--                            @endphp--}}
                             @foreach($courses as $course)
                                 @if($course->id == $timetabledata->course_id)
                                     <td>{{$course->course_code}} - {{$course->course_name}}</td>
