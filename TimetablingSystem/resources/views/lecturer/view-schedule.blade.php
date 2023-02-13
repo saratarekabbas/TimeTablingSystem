@@ -31,13 +31,14 @@ use App\Models\Venue;
         {{--        LOGOUT--}}
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button type="submit">Logout</button>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <button type="submit" class="logout-btn">Logout</button>
         </form>
     </div>
 
     <div class="column right">
         <div class="header">
-            <p>Office Assistant
+            <p>Lecturer
                 <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p>
         </div>
