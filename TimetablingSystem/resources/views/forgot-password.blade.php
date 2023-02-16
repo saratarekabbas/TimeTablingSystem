@@ -18,7 +18,7 @@
         <div class="reset-password-line">
         </div>
         <div class="login-column right-login-column">
-            <form method="POST" action="{{ route('password.email') }}">
+            <form method="POST">
                 @csrf
                 <a href="#" class="reset-password-arrow">
                     <img src="Reset-password-arrow.png">

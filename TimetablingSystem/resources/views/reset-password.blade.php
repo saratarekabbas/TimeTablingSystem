@@ -18,9 +18,9 @@
         <div class="reset-password-line">
         </div>
         <div class="login-column right-login-column">
-            <form method="POST" action="{{ route('password.update') }}">
+            <form method="POST" >
                 @csrf
-                <input type="hidden" name="token" value="{{ $token }}">
+                <input type="hidden" name="token" >
                 <a href="#" class="reset-password-arrow">
                     <img src="Reset-password-arrow.png">
                 </a>

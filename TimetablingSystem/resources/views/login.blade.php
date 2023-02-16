@@ -20,19 +20,6 @@
         </div>
 
         <div class="login-form">
-{{--            @if(Session::has('success'))--}}
-{{--                --}}{{--    This should be an alert--}}
-{{--                {{Session::get('success')}}--}}
-{{--            @endif--}}
-
-
-{{--            <?php if (isset($_SESSION['success'])): ?>--}}
-{{--            <div class="alert alert-success">--}}
-{{--                <?php echo $_SESSION['success']; ?>--}}
-{{--            </div>--}}
-{{--            <?php unset($_SESSION['success']); ?>--}}
-{{--            <?php endif; ?>--}}
-
             @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
@@ -50,7 +37,7 @@
                     @error('password')
                     {{$message}}
                     @enderror
-                    <a href="{{ route('password.request') }}" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
+                    <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
 
 
                     <button type="submit" class="login-submit" id="registerBtn">LOGIN</button>
