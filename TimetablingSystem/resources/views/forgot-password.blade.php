@@ -9,6 +9,7 @@
     <title>Password Reset Page</title>
 </head>
 <body>
+
 <div class="login-page">
     <div class="login-content">
         <div class="login-column left-login-column">
@@ -17,20 +18,23 @@
         <div class="reset-password-line">
         </div>
         <div class="login-column right-login-column">
-            <form action="{{url('/forgot-password' }}" method="POST">
+            <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <a href="#" class="reset-password-arrow">
                     <img src="Reset-password-arrow.png">
                 </a>
                 <h1>Reset Your Password</h1>
-                <h2>Lost your password? Please enter your email address. You will receive a link to create a new
-                    password via email.</h2>
+                <h2>Lost your password? Please enter your email address. You will receive a link to create a new password via email.</h2>
                 <input type="email" class="login-inputbox" placeholder="Enter email address" name="email" required>
                 <button type="submit" class="login-submit">SUBMIT</button>
             </form>
         </div>
     </div>
+
     <div class="footer">Created by SSZ Solutions. © 2023</div>
+
+
 </div>
+
 </body>
 </html>

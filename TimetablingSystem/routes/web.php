@@ -4,7 +4,6 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\TimetableController;
-use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicHolidayController;
 use App\Http\Controllers\ProgramController;
@@ -85,12 +84,12 @@ Route::get('/registration-disapproved/{id}', [LecturerController::class, 'disapp
 //Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
 //Route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 
-Route::get('/forgot-password', [PasswordController::class, 'showForgotPasswordForm']);
-Route::post('/forgot-password', [PasswordController::class, 'sendPasswordResetEmail']);
-Route::get('/reset-password/{token}', [PasswordController::class, 'showPasswordResetForm']);
-Route::post('/reset-password', [PasswordController::class, 'resetPassword']);
 
-Route::get('/reset-password/{id}', [PasswordController::class, 'disapproveRegistrationRequest']);
+Route::get('/forgot-password', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('/forgot-password', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 
 //----------------------------------------------------------------------------//
