@@ -49,7 +49,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8|max:16|alpha_num',
+            'password' => 'required',
         ]);
 
         $credentials = request(['email', 'password']);

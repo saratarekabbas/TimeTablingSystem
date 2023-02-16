@@ -27,22 +27,23 @@
             @endif
 
 
-                <form method="post" action="{{url('/login')}}">
+            <form method="post" action="{{url('/login')}}">
                 @csrf
                 <input type="text" class="login-inputbox" placeholder="Email Address" name="email">
-                    @error('email')
-                    {{$message}}
-                    @enderror
+                @error('email')
+                {{$message}}
+                @enderror
                 <input type="password" class="login-inputbox" placeholder="Password" name="password">
-                    @error('password')
-                    {{$message}}
-                    @enderror
-                    <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
+                @error('password')
+                {{$message}}
+                @enderror
+                <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
 
 
-                    <button type="submit" class="login-submit" id="registerBtn">LOGIN</button>
+                <button type="submit" class="login-submit" id="registerBtn">LOGIN</button>
 
-                <a href="/registration" class="login-forgotpassword forgotpasswordB">No account yet? <b>Register here.</b></a>
+                <a href="/registration" class="login-forgotpassword forgotpasswordB">No account yet? <b>Register
+                        here.</b></a>
             </form>
         </div>
     </div>
