@@ -14,18 +14,29 @@
 
 <div class="login-page">
     <div class="login-content">
-        <div class="login-column">
-            <form  action="{{ route('password.email') }}" method="POST">
+        <div class="login-column left-login-column">
+            <img src="Reset_Password.png">
+        </div>
+        <div class="reset-password-line">
+        </div>
+        <div class="login-column right-login-column">
+
+            <form action="{{ route('password.email') }}" method="POST">
                 @csrf
+                <a href="login.blade.php" class="reset-password-arrow">
+                    <img src="Reset-password-arrow.png">
+                </a>
 
                 <h1>Forgot Password</h1>
-                <h2>Lost your password? Please enter your email address. You will receive a link to create a new password via email.</h2>
+                <h2>Lost your password? Please enter your email address. You will receive a link to create a new
+                    password via email.</h2>
 
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Enter email address" required autofocus>
+                    <input type="email" name="email" class="login-inputbox" placeholder="Enter email address" required
+                           autofocus>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="login-submit">SUBMIT</button>
             </form>
         </div>
     </div>
