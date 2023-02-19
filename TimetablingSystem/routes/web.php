@@ -91,7 +91,7 @@ Route::get('/registration-disapproved/{id}', [LecturerController::class, 'disapp
 Route::get('/forgot-password', [PasswordController::class, 'showForgotPasswordForm']);
 Route::post('/forgot-password', [PasswordController::class, 'sendPasswordResetEmail'])->name('password.email');
 Route::get('/reset-password/{token}', [PasswordController::class, 'showPasswordResetForm']);
-Route::post('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.reset');
+Route::patch('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.reset');
 
 
 
@@ -99,7 +99,7 @@ Route::post('/reset-password/{token}', [PasswordController::class, 'resetPasswor
 // 4. Other
 //----------------------------------------------------------------------------//
 
-Route::get('/', function () { //you need to change this later to make it go directly to the login page
+Route::get('/', function () {
     return view('login');
 });
 

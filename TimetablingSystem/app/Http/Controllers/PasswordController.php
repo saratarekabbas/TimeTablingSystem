@@ -43,12 +43,12 @@ class PasswordController extends Controller
 
     public function showPasswordResetForm(Request $request, $token = null)
     {
-        if ($request->isMethod('post')) {
+        if ($request->isMethod('PATCH')) {
             // Validate the request data
             $request->validate([
                 'token' => 'required',
                 'email' => 'required|email',
-                'password' => 'required|confirmed|min:8',
+                'password' => 'required|confirmed|min:8|max:16',
             ]);
 
             // Reset the user's password
@@ -56,7 +56,7 @@ class PasswordController extends Controller
                 $request->only('email', 'password', 'password_confirmation', 'token'), function ($user, $password) {
                 $user->password = bcrypt($password);
                 $user->save();
-                Auth::login($user);
+//                Auth::login($user);
             }
             );
 
@@ -176,29 +176,30 @@ class PasswordController extends Controller
 ////        }
 //    }
 
-    public function resetPassword(Request $request)
-    {
-        // Validate the request data
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:8|max:16|alpha_num',
-        ]);
-
-        // Get the user with the provided email
-        $user = User::where('email', $request->email)->first();
-        $email = $user->email;
-        $password = $request->input('password');
-        $confirm_password = $request->input('password_confirmation');
-
-        if($password == $confirm_password){
-            User::where('email', '=', $email)->update([
-                'password' => bcrypt($password),
-            ]);
-        }
-
-        return redirect('/login')->with('message', 'You have changed your password successfully.');
-    }
+//////////////////////////////////////////////////////////////////////////
+//    public function resetPassword(Request $request)
+//    {
+//        // Validate the request data
+//        $request->validate([
+//            'token' => 'required',
+//            'email' => 'required|email',
+//            'password' => 'required|confirmed|min:8|max:16|alpha_num',
+//        ]);
+//
+//        // Get the user with the provided email
+//        $user = User::where('email', $request->email)->first();
+//        $email = $user->email;
+//        $password = $request->input('password');
+//        $confirm_password = $request->input('password_confirmation');
+//
+//        if($password == $confirm_password){
+//            User::where('email', '=', $email)->update([
+//                'password' => bcrypt($password),
+//            ]);
+//        }
+//
+//        return redirect('/login')->with('message', 'You have changed your password successfully.');
+//    }
 
 
 

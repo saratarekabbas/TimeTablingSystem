@@ -24,7 +24,7 @@ class VenueController extends Controller
     {
 //        Validation
         $request->validate([
-            'venue_name' => 'required',
+            'venue_name' => 'required|unique:venues,venue_name',
             'venue_level' => 'required|Integer',
             'venue_capacity' => 'required|Integer',
             'venue_location' => 'required'

@@ -139,8 +139,11 @@
                                     <option value="" disabled selected>Lecturer</option>
                                     @foreach($lecturers as $lecturer)
                                         @if($lecturer->lecturer_registration_status == 'approved')
-                                            <option value="{{$lecturer->id}}">{{$lecturer->name}}</option>
+                                            @if($lecturer->email != 'office_assistant@utm.my')
+                                                <option value="{{$lecturer->id}}">{{$lecturer->name}}</option>
+                                            @endif
                                         @endif
+
                                     @endforeach
                                 </select>
                                 @error('lecturer_id')
