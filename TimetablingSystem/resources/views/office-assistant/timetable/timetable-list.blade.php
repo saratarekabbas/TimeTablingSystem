@@ -227,7 +227,7 @@
                             <td>
                                 <a href="{{url('/office-assistant/timetable/edit-timetable/'.$timetabledata->id)}}"
                                    class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/timetable/delete-timetable/'.$timetabledata->id)}}"
+                                <a href="{{url('/office-assistant/timetable/delete-timetable/'.$timetabledata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
                                    class="delete-btn">Delete</a>
 
 

@@ -22,23 +22,23 @@
         <div class="login-form">
             @if(Session::has('success'))
                 {{--    This should be an alert--}}
-                {{Session::get('success')}}
+                <p style="color:red;font-size:12px;"">{{Session::get('success')}}</p>
             @endif
             <form method="post" action="{{url('/registration')}}">
                 @csrf
                 <input type="text" class="login-inputbox" placeholder="Full Name" id="name" name="name" required>
 
                 @error('name')
-                <p style="color:red;font-size:12px;line-height:3px;"">{{ $message }}</p>
+                <p style="color:red;font-size:12px;"">{{ $message }}</p>
                 @enderror
 
                 <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email">
                 @error('email')
-                <p style="color:red;font-size:12px;line-height:3px;">{{ $message }}</p>
+                <p style="color:red;font-size:12px;">{{ $message }}</p>
                 @enderror
                 <input type="password" class="login-inputbox" placeholder="Password" id="password" name="password" required>
                 @error('password')
-                <p style="color:red;font-size:12px;line-height:3px;"">{{ $message }}</p>
+                <p style="color:red;font-size:12px;">{{ $message }}</p>
                 @enderror
 
                 <button type="submit" class="login-submit" id="registerBtn">REGISTER</button>

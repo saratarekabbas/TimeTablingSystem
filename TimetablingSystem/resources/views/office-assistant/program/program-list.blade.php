@@ -95,7 +95,7 @@
                             <td>
                                 <a href="{{url('/office-assistant/program/edit-program/'.$programdata->id)}}"
                                    class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/program/delete-program/'.$programdata->id)}}"
+                                <a href="{{url('/office-assistant/program/delete-program/'.$programdata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
                                    class="delete-btn">Delete</a>
                             </td>
                         </tr>

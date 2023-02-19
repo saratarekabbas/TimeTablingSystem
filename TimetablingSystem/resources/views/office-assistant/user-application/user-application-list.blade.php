@@ -25,6 +25,7 @@
             Public Holidays</a>
         <a href="/office-assistant/program/program-list"><i class="fa fa-building" aria-hidden="true"></i>
             Programs</a>
+{{--        <a href="/office-assistant/venue/venue-list"><i class="fa fa-map-marker" aria-hidden="true"></i>--}}
         <a href="/office-assistant/venue/venue-list"><i class="fa fa-map-marker" aria-hidden="true"></i>
             Venues</a>
         <a href="/office-assistant/course/course-list"><i class="fa fa-server" aria-hidden="true"></i>
@@ -81,7 +82,7 @@
                             <td>
                                 <a href="{{url('/office-assistant/user-application/approve-user-application/'.$userapplicationdata->id)}}"
                                    class="edit-btn">Approve</a>
-                                <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}"
+                                <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
                                    class="delete-btn">Disapprove</a>
                             </td>
                         </tr>
