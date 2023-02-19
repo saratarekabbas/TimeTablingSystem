@@ -89,7 +89,7 @@
                             <td>
                                 <a href="{{url('/office-assistant/venue/edit-venue/'.$venuedata->id)}}"
                                    class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/venue/delete-venue/'.$venuedata->id)}}"
+                                <a href="{{url('/office-assistant/venue/delete-venue/'.$venuedata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
                                    class="delete-btn">Delete</a>
                             </td>
                         </tr>

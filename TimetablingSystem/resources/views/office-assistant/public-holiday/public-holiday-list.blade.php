@@ -92,7 +92,7 @@
                             <td>
                                 <a href="{{url('/office-assistant/public-holiday/edit-public-holiday/'.$publicholidaydata->id)}}"
                                    class="edit-btn">Edit</a>
-                                <a href="{{url('/office-assistant/public-holiday/delete-public-holiday/'.$publicholidaydata->id)}}"
+                                <a href="{{url('/office-assistant/public-holiday/delete-public-holiday/'.$publicholidaydata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
                                    class="delete-btn">Delete</a>
                             </td>
                         </tr>
