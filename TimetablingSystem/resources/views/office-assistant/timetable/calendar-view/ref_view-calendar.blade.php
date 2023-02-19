@@ -54,9 +54,12 @@
 
     <div class="column right">
         <div class="header">
-            <p>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </p>
+            <p1>
+                Edit Timetable Slot
+            </p1>
+            <p2>Office Assistant
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
+            </p2>
         </div>
 
         {{--        container for the page content--}}

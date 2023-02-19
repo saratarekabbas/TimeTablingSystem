@@ -38,7 +38,12 @@ use App\Models\Venue;
 
     <div class="column right">
         <div class="header">
-            <p>Lecturer
+            <p>
+                @php
+                    $user = Auth::user();
+                    $userName = ($user instanceof User) ? $user->name : "Lecturer";
+                @endphp
+                {{$userName}}
                 <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p>
         </div>
@@ -52,16 +57,15 @@ use App\Models\Venue;
             <div class="container-heading">
 
 
-                <a href="{{url('/lecturer/lecturer-print-timetable/export')}}" class="container-action-btns"> <i
-                        class="fa fa-print fa-2x" aria-hidden="true"></i> Print Schedule</a>
+                <a href="{{url('/lecturer/lecturer-print-timetable/export')}}" class="dropbtn"> <i
+                        class="fa fa-print" aria-hidden="true"></i> Print Schedule</a>
 
-                <br><br><br>
                 <a href="{{url('/lecturer/lecturer-view-calendar')}}"
                    class="container-action-btns">View Calendar</a>
                 <br><br><br>
             </div>
             @if(Session::has('success'))
-                This should be an alert
+{{--                This should be an alert--}}
                 {{Session::get('success')}}
             @endif
 

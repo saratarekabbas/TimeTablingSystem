@@ -59,6 +59,9 @@
             @endif
         </div>
 
+
+
+
         {{--        container for the page content--}}
         <div class="container-program">
             <p1>Edit Timetable Entity</p1>
@@ -81,7 +84,7 @@
 
                             <td style="color: red"><input type="text" class="create-edit-inputbox"
                                                           placeholder="Course" name="course_id"
-                                                          value="{{$course->course_name}}">
+                                                          disabled value="{{$course->course_name}}">
 
                                 @error('course_id')
                                 {{$message}}

@@ -50,7 +50,13 @@
             <p1>
                 Edit Timetable Slot
             </p1>
-            <p2>Office Assistant
+            <p2>
+                @php
+                    $user = Auth::user();
+                    $userName = ($user instanceof User) ? $user->name : "Lecturer";
+                @endphp
+                {{$userName}}
+                {{--                <i class="fa fa-sign-out" aria-hidden="true"></i>--}}
                 <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
             </p2>
         </div>
@@ -107,40 +113,40 @@
 
 
 
-<body>
-<h1>Edit Timetable Slot</h1>
+{{--<body>--}}
+{{--<h1>Edit Timetable Slot</h1>--}}
 
 {{--This means, display success messge if an item is added successfullyS--}}
-@if(Session::has('success'))
-    {{--    This should be an alert--}}
-    {{Session::get('success')}}
-@endif
+{{--@if(Session::has('success'))--}}
+{{--    --}}{{--    This should be an alert--}}
+{{--    {{Session::get('success')}}--}}
+{{--@endif--}}
 
-<a href="{{url('/office-assistant/timetable/timetable-list')}}">
-    <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
-</a>
+{{--<a href="{{url('/office-assistant/timetable/timetable-list')}}">--}}
+{{--    <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>--}}
+{{--</a>--}}
 
-<form method="post" action="{{url('/office-assistant/timetable/update-timetable-slot')}}">
-    @csrf
-    <input type="hidden" name="id" value="{{$timetable->id}}">
-    <ol>
+{{--<form method="post" action="{{url('/office-assistant/timetable/update-timetable-slot')}}">--}}
+{{--    @csrf--}}
+{{--    <input type="hidden" name="id" value="{{$timetable->id}}">--}}
+{{--    <ol>--}}
 {{--        @for($i = 1; $i<= $meetings_number; $i++)--}}
 {{--            <li> </li>--}}
 {{--        @endfor--}}
 
-                @foreach($timetable->slots as $slot)
-                    <li> <input type="date" name="slots[]" value="{{$slot}}"></li>
-                @endforeach
-    </ol>
-    @error('course_name')
-    {{$message}}
-    @enderror
-    <br>
+{{--                @foreach($timetable->slots as $slot)--}}
+{{--                    <li> <input type="date" name="slots[]" value="{{$slot}}"></li>--}}
+{{--                @endforeach--}}
+{{--    </ol>--}}
+{{--    @error('course_name')--}}
+{{--    {{$message}}--}}
+{{--    @enderror--}}
+{{--    <br>--}}
 
 
-    <button type="submit">UPDATE</button>
+{{--    <button type="submit">UPDATE</button>--}}
 
 
-</form>
-</body>
+{{--</form>--}}
+{{--</body>--}}
 </html>

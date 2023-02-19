@@ -1,4 +1,11 @@
 {{--This Page Contains the list of all Programs--}}
+@php
+    use Illuminate\Support\Facades\Auth;
+    use App\Models\User;
+use App\Models\Course;
+use App\Models\Timetable;
+use App\Models\Venue;
+@endphp
 
     <!doctype html>
 <html lang="en">
@@ -25,21 +32,30 @@
     <div class="column side">
         <img src="/TtS-Logo.png" alt="TtS Logo">
         <p>Timetabling System</p>
-
+        <a href="/lecturer/overview"> <i class="fa fa-tachometer" aria-hidden="true"></i>Overview</a>
+        <a href="/lecturer/view-schedule"><i class="fa fa-server" aria-hidden="true"></i>
+            Schedule</a>
+        {{--        LOGOUT--}}
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             <button type="submit" class="logout-btn">Logout</button>
         </form>
-
-
     </div>
 
     <div class="column right">
         <div class="header">
-            <p>Office Admin
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-            </p>
+            <p1>
+                Edit Timetable Slot
+            </p1>
+            <p2>
+                @php
+                    $user = Auth::user();
+                    $userName = ($user instanceof User) ? $user->name : "Lecturer";
+                @endphp
+                {{$userName}}                {{--                <i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+                <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:darkslateblue"></i>
+            </p2>
         </div>
 
         {{--        container for the page content--}}

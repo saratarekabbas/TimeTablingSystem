@@ -102,7 +102,7 @@ use App\Models\Venue;
 
 
         <div class="container-announcement">
-            <div class="container-announcement-viewtimetableentity">
+             <div class="container-announcement-viewtimetableentity">
                 <p1> Timetable Entity</p1>
                 <a href="/office-assistant/user-application/user-application-list">View All</a>
                 <div class="container-table-timetableentity">
