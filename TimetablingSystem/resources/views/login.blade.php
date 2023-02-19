@@ -22,7 +22,7 @@
         <div class="login-form">
             @if (session('error'))
                 <div class="alert alert-danger">
-                    {{ session('error') }}
+                    <p style="color:red;font-size:12px;">{{ session('error') }}</p>
                 </div>
             @endif
 
@@ -31,11 +31,11 @@
                 @csrf
                 <input type="text" class="login-inputbox" placeholder="Email Address" name="email" value="{{old('email')}}" >
                 @error('email')
-                {{$message}}
+                <p style="color:red;font-size:12px;line-height:3px;"">{{ $message }}</p>
                 @enderror
                 <input type="password" class="login-inputbox" placeholder="Password" name="password" value="{{old('password')}}">
                 @error('password')
-                {{$message}}
+                <p style="color:red;font-size:12px;line-height:3px;"">{{ $message }}</p>
                 @enderror
                 <a href="forgot-password" class="login-forgotpassword forgotpasswordA">Forgot Password?</a>
 

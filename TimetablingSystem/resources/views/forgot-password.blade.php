@@ -8,6 +8,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/app.css">
+    <script src="/app.js"></script>
+    <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Forgot Password</title>
 </head>
 <body>
@@ -23,8 +25,10 @@
 
             <form action="{{ route('password.email') }}" method="POST">
                 @csrf
-                <a href="login" class="reset-password-arrow">
-                    <img src="/Reset-password-arrow.png">
+{{--                <a href="login" class="reset-password-arrow">--}}
+{{--                    <img src="/Reset-password-arrow.png">--}}
+                <a href="login">
+                    <i class="fa fa-arrow-left" aria-hidden="true"> BACK</i>
 
                 </a>
 
