@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Program;
+use App\Models\Timetable;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
@@ -68,6 +70,19 @@ class ProgramController extends Controller
 
     public function deleteProgram($id)
     {
+        $timetables = Timetable::all();
+        foreach ($timetables as $timetable) {
+            if ($id == $timetable->program_id) {
+                Timetable::where('program_id', '=', $id)->delete();
+            }
+        }
+
+        $courses = Course::all();
+        foreach ($courses as $course) {
+            if ($id == $course->program_id) {
+                Course::where('program_id', '=', $id)->delete();
+            }
+        }
         Program::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Successful: Program has been deleted successfully');
     }

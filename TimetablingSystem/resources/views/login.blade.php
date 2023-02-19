@@ -29,11 +29,11 @@
 
             <form method="post" action="{{url('/login')}}">
                 @csrf
-                <input type="text" class="login-inputbox" placeholder="Email Address" name="email">
+                <input type="text" class="login-inputbox" placeholder="Email Address" name="email" value="{{old('email')}}" >
                 @error('email')
                 {{$message}}
                 @enderror
-                <input type="password" class="login-inputbox" placeholder="Password" name="password">
+                <input type="password" class="login-inputbox" placeholder="Password" name="password" value="{{old('password')}}">
                 @error('password')
                 {{$message}}
                 @enderror

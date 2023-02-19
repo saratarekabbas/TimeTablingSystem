@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Program;
+use App\Models\Timetable;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -110,7 +111,14 @@ class CourseController extends Controller
 
     public function deleteCourse($id)
     {
+        $timetables = Timetable::all();
+        foreach ($timetables as $timetable) {
+            if ($id == $timetable->course_id) {
+                Timetable::where('course_id', '=', $id)->delete();
+            }
+        }
         Course::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Successful: Course has been deleted successfully');
     }
+
 }

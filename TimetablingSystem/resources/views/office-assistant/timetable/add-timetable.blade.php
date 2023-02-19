@@ -108,7 +108,7 @@
                         </tr>
                     </table>
                     {{--                <input class="container-create" value="CREATE">--}}
-                    <button type="submit" class="create-edit-btn">PROCEED TO ADD TIMETABLE SLOTS</button>
+                    <button type="submit" class="create-edit-btn">CREATE</button>
 
                 </form>
             </div>

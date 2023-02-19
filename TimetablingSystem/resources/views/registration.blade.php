@@ -32,7 +32,7 @@
                 {{$message}}
                 @enderror
 
-                <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email" required>
+                <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email">
                 @error('email')
                 {{$message}}
                 @enderror
