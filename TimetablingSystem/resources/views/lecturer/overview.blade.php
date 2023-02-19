@@ -103,48 +103,50 @@ use App\Models\Venue;
 
         <div class="container-announcement">
              <div class="container-announcement-viewtimetableentity">
-                <p1> Timetable Entity</p1>
-                <a href="/office-assistant/user-application/user-application-list">View All</a>
-                <div class="container-table-timetableentity">
-                    <table>
-                        <col class="col-program"/>
-                        <col class="col-course"/>
-                        <col class="col-venue"/>
-                        <col class="col-meeting"/>
-                        <col class="col-botton"/>
-                        <tr>
-                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)
-                            </td>
-                            <td style="color: #252733">UANP0013-RESEARCH METHODOLOGY</td>
-                            <td style="color: #252733">Lvl 3 Professional Training 1 (10pax)</td>
-                            <td style="color: #252733">·meeting1：2023-01-01 9:00am
-                                ·meeting2：2023-01-01 9:00am
-                                ·meeting3：2023-01-01 9:00am
-                                ·meeting4：2023-01-01 9:00am
-                                ·meeting5：2023-01-01 9:00am
-                                ·meeting6：2023-01-01 9:00am
-                            </td>
-                            <td>
-                                <input class="container-announcement-view" value="EDIT"
-                                       onclick="javascript:window.location.href='/#'">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)
-                            </td>
-                            <td style="color: #252733">UANP0013-RESEARCH METHODOLOGY</td>
-                            <td style="color: #252733">Lvl 3 Professional Training 1 (10pax)</td>
-                            <td style="color: #252733">·meeting1：2023-01-01 9:00am
-                                ·meeting2：2023-01-01 9:00am
-                                ·meeting3：2023-01-01 9:00am
-                            </td>
-                            <td>
-                                <input class="container-announcement-view" value="EDIT"
-                                       onclick="javascript:window.location.href='/#'">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+{{--                <p1> Timetable Entity</p1>--}}
+{{--                <a href="/office-assistant/user-application/user-application-list">View All</a>--}}
+                <div id="cf6_image" class="shadow"></div>
+
+{{--                 <div class="container-table-timetableentity">--}}
+{{--                    <table>--}}
+{{--                        <col class="col-program"/>--}}
+{{--                        <col class="col-course"/>--}}
+{{--                        <col class="col-venue"/>--}}
+{{--                        <col class="col-meeting"/>--}}
+{{--                        <col class="col-botton"/>--}}
+{{--                        <tr>--}}
+{{--                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)--}}
+{{--                            </td>--}}
+{{--                            <td style="color: #252733">UANP0013-RESEARCH METHODOLOGY</td>--}}
+{{--                            <td style="color: #252733">Lvl 3 Professional Training 1 (10pax)</td>--}}
+{{--                            <td style="color: #252733">·meeting1：2023-01-01 9:00am--}}
+{{--                                ·meeting2：2023-01-01 9:00am--}}
+{{--                                ·meeting3：2023-01-01 9:00am--}}
+{{--                                ·meeting4：2023-01-01 9:00am--}}
+{{--                                ·meeting5：2023-01-01 9:00am--}}
+{{--                                ·meeting6：2023-01-01 9:00am--}}
+{{--                            </td>--}}
+{{--                            <td>--}}
+{{--                                <input class="container-announcement-view" value="EDIT"--}}
+{{--                                       onclick="javascript:window.location.href='/#'">--}}
+{{--                            </td>--}}
+{{--                        </tr>--}}
+{{--                        <tr>--}}
+{{--                            <td style="color: #252733">MANAA1CKA-MASTER OF SCIENCE (INFORMATION ASSURANCE)(PACKAGE 2)--}}
+{{--                            </td>--}}
+{{--                            <td style="color: #252733">UANP0013-RESEARCH METHODOLOGY</td>--}}
+{{--                            <td style="color: #252733">Lvl 3 Professional Training 1 (10pax)</td>--}}
+{{--                            <td style="color: #252733">·meeting1：2023-01-01 9:00am--}}
+{{--                                ·meeting2：2023-01-01 9:00am--}}
+{{--                                ·meeting3：2023-01-01 9:00am--}}
+{{--                            </td>--}}
+{{--                            <td>--}}
+{{--                                <input class="container-announcement-view" value="EDIT"--}}
+{{--                                       onclick="javascript:window.location.href='/#'">--}}
+{{--                            </td>--}}
+{{--                        </tr>--}}
+{{--                    </table>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

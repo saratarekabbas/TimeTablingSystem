@@ -29,16 +29,16 @@
                 <input type="text" class="login-inputbox" placeholder="Full Name" id="name" name="name" required>
 
                 @error('name')
-                {{$message}}
+                <p style="color:red;font-size:12px;line-height:3px;"">{{ $message }}</p>
                 @enderror
 
                 <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email" required>
                 @error('email')
-                {{$message}}
+                <p style="color:red;font-size:12px;line-height:3px;">{{ $message }}</p>
                 @enderror
                 <input type="password" class="login-inputbox" placeholder="Password" id="password" name="password" required>
                 @error('password')
-                {{$message}}
+                <p style="color:red;font-size:12px;line-height:3px;"">{{ $message }}</p>
                 @enderror
 
                 <button type="submit" class="login-submit" id="registerBtn">REGISTER</button>
