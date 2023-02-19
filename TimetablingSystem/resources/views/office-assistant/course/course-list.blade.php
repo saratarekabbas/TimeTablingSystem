@@ -157,11 +157,12 @@
                                 @endif
                             @endforeach
 
-                            <td>{{$coursedata->number_of_meetings}}</td>
+                            <td style="min-width:210px">{{$coursedata->number_of_meetings}}</td>
 
-                            <td>
+                            <td >
                                 <a href="{{url('/office-assistant/course/edit-course/'.$coursedata->id)}}"
                                    class="edit-btn">Edit</a>
+                                <br><br>
                                 <a href="{{url('/office-assistant/course/delete-course/'.$coursedata->id)}}"
                                    class="delete-btn">Delete</a>
                             </td>
