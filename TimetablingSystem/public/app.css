@@ -111,11 +111,12 @@ body {
     text-align: left;
     /*border-radius: 4px;*/
     border:none;
-    font-size: 17.22px;
+    font-size: 16px;
     /*letter-spacing: 1px;*/
     text-decoration: none;
     display: inline-block;
-    font-family: Montserrat;
+    /*font-family: Montserrat;*/
+    font-family: Mulish;
     /*font-weight: 500;*/
 }
 
@@ -131,7 +132,8 @@ body {
 /* Change color on hover */
 .column.side a:hover,
 .column.side button:hover,
-.column.side form:hover{
+.column.side form:hover
+{
     background-color: #861A3F;
     color: #E59308;
 }
@@ -252,7 +254,7 @@ body {
 .edit-btn,
 .delete-btn,
 .slots-btn{
-    width: 75px;
+    width: 100px;
     border-radius: 4px;
     border: none;
     color: white;
@@ -275,7 +277,7 @@ body {
     clear-after: right;
 }
 .slots-btn{
-    width: 160px;
+    width: 210px;
     background-color: #59011E;
     margin-top:5px
 }

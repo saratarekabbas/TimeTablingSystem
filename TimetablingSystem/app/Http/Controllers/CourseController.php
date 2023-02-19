@@ -120,5 +120,4 @@ class CourseController extends Controller
         Course::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Successful: Course has been deleted successfully');
     }
-
 }

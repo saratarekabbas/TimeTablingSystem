@@ -78,12 +78,12 @@ use App\Models\Venue;
                                 <td style="color: #252733">Meeting {{ $i++ }}</td>
                                 <td style="color: red">
                                     <input type="date" class="create-edit-inputbox" name="slots[]" value="{{$slot}}" required>
-                                    {{--                @if($errors->has("slots.{$i}"))--}}
-                                    {{--                    <p style="color:red;">{{ $errors->first("slots.{$i}") }}</p>--}}
-                                    {{--                @endif--}}
+                                                    @if($errors->has("slots.{$i}"))
+                                                        <p style="color:red;">{{ $errors->first("slots.{$i}") }}</p>
+                                                    @endif
 {{--                                    @error('slots.' . $i)--}}
 {{--                                    <p style="color:red;">{{ $message }}</p>--}}
-                                    @enderror
+{{--                                    @enderror--}}
                                 </td>
                             </tr>
                         @endforeach

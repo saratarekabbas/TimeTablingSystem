@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Timetable;
 use Illuminate\Http\Request;
 use App\Models\Venue;
 
@@ -79,8 +80,20 @@ class VenueController extends Controller
         return redirect()->back()->with('success', 'Successful: Venue has been updated successfully');
     }
 
+//    public function deleteVenue($id)
+//    {
+//        Venue::where('id', '=', $id)->delete();
+//        return redirect()->back()->with('success', 'Successful: Venue has been deleted successfully');
+//    }
+
     public function deleteVenue($id)
     {
+        $timetables = Timetable::all();
+        foreach ($timetables as $timetable) {
+            if ($id == $timetable->venue_id) {
+                Timetable::where('venue_id', '=', $id)->delete();
+            }
+        }
         Venue::where('id', '=', $id)->delete();
         return redirect()->back()->with('success', 'Successful: Venue has been deleted successfully');
     }

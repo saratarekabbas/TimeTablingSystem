@@ -59,7 +59,7 @@ use App\Models\Venue;
                         <p4>
                             @php
                                 $user = \Auth::user();
-                                $userId = ($user instanceof User) ? $user->id : null;
+                                $userId = ($user instanceof User) ? $user->id : NULL;
                                 $courses = \App\Models\Course::where('lecturer_id', $userId)->get();
                                 $courseIds = $courses->pluck('id')->toArray(); // Course IDs affiliated to this lecturer
                                 $timetables = \App\Models\Timetable::whereIn('course_id', $courseIds)->get();

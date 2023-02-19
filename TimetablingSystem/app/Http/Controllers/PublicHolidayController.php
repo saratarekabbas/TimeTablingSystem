@@ -24,7 +24,7 @@ class PublicHolidayController extends Controller
     {
 //        Validation
         $request->validate([
-            'public_holiday_title' => 'required',
+            'public_holiday_title' => 'required|unique:public_holidays,public_holiday_title',
             'public_holiday_start_date' => 'required|date|date_format:Y-m-d|before_or_equal:public_holiday_end_date',
             'public_holiday_end_date' => 'required|date|date_format:Y-m-d|after_or_equal:public_holiday_start_date'
         ]);
