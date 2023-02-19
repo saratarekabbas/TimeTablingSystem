@@ -23,8 +23,9 @@
 
             <form action="{{ route('password.email') }}" method="POST">
                 @csrf
-                <a href="login.blade.php" class="reset-password-arrow">
-                    <img src="Reset-password-arrow.png">
+                <a href="login" class="reset-password-arrow">
+                    <img src="/Reset-password-arrow.png">
+
                 </a>
 
                 <h1>Forgot Password</h1>

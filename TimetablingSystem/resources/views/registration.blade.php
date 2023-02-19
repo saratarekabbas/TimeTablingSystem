@@ -26,17 +26,17 @@
             @endif
             <form method="post" action="{{url('/registration')}}">
                 @csrf
-                <input type="text" class="login-inputbox" placeholder="Full Name" id="name" name="name">
+                <input type="text" class="login-inputbox" placeholder="Full Name" id="name" name="name" required>
 
                 @error('name')
                 {{$message}}
                 @enderror
 
-                <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email">
+                <input type="email" class="login-inputbox" placeholder="Email Address" id="email" name="email" required>
                 @error('email')
                 {{$message}}
                 @enderror
-                <input type="password" class="login-inputbox" placeholder="Password" id="password" name="password">
+                <input type="password" class="login-inputbox" placeholder="Password" id="password" name="password" required>
                 @error('password')
                 {{$message}}
                 @enderror
