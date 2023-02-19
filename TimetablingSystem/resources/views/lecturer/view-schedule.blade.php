@@ -64,10 +64,14 @@ use App\Models\Venue;
                    class="container-action-btns">View Calendar</a>
                 <br><br><br>
             </div>
-            @if(Session::has('success'))
-{{--                This should be an alert--}}
-                {{Session::get('success')}}
-            @endif
+
+
+            <div class="success-message">
+                @if(Session::has('success'))
+                    {{Session::get('success')}}
+                @endif
+            </div>
+
 
             <div class="container-table">
                 <table id="table">
@@ -137,7 +141,7 @@ use App\Models\Venue;
                                 @if($timetabledata->remarks == NULL)
                                     No Remarks
                                 @else
-                                    {{$timetable->remarks}}
+                                    {{$timetabledata->remarks}}
                                 @endif
                             </td>
                             <td>

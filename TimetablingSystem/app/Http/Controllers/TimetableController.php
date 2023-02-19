@@ -103,21 +103,34 @@ class TimetableController extends Controller
                 }
             ]]);
 
-        $id = $request->id;
-        $slots = $request->slots;
-//        $remarks = $request->remarks;
-
-//        Create the update query by calling our Course Eloquent Model
-        Timetable::where('id', '=', $id)->update([
-            'slots' => $slots,
-        ]);
-
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
+        } else {
+
+            $id = $request->id;
+            $slots = $request->slots;
+            $remarks = $request->remarks;
+
+//        Create the update query by calling our Course Eloquent Model
+            Timetable::where('id', '=', $id)->update([
+                'slots' => $slots,
+            ]);
+
+            if (!empty($remarks)) {
+                Timetable::where('id', '=', $id)->update([
+                    'remarks' => $remarks
+                ]);
+            } else {
+                Timetable::where('id', '=', $id)->update([
+                    'remarks' => NULL
+                ]);
+            }
+            return redirect()->back()->with('success',
+                'Successful: Schedule slots have been updated successfully');
+
         }
-        return redirect()->back()->with('success', 'Successful: Schedule slots have been updated successfully');
     }
 
 

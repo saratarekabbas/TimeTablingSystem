@@ -81,8 +81,8 @@ use App\Models\Venue;
                                     {{--                @if($errors->has("slots.{$i}"))--}}
                                     {{--                    <p style="color:red;">{{ $errors->first("slots.{$i}") }}</p>--}}
                                     {{--                @endif--}}
-                                    @error('course_name')
-                                    <p style="color:red;">{{ $message }}</p>
+{{--                                    @error('slots.' . $i)--}}
+{{--                                    <p style="color:red;">{{ $message }}</p>--}}
                                     @enderror
                                 </td>
                             </tr>
@@ -90,7 +90,7 @@ use App\Models\Venue;
                         <tr>
                             <td style="color: #252733">Remark</td>
                             <td style="color: red">
-                                <input type="text" class="create-edit-inputbox" name="remarks" value="Remarks">
+                                <input type="text" class="create-edit-inputbox" name="remarks" value="{{$timetable->remarks}}">
                     </table>
                     <button type="submit" class="create-edit-btn">UPDATE</button>
 

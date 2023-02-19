@@ -251,7 +251,7 @@ body {
 .edit-btn,
 .delete-btn,
 .slots-btn{
-    width: 100px;
+    width: 75px;
     border-radius: 4px;
     border: none;
     color: white;
@@ -274,7 +274,8 @@ body {
     clear-after: right;
 }
 .slots-btn{
-    background-color: #FF0000;
+    width: 160px;
+    background-color: #59011E;
     margin-top:5px
 }
 
