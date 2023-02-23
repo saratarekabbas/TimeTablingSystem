@@ -82,7 +82,7 @@
                             <td>
                                 <a href="{{url('/office-assistant/user-application/approve-user-application/'.$userapplicationdata->id)}}"
                                    class="edit-btn">Approve</a>
-                                <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
+                                <a href="{{url('/office-assistant/user-application/disapprove-user-application/'.$userapplicationdata->id)}}"
                                    class="delete-btn">Disapprove</a>
                             </td>
                         </tr>

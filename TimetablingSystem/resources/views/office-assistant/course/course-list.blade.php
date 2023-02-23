@@ -162,6 +162,8 @@
                             <td >
                                 <a href="{{url('/office-assistant/course/edit-course/'.$coursedata->id)}}"
                                    class="edit-btn">Edit</a>
+                                <br> <br>
+
                                 <a href="{{url('/office-assistant/course/delete-course/'.$coursedata->id)}}" onclick="return confirm('Are you sure you want to delete?')"
                                    class="delete-btn">Delete</a>
                             </td>

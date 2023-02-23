@@ -22,6 +22,13 @@
 </head>
 <body>
 
+<h2 style="text-align: center">Timetable Entities</h2>
+<br>
+
+<h3>User: Office Assistant</h3>
+
+<br>
+
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -33,6 +40,10 @@
     </tr>
     </thead>
     <tbody>
+
+
+
+
     @php
         $i = 1;
     @endphp

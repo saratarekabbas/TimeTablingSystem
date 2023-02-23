@@ -53,7 +53,7 @@
             <p2>
                 @php
                     $user = Auth::user();
-                    $userName = ($user instanceof User) ? $user->name : "Lecturer";
+                    $userName = ($user instanceof User) ? $user->name : "Office Assistant";
                 @endphp
                 {{$userName}}
                 {{--                <i class="fa fa-sign-out" aria-hidden="true"></i>--}}
