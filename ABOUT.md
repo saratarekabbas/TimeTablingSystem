@@ -29,5 +29,4 @@ All graphical user interfaces (GUI) for TtS can be found in the accompanying fil
 
 The Timetabling System (TtS) is a significant step forward in academic management within the Advanced Informatics Department. By automating venue allocation and timetable generation, it reduces administrative overhead and enhances transparency for lecturers. This contribution to academic efficiency aligns with the department's commitment to providing quality education.
 
-*Note: This README provides an overview of the Timetabling System (TtS).
-
+*Note: This ABOUT provides an overview of the Timetabling System (TtS). For detailed documentation and instructions, please request the project's documentation [email: abbassaratarek@gmail.com].
